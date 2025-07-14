@@ -1,12 +1,14 @@
 package com.purpura.app;
 
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.os.Handler;
+
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -20,5 +22,13 @@ public class SplashScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        new Handler().postDelayed(this:: abrirTela, 4000);
+    }
+
+    private void abrirTela(){
+        Intent rota = new Intent(this, MainActivity.class);
+        startActivity(rota);
+        finish();
     }
 }
