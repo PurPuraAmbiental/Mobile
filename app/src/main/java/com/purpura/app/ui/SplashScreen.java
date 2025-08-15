@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.os.Handler;
+
+import com.purpura.app.R;
 
 
 public class SplashScreen extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void abrirTela(){
-        Intent rota = new Intent(this, MainActivity.class);
+        Intent rota = new Intent(this, Cadastro.class);
         startActivity(rota);
         finish();
     }
