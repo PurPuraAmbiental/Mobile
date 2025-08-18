@@ -1,4 +1,4 @@
-package com.purpura.app.ui;
+package com.purpura.app.ui.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
