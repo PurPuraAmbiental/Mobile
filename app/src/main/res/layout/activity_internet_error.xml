@@ -11,7 +11,7 @@
         android:id="@+id/InternetErrorText"
         android:layout_width="314dp"
         android:layout_height="120dp"
-        android:text="Ops! Parece que você está sem internet. Verifique a sua conexão e tente novamente."
+        android:text="Ops! Parece que você está sem internet. Verifique a sua conexão, tente novamente."
         android:textAlignment="center"
         android:textColor="#7950A4"
         android:textSize="26sp"
