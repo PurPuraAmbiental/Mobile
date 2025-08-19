@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void abrirTela(){
-        Intent rota = new Intent(this, Cadastro.class);
+        Intent rota = new Intent(this, RegisterOrLogin.class);
         startActivity(rota);
         finish();
     }
