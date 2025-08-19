@@ -1,36 +1,26 @@
 package com.purpura.app.ui.screens;
 
-import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.os.Handler;
 
 import com.purpura.app.R;
 
-
-public class SplashScreen extends AppCompatActivity {
+public class RegisterOrLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_register_or_login);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        new Handler().postDelayed(this:: abrirTela, 4000);
-    }
-
-    private void abrirTela(){
-        Intent rota = new Intent(this, RegisterOrLogin.class);
-        startActivity(rota);
-        finish();
     }
 }
