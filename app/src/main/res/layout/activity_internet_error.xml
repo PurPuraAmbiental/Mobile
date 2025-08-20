@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.599" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tryAgainButton"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:backgroundTint="#764EA2"

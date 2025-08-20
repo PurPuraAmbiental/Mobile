@@ -1,6 +1,7 @@
 package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,9 +9,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.purpura.app.Methods;
 import com.purpura.app.R;
 
 public class RegisterOrLogin extends AppCompatActivity {
+
+    Methods methods = new Methods();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +26,17 @@ public class RegisterOrLogin extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button loginButton = findViewById(R.id.loginButton);
+        Button registerButton = findViewById(R.id.registerButton);
+
+        loginButton.setOnClickListener(v ->
+                methods.openScreen(this, MainActivity.class)
+        );
+
+        registerButton.setOnClickListener(v ->
+                methods.openScreen(this, Cadastro.class)
+        );
+
     }
 }
