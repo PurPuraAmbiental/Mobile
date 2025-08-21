@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.37"
-        app:srcCompat="@drawable/icone" />
+        app:srcCompat="@drawable/icon" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -31,5 +31,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.111"
-        app:srcCompat="@drawable/nome_roxo" />
+        app:srcCompat="@drawable/purple_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
