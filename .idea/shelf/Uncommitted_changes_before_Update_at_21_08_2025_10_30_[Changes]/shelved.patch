@@ -1,0 +1,391 @@
+Index: app/src/main/res/layout/activity_cadastro_final.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_cadastro_final.xml b/app/src/main/res/layout/activity_cadastro_final.xml
+new file mode 100644
+--- /dev/null	(date 1755782753550)
++++ b/app/src/main/res/layout/activity_cadastro_final.xml	(date 1755782753550)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ui.screens.Cadastro">
++
++    <ImageView
++        android:id="@+id/imageView7"
++        android:layout_width="45dp"
++        android:layout_height="42dp"
++        android:src="@drawable/back_button"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.071"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.039" />
++
++    <ImageView
++        android:id="@+id/imageView4"
++        android:layout_width="288dp"
++        android:layout_height="340dp"
++        android:src="@drawable/Investment_data_cuate"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.498" />
++
++    <TextView
++        android:id="@+id/textView3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Pronto!"
++        android:textColor="#095D19"
++        android:textSize="25sp"
++        android:textStyle="bold"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.208" />
++
++    <Button
++        android:id="@+id/registerButton"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:backgroundTint="#774FA4"
++        android:text="Voltar para Página Principal"
++        app:cornerRadius="15sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.494"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.801" />
++
++    <ImageView
++        android:id="@+id/imageView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="84dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.497"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:srcCompat="@drawable/final_flow_bar" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_cadastro_chave_pix.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_cadastro_chave_pix.xml b/app/src/main/res/layout/activity_cadastro_chave_pix.xml
+new file mode 100644
+--- /dev/null	(date 1755782540689)
++++ b/app/src/main/res/layout/activity_cadastro_chave_pix.xml	(date 1755782540689)
+@@ -0,0 +1,89 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ui.screens.Cadastro">
++
++    <ImageView
++        android:id="@+id/imageView7"
++        android:layout_width="45dp"
++        android:layout_height="42dp"
++        android:src="@drawable/back_button"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.071"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.039" />
++
++    <ImageView
++        android:id="@+id/imageView4"
++        android:layout_width="150dp"
++        android:layout_height="135dp"
++        android:src="@drawable/pix_key"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.325" />
++
++    <TextView
++        android:id="@+id/textView3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Chave Pix"
++        android:textColor="#095D19"
++        android:textSize="25sp"
++        android:textStyle="bold"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.208" />
++
++    <Button
++        android:id="@+id/registerButton"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:backgroundTint="#774FA4"
++        android:text="Cadastrar Chave Pix"
++        app:cornerRadius="15sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.607" />
++
++    <EditText
++        android:id="@+id/registerName"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:background="@drawable/round_border"
++        android:ems="10"
++        android:hint="Chave Pix da Empresa"
++        android:inputType="text"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.519" />
++
++    <ImageView
++        android:id="@+id/imageView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="84dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.497"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:srcCompat="@drawable/pix_flow_bar" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_erro_padrao.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_erro_padrao.xml b/app/src/main/res/layout/activity_erro_padrao.xml
+new file mode 100644
+--- /dev/null	(date 1755689612289)
++++ b/app/src/main/res/layout/activity_erro_padrao.xml	(date 1755689612289)
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ui.screens.InternetError">
++
++    <TextView
++        android:id="@+id/InternetErrorText"
++        android:layout_width="314dp"
++        android:layout_height="120dp"
++        android:text="Ops! Algo deu errado por aqui. Nâo foi possível concluir essa ação, tente novamente."
++        android:textAlignment="center"
++        android:textColor="#7950A4"
++        android:textSize="26sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.494"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.599" />
++
++    <Button
++        android:id="@+id/button"
++        android:layout_width="320dp"
++        android:layout_height="50dp"
++        android:backgroundTint="#764EA2"
++        android:text="Tentar novamente"
++        app:cornerRadius="15sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.494"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.743" />
++
++    <ImageView
++        android:id="@+id/imageView5"
++        android:layout_width="257dp"
++        android:layout_height="217dp"
++        android:src="@drawable/generic_error"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.243" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_cadastro_endereco.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_cadastro_endereco.xml b/app/src/main/res/layout/activity_cadastro_endereco.xml
+new file mode 100644
+--- /dev/null	(date 1755782884285)
++++ b/app/src/main/res/layout/activity_cadastro_endereco.xml	(date 1755782884285)
+@@ -0,0 +1,134 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ui.screens.Cadastro">
++
++    <EditText
++        android:id="@+id/registerPassword2"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:background="@drawable/round_border"
++        android:ems="10"
++        android:hint="Complemento"
++        android:inputType="textPassword"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.828" />
++
++    <ImageView
++        android:id="@+id/imageView7"
++        android:layout_width="45dp"
++        android:layout_height="42dp"
++        android:src="@drawable/back_button"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.071"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.023" />
++
++    <ImageView
++        android:id="@+id/imageView4"
++        android:layout_width="150dp"
++        android:layout_height="135dp"
++        android:src="@drawable/adress_icon"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.325" />
++
++    <EditText
++        android:id="@+id/registerCNPJ"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:background="@drawable/round_border"
++        android:ems="10"
++        android:hint="CEP"
++        android:inputType="text"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.624" />
++
++    <TextView
++        android:id="@+id/textView3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Endereço"
++        android:textColor="#095D19"
++        android:textSize="25sp"
++        android:textStyle="bold"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.208" />
++
++    <Button
++        android:id="@+id/registerButton"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:backgroundTint="#774FA4"
++        android:text="Validar CEP"
++        app:cornerRadius="15sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.928" />
++
++    <EditText
++        android:id="@+id/registerPassword"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:background="@drawable/round_border"
++        android:ems="10"
++        android:hint="Número"
++        android:inputType="textPassword"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.725" />
++
++    <EditText
++        android:id="@+id/registerName"
++        android:layout_width="320sp"
++        android:layout_height="50sp"
++        android:background="@drawable/round_border"
++        android:ems="10"
++        android:hint="Nome da empresa/Filial"
++        android:inputType="text"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.483"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.519" />
++
++    <ImageView
++        android:id="@+id/imageView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="84dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.497"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:srcCompat="@drawable/address_flow_bar" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
