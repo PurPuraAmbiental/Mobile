@@ -1,0 +1,61 @@
+Index: app/src/main/res/layout/activity_erro_padrao.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_erro_padrao.xml b/app/src/main/res/layout/activity_erro_padrao.xml
+new file mode 100644
+--- /dev/null	(date 1755684507116)
++++ b/app/src/main/res/layout/activity_erro_padrao.xml	(date 1755684507116)
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ui.screens.InternetError">
++
++    <TextView
++        android:id="@+id/InternetErrorText"
++        android:layout_width="314dp"
++        android:layout_height="120dp"
++        android:text="Ops! Algo deu errado por aqui. Nâo foi possível concluir essa ação, tente novamente."
++        android:textAlignment="center"
++        android:textColor="#7950A4"
++        android:textSize="26sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.494"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.599" />
++
++    <Button
++        android:id="@+id/button"
++        android:layout_width="320dp"
++        android:layout_height="50dp"
++        android:backgroundTint="#764EA2"
++        android:text="Tentar novamente"
++        app:cornerRadius="15sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.494"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.743" />
++
++    <ImageView
++        android:id="@+id/imageView5"
++        android:layout_width="257dp"
++        android:layout_height="217dp"
++        android:src="@drawable/erro_generico"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.243" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
