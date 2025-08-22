@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.configuration;
 
 import android.app.Activity;
 import android.content.Intent;

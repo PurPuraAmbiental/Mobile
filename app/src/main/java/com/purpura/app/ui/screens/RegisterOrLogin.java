@@ -9,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.purpura.app.Methods;
+import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
 
 public class RegisterOrLogin extends AppCompatActivity {
@@ -27,8 +27,8 @@ public class RegisterOrLogin extends AppCompatActivity {
             return insets;
         });
 
-        Button loginButton = findViewById(R.id.loginButton);
-        Button registerButton = findViewById(R.id.registerButton);
+        Button loginButton = findViewById(R.id.goToLoginButton);
+        Button registerButton = findViewById(R.id.goToRegisterButton);
 
         loginButton.setOnClickListener(v ->
                 methods.openScreen(this, MainActivity.class)

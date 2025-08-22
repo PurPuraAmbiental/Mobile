@@ -1,7 +1,7 @@
 package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
+import com.purpura.app.ui.dashboard.DashboardFragment;
 
-public class Cadastro extends AppCompatActivity {
+public class RegisterPixKey extends AppCompatActivity {
 
     Methods methods = new Methods();
 
@@ -20,16 +21,16 @@ public class Cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_register_pix_key);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        TextView goToLogin= findViewById(R.id.registerLoginText);
+        Button nextPageButton = findViewById(R.id.goToRegisterButton);
 
-        goToLogin.setOnClickListener(v -> methods.openScreen(this, MainActivity.class));
+        nextPageButton.setOnClickListener(v -> methods.openScreen(this, DashboardFragment.class));
 
     }
 }

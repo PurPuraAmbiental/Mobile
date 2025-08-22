@@ -16,7 +16,7 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintBottom_toTopOf="@+id/goToRegisterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.636" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/goToLoginButton"
         android:layout_width="320sp"
         android:layout_height="50sp"
         android:backgroundTint="#8253BA"
@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.945" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/goToRegisterButton"
         android:layout_width="320sp"
         android:layout_height="50sp"
         android:backgroundTint="#8154BA"
