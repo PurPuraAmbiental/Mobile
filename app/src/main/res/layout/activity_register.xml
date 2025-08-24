@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.Cadastro">
+    tools:context=".ui.screens.Register">
 
     <EditText
         android:id="@+id/registerCNPJ"
@@ -17,9 +17,37 @@
         android:hint="CNPJ"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerCompanyName" />
+
+    <EditText
+        android:id="@+id/registerCompanyName"
+        android:layout_width="320sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Nome da empresa"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
+
+    <EditText
+        android:id="@+id/registerPhone"
+        android:layout_width="320sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Telefone da empresa"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
     <EditText
         android:id="@+id/registerPassword"
@@ -35,39 +63,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerCNPJ" />
 
-    <Button
-        android:id="@+id/googleRegisterButton"
-        android:layout_width="150sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#764DA2"
-        android:text="Google"
-        app:cornerRadius="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-    <EditText
-        android:id="@+id/registerCompanyName"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Nome da empresa"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
-
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="327dp"
+        android:layout_width="320sp"
         android:layout_height="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:srcCompat="@drawable/oder_separation" />
@@ -86,36 +88,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/microsoftRegisterButton"
-        android:layout_width="150sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#754EA0"
-        android:text="Facebook"
-        app:cornerRadius="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
     <TextView
         android:id="@+id/registerLoginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="692dp"
+        android:layout_marginTop="15dp"
         android:text="Já é membro? Entre com o login!"
         android:textColor="#095B19"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterWithGoogle" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="80dp"
         android:text="Cadastro"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -137,18 +126,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
-    <EditText
-        android:id="@+id/registerPhone"
+    <Button
+        android:id="@+id/RegisterWithGoogle"
         android:layout_width="320sp"
         android:layout_height="50sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Telefone da empresa"
-        android:inputType="text"
+        android:text="Google"
+        android:textColor="#764EA3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
