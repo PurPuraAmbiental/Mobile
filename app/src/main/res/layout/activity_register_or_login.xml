@@ -12,21 +12,21 @@
         android:id="@+id/textView2"
         android:layout_width="304dp"
         android:layout_height="92dp"
+        android:layout_marginTop="28dp"
         android:text="Negocie o descarte de resíduos sólidos e obtenha o Selo Verde"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/goToRegisterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/goToLoginButton"
         android:layout_width="320sp"
         android:layout_height="50sp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#8253BA"
         android:text="Login"
         app:cornerRadius="30px"
@@ -34,48 +34,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintTop_toBottomOf="@+id/goToRegisterButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/goToRegisterButton"
         android:layout_width="320sp"
         android:layout_height="50sp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#8154BA"
         android:text="Cadastre-se"
         app:cornerRadius="30px"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="356dp"
         android:layout_height="139dp"
+        android:layout_marginTop="100dp"
         android:text="Encontre soluções sustentáveis para sua empresa"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="377dp"
         android:layout_height="240dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/welcome_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
