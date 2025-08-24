@@ -13,6 +13,21 @@
         android:theme="@style/Theme.PurpuraApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.screens.PaymetStatus"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.QrCodePayment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.QrCodePayment"
+            android:exported="false" />
+        <activity
+            android:name=".ChoosePaymentMethod"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.ChoosePaymentMethod"
+            android:exported="false" />
+        <activity
             android:name=".ui.screens.Login"
             android:exported="false" />
         <activity
