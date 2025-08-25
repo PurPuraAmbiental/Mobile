@@ -10,13 +10,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.R;
 
-public class PaymetStatus extends AppCompatActivity {
+public class PaymentStatus extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_paymet_status);
+        setContentView(R.layout.activity_payment_status);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
