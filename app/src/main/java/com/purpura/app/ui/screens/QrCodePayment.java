@@ -32,7 +32,7 @@ public class QrCodePayment extends AppCompatActivity {
         Button continueButton = ((Button) findViewById(R.id.qrCodePaymentContinueButton));
 
         backButton.setOnClickListener(v -> methods.openScreen(this, ChoosePaymentMethod.class));
-        continueButton.setOnClickListener(v -> {methods.openScreen(this, PaymetStatus.class);});
+        continueButton.setOnClickListener(v -> {methods.openScreen(this, PaymentStatus.class);});
 
     }
 }
