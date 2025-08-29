@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation(libs.activity)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
