@@ -19,16 +19,7 @@
             android:name=".ui.screens.PaymentStatus"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.PaymetStatus"
-            android:exported="false" />
-        <activity
             android:name=".ui.screens.QrCodePayment"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screens.QrCodePayment"
-            android:exported="false" />
-        <activity
-            android:name=".ChoosePaymentMethod"
             android:exported="false" />
         <activity
             android:name=".ui.screens.ChoosePaymentMethod"
