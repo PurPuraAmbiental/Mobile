@@ -43,7 +43,7 @@
         android:background="@drawable/round_border"
         android:ems="10"
         android:hint="Telefone da empresa"
-        android:inputType="text"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
