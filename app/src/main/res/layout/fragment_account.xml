@@ -179,7 +179,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
             <ImageView
-                android:id="@+id/imageView15"
+                android:id="@+id/accountProfileImage"
                 android:layout_width="35sp"
                 android:layout_height="35sp"
                 android:layout_marginTop="30dp"
@@ -190,7 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/accountPasswordIcon" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/accountProfileText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
@@ -198,7 +198,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.065"
-                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                app:layout_constraintStart_toEndOf="@+id/accountProfileImage"
                 app:layout_constraintTop_toBottomOf="@+id/accountPasswordText" />
 
             <ImageView
@@ -209,10 +209,10 @@
                 android:src="@drawable/configuration_separation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                app:layout_constraintTop_toBottomOf="@+id/accountProfileImage" />
 
             <ImageView
-                android:id="@+id/imageView17"
+                android:id="@+id/accountLogOutIcon"
                 android:layout_width="35sp"
                 android:layout_height="35sp"
                 android:layout_marginTop="15dp"
@@ -223,7 +223,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/accountLogOutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
@@ -231,7 +231,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.068"
-                app:layout_constraintStart_toEndOf="@+id/imageView17"
+                app:layout_constraintStart_toEndOf="@+id/accountLogOutIcon"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
             <!-- continue com os próximos itens -->

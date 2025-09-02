@@ -13,10 +13,19 @@
         android:theme="@style/Theme.PurpuraApp"
         tools:targetApi="31">
         <activity
-            android:name=".AddicionalInformacionsRegisterGoogle"
+            android:name=".ChatList"
             android:exported="false" />
         <activity
-            android:name=".ProductPage"
+            android:name=".ui.screens.EditPixKeys"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.EditAdresses"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.AddicionalInformacionsRegisterGoogle"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.ProductPage"
             android:exported="false" />
         <activity
             android:name=".ui.screens.PaymentStatus"

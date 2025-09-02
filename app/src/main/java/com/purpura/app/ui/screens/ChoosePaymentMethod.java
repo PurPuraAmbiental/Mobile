@@ -31,8 +31,8 @@ public class ChoosePaymentMethod extends AppCompatActivity {
         ImageView backButton = ((ImageView) findViewById(R.id.choosePaymentMethodBackButton));
         Button continueBuying = ((Button) findViewById(R.id.choosePaymentMethodContinueBuyingButton));
 
-        backButton.setOnClickListener(v -> methods.openScreen(this, MainActivity.class));
-        continueBuying.setOnClickListener(v -> methods.openScreen(this, QrCodePayment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, MainActivity.class));
+        continueBuying.setOnClickListener(v -> methods.openScreenActivity(this, QrCodePayment.class));
 
     }
 }

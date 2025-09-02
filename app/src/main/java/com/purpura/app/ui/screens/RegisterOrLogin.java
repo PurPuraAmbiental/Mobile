@@ -30,13 +30,8 @@ public class RegisterOrLogin extends AppCompatActivity {
         Button loginButton = findViewById(R.id.goToLoginButton);
         Button registerButton = findViewById(R.id.goToRegisterButton);
 
-        loginButton.setOnClickListener(v ->
-                methods.openScreen(this, Login.class)
-        );
+        loginButton.setOnClickListener(v -> methods.openScreenActivity(this, Login.class));
 
-        registerButton.setOnClickListener(v ->
-                methods.openScreen(this, Register.class)
-        );
-
+        registerButton.setOnClickListener(v -> methods.openScreenActivity(this, Register.class));
     }
 }

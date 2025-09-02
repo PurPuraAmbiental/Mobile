@@ -30,7 +30,7 @@ public class RegisterPixKey extends AppCompatActivity {
 
         Button nextPageButton = findViewById(R.id.goToRegisterButton);
 
-        nextPageButton.setOnClickListener(v -> methods.openScreen(this, DashboardFragment.class));
+        nextPageButton.setOnClickListener(v -> methods.openScreenActivity(this, DashboardFragment.class));
 
     }
 }
