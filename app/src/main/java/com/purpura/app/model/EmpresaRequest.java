@@ -14,10 +14,6 @@ public class EmpresaRequest {
         this.telefone = telefone;
         this.imagem = imagem;
     }
-    public EmpresaRequest(String cnpj, String telefone) {
-        this.cnpj = cnpj;
-        this.telefone = telefone;
-    }
     public EmpresaRequest(String email, String nome, String imagem) {
         this.email = email;
         this.nome = nome;

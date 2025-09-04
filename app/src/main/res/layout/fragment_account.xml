@@ -212,7 +212,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
             <ImageView
-                android:id="@+id/imageView17"
+                android:id="@+id/accountLogoutIcon"
                 android:layout_width="35sp"
                 android:layout_height="35sp"
                 android:layout_marginTop="15dp"
@@ -223,7 +223,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/accountLogoutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
@@ -231,7 +231,7 @@
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.068"
-                app:layout_constraintStart_toEndOf="@+id/imageView17"
+                app:layout_constraintStart_toEndOf="@+id/accountLogoutIcon"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
             <!-- continue com os próximos itens -->
