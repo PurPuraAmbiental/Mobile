@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "875459757357-220jkras5b9v0ti84a3u0tj0jgau3dd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.purpura.app",
+            "certificate_hash": "2a582356dd20c92d1a67e66bae5c8c2bde358c1d"
+          }
+        },
+        {
           "client_id": "875459757357-fhss1jko4af6m0mj5jl9l65g2njufe0e.apps.googleusercontent.com",
           "client_type": 3
         }

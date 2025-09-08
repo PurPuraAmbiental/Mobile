@@ -1,10 +1,10 @@
 package com.purpura.app.ui.screens;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import com.google.android.gms.common.SignInButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +26,9 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.EmpresaRequest;
 
 public class Login extends AppCompatActivity {
 
@@ -36,7 +36,6 @@ public class Login extends AppCompatActivity {
     FirebaseAuth objAutenticar = FirebaseAuth.getInstance();
     GoogleSignInClient googleSignInClient;
 
-    // Launcher para login com Google
     ActivityResultLauncher<Intent> telaGoogle = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -46,51 +45,39 @@ public class Login extends AppCompatActivity {
                                 GoogleSignIn.getSignedInAccountFromIntent(result.getData())
                                         .getResult(ApiException.class);
 
-                        if (signInAccount == null) {
+                        if (signInAccount == null || signInAccount.getEmail() == null) {
                             Toast.makeText(this, "Erro ao obter conta do Google.", Toast.LENGTH_LONG).show();
                             return;
                         }
 
                         String email = signInAccount.getEmail();
-                        if (email == null) {
-                            Toast.makeText(this, "Email não encontrado.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
 
                         objAutenticar.fetchSignInMethodsForEmail(email)
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
                                         boolean existe = !task.getResult().getSignInMethods().isEmpty();
 
-                                        // Cria credencial do Google
                                         AuthCredential authCredential =
                                                 GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
 
-                                        // Tenta logar no Firebase
                                         objAutenticar.signInWithCredential(authCredential)
-                                                .addOnCompleteListener(Login.this, loginTask -> {
+                                                .addOnCompleteListener(loginTask -> {
                                                     if (loginTask.isSuccessful()) {
-                                                        if (existe) {
-                                                            Toast.makeText(Login.this, "Logado com sucesso", Toast.LENGTH_LONG).show();
-                                                            methods.openScreen(this, MainActivity.class);
-                                                            finish();
-                                                        } else {
-                                                            // Novo usuário -> vai para tela de cadastro extra
-                                                            Toast.makeText(Login.this, "Novo usuário, complete o cadastro.", Toast.LENGTH_LONG).show();
-                                                            methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
-                                                            finish();
+                                                        FirebaseUser user = objAutenticar.getCurrentUser();
+                                                        if (user != null) {
+                                                            verificarCNPJTelefone(user.getUid(), existe);
                                                         }
                                                     } else {
-                                                        Toast.makeText(Login.this, "Erro ao logar com Google.", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(this, "Erro ao logar com Google.", Toast.LENGTH_LONG).show();
                                                     }
                                                 });
                                     } else {
-                                        Toast.makeText(Login.this, "Erro ao verificar email: " + task.getException(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(this, "Erro ao verificar email: " + task.getException(), Toast.LENGTH_LONG).show();
                                     }
                                 });
 
                     } catch (ApiException e) {
-                        Toast.makeText(Login.this, "Erro Google Sign-In: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Erro Google Sign-In: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -107,21 +94,30 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
-        EmpresaRequest usuarioEmpresa;
         TextView goToRegister = findViewById(R.id.loginRegisterText);
         Button loginButton = findViewById(R.id.loginButton);
+        EditText edtEmail = findViewById(R.id.loginEmail);
+        EditText edtSenha = findViewById(R.id.loginPassword);
+        SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
 
         goToRegister.setOnClickListener(v -> methods.openScreen(this, Register.class));
 
         loginButton.setOnClickListener(v -> {
-            String txtEmail = ((EditText) findViewById(R.id.loginEmail)).getText().toString();
-            String txtSenha = ((EditText) findViewById(R.id.loginPassword)).getText().toString();
+            String txtEmail = edtEmail.getText().toString().trim();
+            String txtSenha = edtSenha.getText().toString().trim();
+
+            if (txtEmail.isEmpty() || txtSenha.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             objAutenticar.signInWithEmailAndPassword(txtEmail, txtSenha)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            methods.openScreen(this, MainActivity.class);
-                            finish();
+                            FirebaseUser user = objAutenticar.getCurrentUser();
+                            if (user != null) {
+                                verificarCNPJTelefone(user.getUid(), true);
+                            }
                         } else {
                             Toast.makeText(getApplicationContext(), "Erro ao Logar", Toast.LENGTH_LONG).show();
                         }
@@ -135,22 +131,47 @@ public class Login extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(this, options);
 
-        ((SignInButton) findViewById(R.id.registerWithGoogle)).setOnClickListener(v -> {
+        btnGoogle.setOnClickListener(v -> {
             Intent intent = googleSignInClient.getSignInIntent();
             telaGoogle.launch(intent);
         });
 
-        FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser usuario = objAutenticar.getCurrentUser();
         if (usuario != null) {
-            Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
-            methods.openScreen(this, MainActivity.class);
-            finish();
+            verificarCNPJTelefone(usuario.getUid(), true);
         }
     }
 
-    public void logout() {
-        FirebaseAuth.getInstance().signOut();
-        googleSignInClient.signOut();
-        finish();
+    private void verificarCNPJTelefone(String uid, boolean jaLogado) {
+        FirebaseFirestore.getInstance()
+                .collection("empresa")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        String cnpj = document.getString("cnpj");
+                        String telefone = document.getString("telefone");
+
+                        if (cnpj == null || cnpj.isEmpty() || telefone == null || telefone.isEmpty()) {
+                            Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
+                            methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                            finish();
+                        } else {
+                            if (jaLogado) {
+                                Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                            }
+                            methods.openScreen(this, MainActivity.class);
+                            finish();
+                        }
+                    } else {
+                        Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
+                        methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Erro ao verificar cadastro", Toast.LENGTH_SHORT).show();
+                });
     }
+
 }

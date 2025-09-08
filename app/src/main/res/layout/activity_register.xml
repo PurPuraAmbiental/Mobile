@@ -126,7 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
     <com.google.android.gms.common.SignInButton
-        android:id="@+id/registerWithGoogle"
+        android:id="@+id/loginWithGoogle"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="9dp"
