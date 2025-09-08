@@ -92,13 +92,12 @@
         android:id="@+id/registerLoginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="Já é membro? Entre com o login!"
         android:textColor="#095B19"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterWithGoogle" />
+        tools:layout_editor_absoluteY="661dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -126,15 +125,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
-    <Button
-        android:id="@+id/RegisterWithGoogle"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round_border"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/loginWithGoogle"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="9dp"
         android:text="Google"
-        android:textColor="#764EA3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
