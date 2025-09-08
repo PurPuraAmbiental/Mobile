@@ -13,7 +13,10 @@
         android:theme="@style/Theme.PurpuraApp"
         tools:targetApi="31">
         <activity
-            android:name=".ChatList"
+            android:name=".ui.screens.RegisterProduct"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.ChatList"
             android:exported="false" />
         <activity
             android:name=".ui.screens.EditPixKeys"

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatList">
+    tools:context=".ui.screens.ChatList">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -80,8 +80,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatListRecycleView"
-        android:layout_width="320sp"
-        android:layout_height="580dp"
+        android:layout_width="318dp"
+        android:layout_height="514dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

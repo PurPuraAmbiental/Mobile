@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/backgroundAccount"
-                android:layout_width="515dp"
+                android:layout_width="match_parent"
                 android:layout_height="257dp"
                 android:src="@drawable/account_background"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +32,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profilePhoto"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundAccount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -216,11 +216,14 @@
                 android:layout_width="35sp"
                 android:layout_height="35sp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="100dp"
                 android:src="@drawable/sigout_vector"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.085"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView16"
+                app:layout_constraintVertical_bias="0.009" />
 
             <TextView
                 android:id="@+id/accountLogOutText"

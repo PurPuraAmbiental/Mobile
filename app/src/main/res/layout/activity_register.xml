@@ -1,142 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:theme="@style/semBarra"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.Register">
+    android:theme="@style/semBarra"
+    tools:context=".ui.account.AccountFragment">
 
-    <EditText
-        android:id="@+id/registerCNPJ"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="CNPJ"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerCompanyName" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/registerCompanyName"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Nome da empresa"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/registerPhone"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Telefone da empresa"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
+            <EditText
+                android:id="@+id/registerCNPJ"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="CNPJ"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerCompanyName" />
 
-    <EditText
-        android:id="@+id/registerPassword"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerCNPJ" />
+            <EditText
+                android:id="@+id/registerCompanyName"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="Nome da empresa"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="320sp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        app:srcCompat="@drawable/oder_separation" />
+            <EditText
+                android:id="@+id/registerPhone"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="Telefone da empresa"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
-    <EditText
-        android:id="@+id/registerEmail"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_border"
-        android:ems="10"
-        android:hint="Email da empresa"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <EditText
+                android:id="@+id/registerPassword"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerCNPJ" />
 
-    <TextView
-        android:id="@+id/registerLoginText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Já é membro? Entre com o login!"
-        android:textColor="#095B19"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterWithGoogle" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="320sp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerButton"
+                app:srcCompat="@drawable/oder_separation" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Cadastro"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/registerEmail"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="Email da empresa"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#774FA4"
-        android:text="Cadastre-se"
-        app:cornerRadius="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
+            <TextView
+                android:id="@+id/registerLoginText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"
+                android:text="Já é membro? Entre com o login!"
+                android:textColor="#095B19"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RegisterWithGoogle"
+                app:layout_constraintVertical_bias="0.086" />
 
-    <Button
-        android:id="@+id/RegisterWithGoogle"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round_border"
-        android:text="Google"
-        android:textColor="#764EA3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            <EditText
+                android:id="@+id/registerCompanyPhoto"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_border"
+                android:ems="10"
+                android:hint="Foto da empresa"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:text="Cadastro"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#774FA4"
+                android:text="Cadastre-se"
+                app:cornerRadius="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerCompanyPhoto" />
+
+            <Button
+                android:id="@+id/RegisterWithGoogle"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/round_border"
+                android:text="Google"
+                android:textColor="#764EA3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

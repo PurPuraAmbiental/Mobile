@@ -14,8 +14,6 @@ public class ProductCard {
         this.productName = productName;
     }
 
-
-
     public String getProductImage() {
         return productImage;
     }
