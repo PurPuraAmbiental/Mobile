@@ -35,6 +35,7 @@ android {
     }
 }
 
+
 dependencies {
     // Firebase BoM para alinhar versões automaticamente
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
