@@ -41,7 +41,7 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Nome: Empresa Fantasia"
+        android:hint="Nome: "
         android:inputType="text" />
 
     <EditText
@@ -51,7 +51,7 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Descrição: Latinhas amassadas pelo pé grande"
+        android:hint="Descrição:"
         android:inputType="text" />
 
     <EditText
@@ -61,7 +61,7 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Preço: 299,99"
+        android:hint="Preço: "
         android:inputType="number" />
 
     <EditText
@@ -71,7 +71,7 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/round_border"
         android:ems="10"
-        android:hint="Peso: 200"
+        android:hint="Peso: "
         android:inputType="number" />
 
     <EditText
@@ -81,6 +81,17 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/round_border"
         android:ems="10"
+        android:hint="Medida do peso:"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/popUpEditAdressComplement2"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Carregar imagem"
         android:inputType="text" />
 
     <Button
