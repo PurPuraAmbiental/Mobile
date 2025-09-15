@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/homeFragment">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:name="com.purpura.app.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.purpura.app.ui.dashboard.DashboardFragment"
+        android:id="@+id/notificationsFragments"
+        android:name="com.purpura.app.ui.shoppingCart.ShoppingCartFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_shopping_cart" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/configurationsFragments"
         android:name="com.purpura.app.ui.account.AccountFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_account" />
