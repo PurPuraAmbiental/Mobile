@@ -30,13 +30,13 @@ public class AccountFragment extends Fragment {
         ImageView logoutIcon = root.findViewById(R.id.accountLogoutIcon);
         TextView logoutText = root.findViewById(R.id.accountLogoutText);
 
-
-        logoutIcon.setOnClickListener(v -> {
-            login.logout();
-        });
-        logoutText.setOnClickListener(v -> {
-            login.logout();
-        });
+//
+//        logoutIcon.setOnClickListener(v -> {
+//            login.logout();
+//        });
+//        logoutText.setOnClickListener(v -> {
+//            login.logout();
+//        });
 
         return root;
     }
