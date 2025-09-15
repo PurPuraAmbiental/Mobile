@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "875459757357",
+    "project_id": "purpuraapp-bd7c9",
+    "storage_bucket": "purpuraapp-bd7c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875459757357:android:66e7111a426c83fa117fa4",
+        "android_client_info": {
+          "package_name": "com.purpura.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875459757357-220jkras5b9v0ti84a3u0tj0jgau3dd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.purpura.app",
+            "certificate_hash": "2a582356dd20c92d1a67e66bae5c8c2bde358c1d"
+          }
+        },
+        {
+          "client_id": "875459757357-fhss1jko4af6m0mj5jl9l65g2njufe0e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhW34JGzAu2DVNOmroo7czL6_14-Z0bdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875459757357-fhss1jko4af6m0mj5jl9l65g2njufe0e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

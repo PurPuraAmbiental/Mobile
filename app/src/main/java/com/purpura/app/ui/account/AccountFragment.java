@@ -12,19 +12,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.R;
 import com.purpura.app.databinding.FragmentAccountBinding;
 import com.purpura.app.ui.screens.EditAdresses;
 import com.purpura.app.ui.screens.EditPixKeys;
+import com.purpura.app.ui.screens.Login;
 
 public class AccountFragment extends Fragment {
 
     Methods methods = new Methods();
+    Login login = new Login();
     private FragmentAccountBinding binding;
 
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         AccountViewModel notificationsViewModel =
                 new ViewModelProvider(this).get(AccountViewModel.class);
 

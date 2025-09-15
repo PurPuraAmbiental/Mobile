@@ -22,4 +22,14 @@
         android:name="com.purpura.app.ui.account.AccountFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.purpura.app.ui.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.purpura.app.ui.shoppingCart.ShoppingCartFragment"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" />
 </navigation>

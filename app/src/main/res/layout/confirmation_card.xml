@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productCard"
+    android:layout_width="300sp"
+    android:layout_height="380sp"
+    android:layout_margin="10dp"
+    android:backgroundTint="#A7EFEFEF"
+    app:cardCornerRadius="18sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/productCardBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:layout_editor_absoluteY="287dp">
+
+        <Button
+            android:id="@+id/popUpCancelCard"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#9F1630"
+            android:text="Cancelar"
+            app:cornerRadius="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/popUpConfirmCard" />
+
+        <Button
+            android:id="@+id/popUpConfirmCard"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginTop="236dp"
+            android:backgroundTint="#007818"
+            android:text="Confirmar alteração"
+            app:cornerRadius="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/red_generic_error" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Você tem certeza que deseja remover este produto?"
+            android:textAlignment="center"
+            android:textColor="#9E1630"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -34,8 +35,28 @@ android {
     }
 }
 
-dependencies {
 
+dependencies {
+    // Firebase BoM para alinhar versões automaticamente
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+
+    // Firebase libs sem versão (usará a versão do BoM)
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+
+    // Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    // AndroidX e Material
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -47,9 +68,11 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
-    implementation(libs.androidx.recyclerview)
+
+    // Testes
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
