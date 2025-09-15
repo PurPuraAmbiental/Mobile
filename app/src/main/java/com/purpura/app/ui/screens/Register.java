@@ -29,6 +29,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.model.EmpresaRequest;
 
 public class Register extends AppCompatActivity {
 
@@ -99,6 +100,7 @@ public class Register extends AppCompatActivity {
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
         TextView txtLogin = findViewById(R.id.registerLoginText);
 
+        // Cadastro manual
         btnCadastrar.setOnClickListener(v -> {
             String nome = edtNome.getText().toString().trim();
             String telefone = edtTelefone.getText().toString().trim();
@@ -111,18 +113,42 @@ public class Register extends AppCompatActivity {
                 return;
             }
 
+            // Validações adicionais
+            if (cnpj.length() != 14 || !cnpj.matches("\\d+")) {
+                Toast.makeText(this, "CNPJ inválido. Deve ter 14 dígitos.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (telefone.length() < 10 || !telefone.matches("\\d+")) {
+                Toast.makeText(this, "Telefone inválido. Deve ter no mínimo 10 dígitos.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             auth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
+                        // Atualiza nome no perfil
                         UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(nome)
                                 .build();
-                        user.updateProfile(profile).addOnCompleteListener(task2 -> {
-                            Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                            methods.openScreen(this, MainActivity.class);
-                            finish();
-                        });
+                        user.updateProfile(profile);
+
+                        // Cria objeto empresa
+                        EmpresaRequest empresa = new EmpresaRequest(cnpj, email, "", nome, telefone);
+
+                        // Salva no Firestore
+                        FirebaseFirestore.getInstance()
+                                .collection("empresa")
+                                .document(user.getUid())
+                                .set(empresa)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                    methods.openScreen(this, MainActivity.class);
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "Erro ao salvar no Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                });
                     }
                 } else {
                     Toast.makeText(this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -130,6 +156,7 @@ public class Register extends AppCompatActivity {
             });
         });
 
+        // Configuração do Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("875459757357-fhss1jko4af6m0mj5jl9l65g2njufe0e.apps.googleusercontent.com")
                 .requestEmail()
