@@ -101,7 +101,7 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
                     Log.d("FirestoreDebug", "Sucesso ao salvar no Firestore para UID: " + user.getUid());
-                    methods.openScreen(this, MainActivity.class);
+                    methods.openScreenActivity(this, MainActivity.class);
                     finish();
                 })
                 .addOnFailureListener(e -> {

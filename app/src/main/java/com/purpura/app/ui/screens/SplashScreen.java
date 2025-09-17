@@ -10,27 +10,23 @@ import androidx.core.view.WindowInsetsCompat;
 import android.os.Handler;
 
 import com.purpura.app.R;
+import com.purpura.app.configuration.Methods;
 
 
 public class SplashScreen extends AppCompatActivity {
+    Methods methods = new Methods();
+    private void abrirTela() {
+        methods.openScreenActivity(this, RegisterOrLogin.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        new Handler().postDelayed(this:: abrirTela, 4000);
+        new Handler().postDelayed(this::abrirTela, 4000);
     }
 
-    private void abrirTela(){
-        Intent rota = new Intent(this, RegisterOrLogin.class);
-        startActivity(rota);
-        finish();
-    }
+
 }

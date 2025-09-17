@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/semBarra"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -69,5 +70,29 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qrCodePaymentSubtotal" />
+
+    <TextView
+        android:id="@+id/qrCodePaymentPixURL"
+        android:layout_width="280sp"
+        android:layout_height="45sp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_border"
+        android:text="URL copia e cola do Pix"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+    <ImageView
+        android:id="@+id/qrCodePaymentCopyPasteButton"
+        android:layout_width="45sp"
+        android:layout_height="45sp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/qrCodePaymentPixURL"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:srcCompat="@drawable/copy_paste_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.ui.account.AccountFragment;
 
 public class Login extends AppCompatActivity {
 
@@ -100,7 +101,7 @@ public class Login extends AppCompatActivity {
         EditText edtSenha = findViewById(R.id.loginPassword);
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
 
-        goToRegister.setOnClickListener(v -> methods.openScreen(this, Register.class));
+        goToRegister.setOnClickListener(v -> methods.openScreenActivity(this, Register.class));
 
         loginButton.setOnClickListener(v -> {
             String txtEmail = edtEmail.getText().toString().trim();
@@ -154,18 +155,18 @@ public class Login extends AppCompatActivity {
 
                         if (cnpj == null || cnpj.isEmpty() || telefone == null || telefone.isEmpty()) {
                             Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
-                            methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                            methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                             finish();
                         } else {
                             if (jaLogado) {
                                 Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
                             }
-                            methods.openScreen(this, MainActivity.class);
+                            methods.openScreenActivity(this, MainActivity.class);
                             finish();
                         }
                     } else {
                         Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
-                        methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                        methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                         finish();
                     }
                 })

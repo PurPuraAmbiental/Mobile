@@ -3,6 +3,7 @@ package com.purpura.app.ui.screens;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,11 +29,22 @@ public class QrCodePayment extends AppCompatActivity {
             return insets;
         });
 
-        ImageView backButton = ((ImageView) findViewById(R.id.qrCodePaymentBackButton));
-        Button continueButton = ((Button) findViewById(R.id.qrCodePaymentContinueButton));
+        //----- FindViewById -----//
 
-        backButton.setOnClickListener(v -> methods.openScreen(this, ChoosePaymentMethod.class));
-        continueButton.setOnClickListener(v -> {methods.openScreen(this, PaymentStatus.class);});
+        ImageView backButton = findViewById(R.id.qrCodePaymentBackButton);
+        Button continueButton = findViewById(R.id.qrCodePaymentContinueButton);
+        ImageView copyButton = findViewById(R.id.qrCodePaymentCopyPasteButton);
+        TextView qrCodeTextView = findViewById(R.id.qrCodePaymentPixURL);
 
+        //----- SetOnClickListener -----//
+
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, ChoosePaymentMethod.class));
+
+        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, PaymentStatus.class));
+
+        copyButton.setOnClickListener(v -> {
+            String qrCodeText = qrCodeTextView.getText().toString();
+            methods.copyText(this, qrCodeText);
+        });
     }
 }

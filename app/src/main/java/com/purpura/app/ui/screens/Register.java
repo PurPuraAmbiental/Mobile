@@ -84,7 +84,6 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -147,9 +146,13 @@ public class Register extends AppCompatActivity {
                         UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(nome)
                                 .build();
-                        user.updateProfile(profile);
-
-
+                      
+                      user.updateProfile(profile).addOnCompleteListener(task2 -> {
+                            Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                            methods.openScreenActivity(this, MainActivity.class);
+                            finish();
+                        });
+                      
                     }
                 } else {
                     Toast.makeText(this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -170,7 +173,7 @@ public class Register extends AppCompatActivity {
         });
 
         txtLogin.setOnClickListener(v -> {
-            methods.openScreen(this, Login.class);
+            methods.openScreenActivity(this, Login.class);
             finish();
         });
 
@@ -192,16 +195,16 @@ public class Register extends AppCompatActivity {
 
                         if (cnpj == null || cnpj.isEmpty() || telefone == null || telefone.isEmpty()) {
                             Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
-                            methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                            methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                             finish();
                         } else {
                             Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
-                            methods.openScreen(this, MainActivity.class);
+                            methods.openScreenActivity(this, MainActivity.class);
                             finish();
                         }
                     } else {
                         Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
-                        methods.openScreen(this, AddicionalInformacionsRegisterGoogle.class);
+                        methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                         finish();
                     }
                 })
