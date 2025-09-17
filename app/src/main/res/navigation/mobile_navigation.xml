@@ -12,15 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/notificationsFragments"
-        android:name="com.purpura.app.ui.shoppingCart.ShoppingCartFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_shopping_cart" />
-
-    <fragment
-        android:id="@+id/configurationsFragments"
+        android:id="@+id/accountFragment"
         android:name="com.purpura.app.ui.account.AccountFragment"
-        android:label="@string/title_notifications"
+        android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/chatFragment"
@@ -32,4 +26,9 @@
         android:name="com.purpura.app.ui.shoppingCart.ShoppingCartFragment"
         android:label="fragment_shopping_cart"
         tools:layout="@layout/fragment_shopping_cart" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.purpura.app.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>

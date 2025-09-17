@@ -23,14 +23,14 @@
         android:title="Chat" />
 
     <item
-        android:id="@+id/notificationsFragments"
+        android:id="@+id/notificationsFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/fingerprint_dialog_fp_icon"
         android:title="Notificações" />
 
     <item
-        android:id="@+id/configurationsFragment"
+        android:id="@+id/accountFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/baseline_ac_unit_24"
