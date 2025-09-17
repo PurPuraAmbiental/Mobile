@@ -127,13 +127,7 @@ public class Register extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
-                        // Atualiza nome no perfil
-                        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(nome)
-                                .build();
-                        user.updateProfile(profile);
 
-                        // Cria objeto empresa
                         EmpresaRequest empresa = new EmpresaRequest(cnpj, email, "", nome, telefone);
 
                         // Salva no Firestore
@@ -149,6 +143,13 @@ public class Register extends AppCompatActivity {
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(this, "Erro ao salvar no Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
                                 });
+                        // Atualiza nome no perfil
+                        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(nome)
+                                .build();
+                        user.updateProfile(profile);
+
+
                     }
                 } else {
                     Toast.makeText(this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
