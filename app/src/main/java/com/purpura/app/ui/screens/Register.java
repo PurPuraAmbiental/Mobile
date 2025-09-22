@@ -136,7 +136,7 @@ public class Register extends AppCompatActivity {
                                 .set(empresa)
                                 .addOnSuccessListener(aVoid -> {
                                     Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                                    methods.openScreen(this, MainActivity.class);
+                                    methods.openScreenActivity(this, MainActivity.class);
                                     finish();
                                 })
                                 .addOnFailureListener(e -> {

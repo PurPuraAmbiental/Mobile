@@ -9,7 +9,7 @@
     tools:context=".ui.screens.RegisterProductEndPage">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/registerAdressBackButton"
         android:layout_width="45dp"
         android:layout_height="42dp"
         android:src="@drawable/back_button"
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/registerAdressBackButton"
         app:srcCompat="@drawable/final_flow_vector" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

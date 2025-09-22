@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.purpura.app.MyOrders;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
 import com.purpura.app.databinding.FragmentAccountBinding;
@@ -62,6 +63,9 @@ public class AccountFragment extends Fragment {
 
         myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
         myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
+
+        myOrdersIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
+        myOrdersText.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
 
         return root;
     }
