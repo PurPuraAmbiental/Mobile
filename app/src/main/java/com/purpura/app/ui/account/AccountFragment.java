@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.purpura.app.Dashboards;
 import com.purpura.app.ui.screens.MyOrders;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.FragmentAccountBinding;
@@ -45,6 +46,9 @@ public class AccountFragment extends Fragment {
         //Minhas chaves pix
         ImageView editPixKeysIcon = binding.accountPixcon;
         TextView editPixKeys = binding.accountPixText;
+        //Ver dashboards
+        ImageView dashboardIcon = binding.accountFragmentDashboardIcon;
+        TextView dashboardText = binding.accountFragmentDasboardText;
         //Alterar senha
         ImageView changePasswordIcon = binding.accountPasswordIcon;
         TextView changePassword = binding.accountPasswordText;
@@ -65,6 +69,9 @@ public class AccountFragment extends Fragment {
 
         myOrdersIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
         myOrdersText.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
+
+        dashboardIcon.setOnClickListener(v -> methods.openScreenFragments(this, Dashboards.class));
+        dashboardText.setOnClickListener(v -> methods.openScreenFragments(this, Dashboards.class));
 
         return root;
     }
