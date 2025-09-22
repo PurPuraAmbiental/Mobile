@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.ui.screens;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -16,9 +16,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
-import com.purpura.app.ui.screens.MainActivity;
 
 public class MyOrders extends AppCompatActivity {
 

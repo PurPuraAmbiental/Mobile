@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyOrders">
+    tools:context=".ui.screens.MyOrders">
 
-    <!-- Botão voltar -->
     <ImageView
         android:id="@+id/myOrdersBackButton"
         android:layout_width="45dp"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Título -->
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -33,7 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"/>
 
-    <!-- Compras e Vendas -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/purchaseView"
         android:layout_width="0dp"
@@ -59,7 +56,6 @@
         app:layout_constraintTop_toBottomOf="@id/textView12"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraLarge" />
 
-    <!-- Fundo branco atrás das listas -->
     <View
         android:id="@+id/myOrdersView"
         android:layout_width="0dp"
@@ -71,7 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Texto Compras -->
     <TextView
         android:id="@+id/purchaseText"
         android:layout_width="wrap_content"
@@ -85,7 +80,6 @@
         app:layout_constraintStart_toStartOf="@id/purchaseView"
         app:layout_constraintTop_toTopOf="@id/purchaseView" />
 
-    <!-- Texto Vendas -->
     <TextView
         android:id="@+id/salesText"
         android:layout_width="wrap_content"
@@ -99,7 +93,6 @@
         app:layout_constraintStart_toStartOf="@id/salesView"
         app:layout_constraintTop_toTopOf="@id/salesView" />
 
-    <!-- RecyclerView Compras -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/purchaseRecycleView"
         android:layout_width="0dp"
@@ -111,7 +104,6 @@
         app:layout_constraintStart_toStartOf="@id/myOrdersView"
         app:layout_constraintTop_toTopOf="@id/myOrdersView" />
 
-    <!-- RecyclerView Vendas -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/salesRecycleView"
         android:layout_width="0dp"

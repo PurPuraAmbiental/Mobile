@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.purpura.app.MyOrders;
+import com.purpura.app.ui.screens.MyOrders;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.R;
 import com.purpura.app.databinding.FragmentAccountBinding;
 import com.purpura.app.ui.screens.EditAdresses;
 import com.purpura.app.ui.screens.EditPixKeys;

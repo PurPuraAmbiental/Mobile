@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_shopping_cart" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.purpura.app.NotificationsFragment"
+        android:name="com.purpura.app.ui.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
