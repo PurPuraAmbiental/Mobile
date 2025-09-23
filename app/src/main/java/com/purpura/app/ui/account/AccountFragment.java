@@ -4,23 +4,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.purpura.app.ui.screens.MyOrders;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.R;
+import com.purpura.app.database.firebase.FirebaseMethods;
 import com.purpura.app.databinding.FragmentAccountBinding;
 import com.purpura.app.ui.screens.EditAdresses;
 import com.purpura.app.ui.screens.EditPixKeys;
 import com.purpura.app.ui.screens.Login;
+import com.purpura.app.ui.screens.RegisterOrLogin;
 
 public class AccountFragment extends Fragment {
 
+    FirebaseAuth objAutenticar = FirebaseAuth.getInstance();
     Methods methods = new Methods();
+    FirebaseMethods firebaseMethods = new FirebaseMethods();
     Login login = new Login();
     private FragmentAccountBinding binding;
 
@@ -63,12 +72,39 @@ public class AccountFragment extends Fragment {
         myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
         myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
 
+        logOutIcon.setOnClickListener(v -> {
+            firebaseMethods.logout();
+            methods.openScreenFragments(this, RegisterOrLogin.class);
+        });
+        logOut.setOnClickListener(v -> {
+            firebaseMethods.logout();
+            methods.openScreenFragments(this, RegisterOrLogin.class);
+        });
+
+        changePasswordIcon.setOnClickListener(v -> showPasswordReset());
+        changePassword.setOnClickListener(v -> showPasswordReset());
+
         myOrdersIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
         myOrdersText.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
 
         return root;
     }
 
+    private void showPasswordReset() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this.getContext());
+        alert.setTitle("Esqueci minha senha");
+        alert.setMessage("Entre com seu email para redefinir sua senha");
+
+        EditText editTextEmail = new EditText(this.getContext());
+        alert.setView(editTextEmail);
+
+        alert.setPositiveButton("Enviar", (dialog, which) -> {
+            String email = editTextEmail.getText().toString();
+            objAutenticar.sendPasswordResetEmail(email);
+            Toast.makeText(this.getContext(), "Email Enviado", Toast.LENGTH_LONG).show();
+        });
+        alert.show();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
