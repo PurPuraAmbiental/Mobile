@@ -5,35 +5,35 @@
         android:id="@+id/homeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/home_icon"
         android:title="Home" />
 
     <item
         android:id="@+id/shoppingCartFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/shopping_cat_icon"
         android:title="Carrinho" />
 
     <item
         android:id="@+id/chatFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/adress_icon"
+        android:icon="@drawable/chat_icon"
         android:title="Chat" />
 
     <item
         android:id="@+id/notificationsFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/fingerprint_dialog_fp_icon"
+        android:icon="@drawable/notification_icon"
         android:title="Notificações" />
 
     <item
         android:id="@+id/accountFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/baseline_ac_unit_24"
+        android:icon="@drawable/more_actions_icon"
         android:title="Configurações" />
 
 </menu>

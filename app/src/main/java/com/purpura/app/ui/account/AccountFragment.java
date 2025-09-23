@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.purpura.app.ui.screens.MyOrders;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
 import com.purpura.app.database.firebase.FirebaseMethods;
@@ -82,6 +83,9 @@ public class AccountFragment extends Fragment {
 
         changePasswordIcon.setOnClickListener(v -> showPasswordReset());
         changePassword.setOnClickListener(v -> showPasswordReset());
+
+        myOrdersIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
+        myOrdersText.setOnClickListener(v -> methods.openScreenFragments(this, MyOrders.class));
 
         return root;
     }

@@ -29,8 +29,6 @@ public class QrCodePayment extends AppCompatActivity {
             return insets;
         });
 
-        //----- FindViewById -----//
-
         ImageView backButton = findViewById(R.id.qrCodePaymentBackButton);
         Button continueButton = findViewById(R.id.qrCodePaymentContinueButton);
         ImageView copyButton = findViewById(R.id.qrCodePaymentCopyPasteButton);

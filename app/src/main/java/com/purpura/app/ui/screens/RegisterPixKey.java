@@ -2,6 +2,7 @@ package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
-import com.purpura.app.ui.dashboard.DashboardFragment;
+import com.purpura.app.ui.account.AccountFragment;
 
 public class RegisterPixKey extends AppCompatActivity {
 
@@ -28,9 +29,11 @@ public class RegisterPixKey extends AppCompatActivity {
             return insets;
         });
 
-        Button nextPageButton = findViewById(R.id.goToRegisterButton);
+        ImageView backButton = findViewById(R.id.registerAdressBackButton);
+        Button continueButton = findViewById(R.id.registerPixKeyAddPixKeyButton);
 
-        nextPageButton.setOnClickListener(v -> methods.openScreenActivity(this, DashboardFragment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
+        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
 
     }
 }

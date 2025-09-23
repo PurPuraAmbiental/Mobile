@@ -9,7 +9,7 @@
     tools:context=".ui.screens.RegisterPixKey">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/registerAdressBackButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="20dp"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
-        android:id="@+id/goToRegisterButton"
+        android:id="@+id/registerPixKeyAddPixKeyButton"
         android:layout_width="320sp"
         android:layout_height="50sp"
         android:backgroundTint="#774FA4"
@@ -84,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/registerAdressBackButton"
         app:srcCompat="@drawable/pix_flow_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
