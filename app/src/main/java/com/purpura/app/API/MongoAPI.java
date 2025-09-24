@@ -44,9 +44,9 @@ public interface MongoAPI {
     @POST("empresa/{cnpj}/residuo")
     Call<Residue> createResidue(@Path("cnpj") String cnpj, @Body Residue residue);
     @POST("empresa/{cnpj}/pix")
-    Call<PixKey> createPixKey(@Path("cnpj") String cnpj, @Body Company company);
+    Call<PixKey> createPixKey(@Path("cnpj") String cnpj, @Body PixKey pixKey);
     @POST("empresa/{cnpj}/endereco")
-    Call<Adress> createEndereco(@Path("cnpj") String cnpj, @Body Company company);
+    Call<Adress> createAdress(@Path("cnpj") String cnpj, @Body Adress adress);
 
     //PUT
     @PUT("/empresa/{cnpj}")
@@ -56,7 +56,7 @@ public interface MongoAPI {
     @PUT("/empresa/{cnpj}/pix/{id}")
     Call<PixKey> updatePixKey(@Path("cnpj") String cnpj, @Path("id") String id, @Body PixKey pixKey);
     @PUT("/empresa/{cnpj}/endereco/{id}")
-    Call<Adress> updateEndereco(@Path("cnpj") String cnpj, @Path("id") String id, @Body Adress adress);
+    Call<Adress> updateAdress(@Path("cnpj") String cnpj, @Path("id") String id, @Body Adress adress);
 
     //DELETE
     @DELETE("/empresa/{cnpj}")
@@ -66,6 +66,6 @@ public interface MongoAPI {
     @DELETE("/empresa/{cnpj}/pix/{id}")
     Call<PixKey> deletePixKey(@Path("cnpj") String cnpj, @Path("id") String id);
     @DELETE("/empresa/{cnpj}/endereco/{id}")
-    Call<Adress> deleteEndereco(@Path("cnpj") String cnpj, @Path("id") String id);
+    Call<Adress> deleteAdress(@Path("cnpj") String cnpj, @Path("id") String id);
 
 }
