@@ -20,6 +20,18 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/accountFragmentDashboardIcon"
+                android:layout_width="35sp"
+                android:layout_height="35sp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_dashboard_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.083"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar3"
                 android:layout_width="match_parent"
@@ -183,21 +195,21 @@
                 android:layout_marginTop="15dp"
                 android:src="@drawable/key_vector"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.085"
+                app:layout_constraintHorizontal_bias="0.084"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentDashboardIcon" />
 
             <TextView
                 android:id="@+id/accountPasswordText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="30dp"
                 android:text="Alterar senha"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.069"
+                app:layout_constraintHorizontal_bias="0.064"
                 app:layout_constraintStart_toEndOf="@+id/accountPasswordIcon"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentDasboardText" />
 
             <ImageView
                 android:id="@+id/accountProfileImage"
@@ -221,16 +233,6 @@
                 app:layout_constraintHorizontal_bias="0.065"
                 app:layout_constraintStart_toEndOf="@+id/accountProfileImage"
                 app:layout_constraintTop_toBottomOf="@+id/accountPasswordText" />
-
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="400sp"
-                android:layout_height="50sp"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/configuration_separation"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/accountProfileImage" />
 
             <ImageView
                 android:id="@+id/accountLogOutIcon"
@@ -257,6 +259,28 @@
                 app:layout_constraintHorizontal_bias="0.068"
                 app:layout_constraintStart_toEndOf="@+id/accountLogOutIcon"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="400sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/configuration_separation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accountProfileImage" />
+
+            <TextView
+                android:id="@+id/accountFragmentDasboardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Ver Dashboards"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintStart_toEndOf="@+id/accountFragmentDashboardIcon"
+                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
             <!-- continue com os próximos itens -->
 

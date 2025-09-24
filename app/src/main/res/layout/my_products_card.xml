@@ -49,23 +49,22 @@
             android:id="@+id/imageView7"
             android:layout_width="85dp"
             android:layout_height="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
+            app:layout_constraintHorizontal_bias="0.036"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productCardProductName"
+            app:layout_constraintTop_toBottomOf="@+id/myProductsCardProductName"
             app:srcCompat="@drawable/edit_product_icon" />
 
         <ImageView
             android:id="@+id/imageView23"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/productCardProductName"
+            app:layout_constraintTop_toBottomOf="@+id/myProductsCardProductName"
             app:srcCompat="@drawable/delete_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
