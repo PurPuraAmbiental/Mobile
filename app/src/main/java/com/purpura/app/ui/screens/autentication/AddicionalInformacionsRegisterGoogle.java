@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.autentication;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
+import com.purpura.app.ui.screens.MainActivity;
 
 public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
 

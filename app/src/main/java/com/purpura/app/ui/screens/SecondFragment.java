@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.purpura.app.R;
 import com.purpura.app.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {

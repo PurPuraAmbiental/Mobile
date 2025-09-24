@@ -1,7 +1,6 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.accountFeatures;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +13,7 @@ import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
 
-public class RegisterProduct extends AppCompatActivity {
+public class EditAdresses extends AppCompatActivity {
 
     Methods methods = new Methods();
 
@@ -22,17 +21,16 @@ public class RegisterProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_product);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.constraintLayout), (v, insets) -> {
+        setContentView(R.layout.activity_edit_adresses);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        ImageView backButton = findViewById(R.id.registerProductBackButton);
-        Button continueButton = findViewById(R.id.registerProductAddProductButton);
+        ImageView backButton = findViewById(R.id.editAdressesBackButton);
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
+
     }
 }

@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.accountFeatures;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;

@@ -1,7 +1,6 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.accountFeatures;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +13,7 @@ import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
 
-public class RegisterAdress extends AppCompatActivity {
+public class EditPixKeys extends AppCompatActivity {
 
     Methods methods = new Methods();
 
@@ -22,17 +21,15 @@ public class RegisterAdress extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_adress);
+        setContentView(R.layout.activity_edit_pix_keys);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        ImageView backButton = findViewById(R.id.registerAdressBackButton);
-        Button continueButton = findViewById(R.id.registerAdressValidateZipCode);
+        ImageView backButton = findViewById(R.id.editPixKeyBackButton);
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
     }
 }
