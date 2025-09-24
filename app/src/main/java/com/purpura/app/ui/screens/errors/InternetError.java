@@ -1,7 +1,6 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.errors;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,26 +9,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.R;
-import com.purpura.app.configuration.Methods;
-import com.purpura.app.ui.account.AccountFragment;
 
-public class EditPixKeys extends AppCompatActivity {
-
-    Methods methods = new Methods();
+public class InternetError extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_edit_pix_keys);
+        setContentView(R.layout.activity_internet_error);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        ImageView backButton = findViewById(R.id.editPixKeyBackButton);
-
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
     }
 }

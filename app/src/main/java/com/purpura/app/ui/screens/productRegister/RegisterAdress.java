@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.productRegister;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,11 +10,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
+import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
 
-public class RegisterPixKey extends AppCompatActivity {
+public class RegisterAdress extends AppCompatActivity {
 
     Methods methods = new Methods();
 
@@ -22,7 +22,7 @@ public class RegisterPixKey extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_pix_key);
+        setContentView(R.layout.activity_register_adress);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -30,10 +30,9 @@ public class RegisterPixKey extends AppCompatActivity {
         });
 
         ImageView backButton = findViewById(R.id.registerAdressBackButton);
-        Button continueButton = findViewById(R.id.registerPixKeyAddPixKeyButton);
+        Button continueButton = findViewById(R.id.registerAdressValidateZipCode);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
-
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
     }
 }

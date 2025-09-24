@@ -14,12 +14,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="semBarra" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style
+        name="semBarra" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowFullscreen">true</item>
-    </style>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.PurpuraApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 </resources>

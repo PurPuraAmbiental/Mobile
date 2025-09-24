@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.ui.screens.accountFeatures;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.purpura.app.R;
 import com.purpura.app.databinding.ActivityMyProductsBinding;
 
 public class MyProducts extends AppCompatActivity {

@@ -15,15 +15,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.purpura.app.ui.screens.MyOrders;
+import com.purpura.app.ui.screens.accountFeatures.MyOrders;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.R;
 import com.purpura.app.database.firebase.FirebaseMethods;
 import com.purpura.app.databinding.FragmentAccountBinding;
-import com.purpura.app.ui.screens.EditAdresses;
-import com.purpura.app.ui.screens.EditPixKeys;
-import com.purpura.app.ui.screens.Login;
-import com.purpura.app.ui.screens.RegisterOrLogin;
+import com.purpura.app.ui.screens.accountFeatures.EditAdresses;
+import com.purpura.app.ui.screens.accountFeatures.EditPixKeys;
+import com.purpura.app.ui.screens.autentication.Login;
+import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
 
 public class AccountFragment extends Fragment {
 
