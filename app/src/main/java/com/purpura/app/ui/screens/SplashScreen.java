@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
 
 
 public class SplashScreen extends AppCompatActivity {

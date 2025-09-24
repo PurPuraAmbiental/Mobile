@@ -192,23 +192,24 @@
                 android:id="@+id/accountPasswordIcon"
                 android:layout_width="35sp"
                 android:layout_height="35sp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/key_vector"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.084"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="763dp" />
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentDashboardIcon" />
 
             <TextView
                 android:id="@+id/accountPasswordText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="30dp"
                 android:text="Alterar senha"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.064"
                 app:layout_constraintStart_toEndOf="@+id/accountPasswordIcon"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintTop_toBottomOf="@+id/accountFragmentDasboardText" />
 
             <ImageView
                 android:id="@+id/accountProfileImage"

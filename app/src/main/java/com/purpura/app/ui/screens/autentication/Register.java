@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.autentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +29,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.EmpresaRequest;
+import com.purpura.app.model.Company;
+import com.purpura.app.ui.screens.MainActivity;
 
 public class Register extends AppCompatActivity {
 
@@ -127,7 +128,7 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        EmpresaRequest empresa = new EmpresaRequest(cnpj, email, "", nome, telefone);
+                        Company empresa = new Company(cnpj, email, "", nome, telefone);
 
                         // Salva no Firestore
                         FirebaseFirestore.getInstance()

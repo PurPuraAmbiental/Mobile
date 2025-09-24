@@ -16,23 +16,30 @@
             android:name=".Dashboards"
             android:exported="false" />
         <activity
-            android:name=".MyProducts"
+            android:name=".ui.screens.errors.GenericError"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.IndividualChat"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screens.accountFeatures.MyProducts"
             android:exported="false"
             android:theme="@style/Theme.PurpuraApp" />
         <activity
-            android:name=".ui.screens.AddicionalInformacionsRegisterGoogle"
+            android:name=".ui.screens.accountFeatures.MyOrders"
+            android:exported="false"
+            android:theme="@style/Theme.PurpuraApp" />
+        <activity
+            android:name=".ui.screens.autentication.AddicionalInformacionsRegisterGoogle"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.MyOrders"
+            android:name=".ui.screens.productRegister.RegisterProduct"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.RegisterProduct"
+            android:name=".ui.screens.accountFeatures.EditPixKeys"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.EditPixKeys"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screens.EditAdresses"
+            android:name=".ui.screens.accountFeatures.EditAdresses"
             android:exported="false" />
         <activity
             android:name=".ui.screens.ProductPage"
@@ -47,25 +54,25 @@
             android:name=".ui.screens.ChoosePaymentMethod"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.Login"
+            android:name=".ui.screens.autentication.Login"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.RegisterAdress"
+            android:name=".ui.screens.productRegister.RegisterAdress"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.RegisterProductEndPage"
+            android:name=".ui.screens.productRegister.RegisterProductEndPage"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.RegisterPixKey"
+            android:name=".ui.screens.productRegister.RegisterPixKey"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.RegisterOrLogin"
+            android:name=".ui.screens.autentication.RegisterOrLogin"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.InternetError"
+            android:name=".ui.screens.errors.InternetError"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.Register"
+            android:name=".ui.screens.autentication.Register"
             android:exported="false" />
         <activity
             android:name=".ui.screens.MainActivity"

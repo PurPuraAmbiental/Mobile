@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.autentication;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.EmpresaRequest;
+import com.purpura.app.model.Company;
+import com.purpura.app.ui.screens.MainActivity;
 
 public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
 
@@ -30,7 +31,6 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_addicional_informacions_register_google);
 
-        // Impede o botão "voltar" físico
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -39,14 +39,12 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
             }
         });
 
-        // Ajuste para status bar/navigation bar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Botão finalizar cadastro
         Button finalizar = findViewById(R.id.addicionalInformationsEndRegister);
         finalizar.setOnClickListener(v -> salvarInformacoes());
     }
@@ -58,42 +56,34 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
             return;
         }
 
-        // Dados vindos do Google
         String nome = user.getDisplayName();
         String email = user.getEmail();
         String foto = user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : "";
 
-        // Dados extras preenchidos pelo usuário
         String telefone = ((EditText) findViewById(R.id.addicionalInformationsPhoneNumber))
                 .getText().toString().trim();
         String cnpj = ((EditText) findViewById(R.id.AddictionalInformationsCnpj))
                 .getText().toString().trim();
 
-        // Valida campos vazios
         if (telefone.isEmpty() || cnpj.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Valida CNPJ
         if (cnpj.length() != 14 || !cnpj.matches("\\d+")) {
             Toast.makeText(this, "CNPJ inválido. Deve ter 14 dígitos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Valida telefone
         if (telefone.length() < 10 || !telefone.matches("\\d+")) {
             Toast.makeText(this, "Telefone inválido. Deve ter no mínimo 10 dígitos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Criação da empresa usando o construtor único
-        EmpresaRequest empresa = new EmpresaRequest(cnpj, email, foto, nome, telefone);
+        Company empresa = new Company(cnpj, email, foto, nome, telefone);
 
-        // Debug antes de salvar
         Toast.makeText(this, "Salvando no Firestore...", Toast.LENGTH_SHORT).show();
 
-        // Salva no Firestore usando o UID do usuário
         FirebaseFirestore.getInstance()
                 .collection("empresa")
                 .document(user.getUid())
