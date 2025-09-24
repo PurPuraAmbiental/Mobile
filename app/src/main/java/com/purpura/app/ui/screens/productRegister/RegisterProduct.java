@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
+import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 
 public class RegisterProduct extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class RegisterProduct extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.registerProductBackButton);
         Button continueButton = findViewById(R.id.registerProductAddProductButton);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
         continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
     }
 }

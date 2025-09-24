@@ -32,7 +32,7 @@ public class RegisterAdress extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.registerAdressBackButton);
         Button continueButton = findViewById(R.id.registerAdressValidateZipCode);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProduct.class));
         continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
     }
 }

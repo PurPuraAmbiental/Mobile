@@ -9,10 +9,17 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.purpura.app.ui.screens.accountFeatures.FirstFragment;
+
 public class Methods {
 
     public void openScreenActivity(Activity actualScreen, Class<?> nextScreen) {
         Intent route = new Intent(actualScreen, nextScreen);
+        actualScreen.startActivity(route);
+    }
+
+    public void openScreenFirstFragment(FirstFragment actualScreen, Class<?> nextScreen) {
+        Intent route = new Intent(actualScreen.getContext(), nextScreen);
         actualScreen.startActivity(route);
     }
 

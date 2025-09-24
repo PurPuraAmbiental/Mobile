@@ -1,6 +1,7 @@
 package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.purpura.app.R;
 import com.purpura.app.databinding.ActivityMainBinding;
 

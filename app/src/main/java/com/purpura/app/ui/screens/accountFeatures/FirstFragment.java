@@ -1,4 +1,4 @@
-package com.purpura.app.ui.screens;
+package com.purpura.app.ui.screens.accountFeatures;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,14 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.purpura.app.R;
+import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.FragmentFirstBinding;
+import com.purpura.app.ui.account.AccountFragment;
 
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+    Methods methods = new Methods();
 
     @Override
     public View onCreateView(
@@ -29,11 +30,8 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.myProductsBackButton.setOnClickListener(v -> methods.openScreenFirstFragment(FirstFragment.this, AccountFragment.class));
 
-        binding.buttonFirst.setOnClickListener(v ->
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
-        );
     }
 
     @Override

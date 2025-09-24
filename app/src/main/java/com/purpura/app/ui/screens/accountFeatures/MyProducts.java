@@ -14,9 +14,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.purpura.app.R;
+import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.ActivityMyProductsBinding;
+import com.purpura.app.ui.screens.productRegister.RegisterProduct;
 
 public class MyProducts extends AppCompatActivity {
+
+    Methods methods = new Methods();
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMyProductsBinding binding;
@@ -28,19 +32,12 @@ public class MyProducts extends AppCompatActivity {
         binding = ActivityMyProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_my_prroducts);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
+        binding.fab.setOnClickListener(v ->{
+            methods.openScreenActivity(this, RegisterProduct.class);
         });
     }
 
