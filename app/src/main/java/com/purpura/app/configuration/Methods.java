@@ -62,7 +62,7 @@ public class Methods {
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(
                     (int)(context.getResources().getDisplayMetrics().widthPixels * 0.85),
-                    ViewGroup.LayoutParams.WRAP_CONTENT
+                    ViewGroup.LayoutParams.MATCH_PARENT
             );
         }
 

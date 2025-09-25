@@ -3,9 +3,9 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:background="@drawable/round_border"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center">
+    android:padding="20dp">
 
 
     <ImageView

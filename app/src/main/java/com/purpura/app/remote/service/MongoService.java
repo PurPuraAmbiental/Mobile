@@ -1,31 +1,28 @@
-package com.purpura.app.API;
+package com.purpura.app.remote.service;
 
 import android.content.Context;
 import android.widget.Toast;
 
 import com.purpura.app.model.Adress;
 import com.purpura.app.model.PixKey;
-
-import java.util.List;
+import com.purpura.app.remote.api.MongoAPI;
+import com.purpura.app.remote.util.RetrofitService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MongoMethods {
-
-    private String url = "https://mongodb-api-purpura.onrender.com/";
-
-    private Retrofit retrofit;
+public class MongoService {
 
     private MongoAPI mongoAPI;
+
+    public MongoService() {
+        mongoAPI = new RetrofitService<>(MongoAPI.class).getService();
+    }
 
     //Create - POST
     public void createAdress(String cnpj,Adress adress, Context context){
 
-        retrofit.create(MongoAPI.class);
         mongoAPI.createAdress(cnpj, adress);
         Call<Adress> call = mongoAPI.createAdress(cnpj, adress);
 
@@ -47,7 +44,6 @@ public class MongoMethods {
 
     public void createPixKey(String cnpj, PixKey pixKey, Context context){
 
-        retrofit.create(MongoAPI.class);
         mongoAPI.createPixKey(cnpj, pixKey);
         Call<PixKey> call = mongoAPI.createPixKey(cnpj, pixKey);
 
