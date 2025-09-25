@@ -1,4 +1,4 @@
-package com.purpura.app;
+package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -9,6 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
 

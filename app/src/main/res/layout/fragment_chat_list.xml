@@ -38,53 +38,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/chatListInput"
-        android:layout_width="260sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/round_border"
-        android:backgroundTint="#764FA2"
-        android:hint="Pesquise"
+    <WebView
+        android:id="@+id/chatListWebView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="82sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Mensagens"
-        android:textColor="#004B0E"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatListInput" />
-
-    <ImageView
-        android:id="@+id/chatListSearchButton"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toEndOf="@+id/chatListInput"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:srcCompat="@drawable/search_icon" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatListRecycleView"
-        android:layout_width="320sp"
-        android:layout_height="671dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

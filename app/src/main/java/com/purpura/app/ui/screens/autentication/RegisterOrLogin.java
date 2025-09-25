@@ -27,7 +27,7 @@ public class RegisterOrLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this); // inicializa Firebase
+        FirebaseApp.initializeApp(this);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_or_login);
 
@@ -79,7 +79,6 @@ public class RegisterOrLogin extends AppCompatActivity {
                             finish();
                         }
                     } else {
-                        // Documento não existe → precisa completar cadastro
                         Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
                         methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                         finish();

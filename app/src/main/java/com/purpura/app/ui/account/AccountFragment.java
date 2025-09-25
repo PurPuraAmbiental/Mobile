@@ -14,7 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.purpura.app.Dashboards;
+import com.purpura.app.R;
+import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
 import com.purpura.app.ui.screens.accountFeatures.MyOrders;
 import com.purpura.app.configuration.Methods;
@@ -22,6 +23,7 @@ import com.purpura.app.database.firebase.FirebaseMethods;
 import com.purpura.app.databinding.FragmentAccountBinding;
 import com.purpura.app.ui.screens.accountFeatures.EditAdresses;
 import com.purpura.app.ui.screens.accountFeatures.EditPixKeys;
+import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 import com.purpura.app.ui.screens.autentication.Login;
 import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
 
@@ -75,15 +77,6 @@ public class AccountFragment extends Fragment {
         myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
         myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
 
-        logOutIcon.setOnClickListener(v -> {
-            firebaseMethods.logout();
-            methods.openScreenFragments(this, RegisterOrLogin.class);
-        });
-        logOut.setOnClickListener(v -> {
-            firebaseMethods.logout();
-            methods.openScreenFragments(this, RegisterOrLogin.class);
-        });
-
         changePasswordIcon.setOnClickListener(v -> showPasswordReset());
         changePassword.setOnClickListener(v -> showPasswordReset());
 
@@ -93,7 +86,26 @@ public class AccountFragment extends Fragment {
         dashboardIcon.setOnClickListener(v -> methods.openScreenFragments(this, Dashboards.class));
         dashboardText.setOnClickListener(v -> methods.openScreenFragments(this, Dashboards.class));
 
+        myProductsIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
+        myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
+
+        logOutIcon.setOnClickListener(v -> {
+            methods.abrirPopUp(this.getContext(),
+                    () -> logOut(),
+                    null);
+        });
+        logOut.setOnClickListener(v -> {
+            methods.abrirPopUp(this.getContext(),
+                    () -> logOut(),
+                    null);
+        });
+
         return root;
+    }
+
+    private void logOut() {
+        firebaseMethods.logout();
+        methods.openScreenFragments(this, RegisterOrLogin.class);
     }
 
     private void showPasswordReset() {
@@ -105,12 +117,12 @@ public class AccountFragment extends Fragment {
         alert.setView(editTextEmail);
 
         alert.setPositiveButton("Enviar", (dialog, which) -> {
-            String email = editTextEmail.getText().toString();
-            objAutenticar.sendPasswordResetEmail(email);
+            objAutenticar.sendPasswordResetEmail(editTextEmail.getText().toString());
             Toast.makeText(this.getContext(), "Email Enviado", Toast.LENGTH_LONG).show();
         });
         alert.show();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

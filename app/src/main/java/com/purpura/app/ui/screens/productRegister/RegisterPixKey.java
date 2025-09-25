@@ -32,8 +32,8 @@ public class RegisterPixKey extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.registerAdressBackButton);
         Button continueButton = findViewById(R.id.registerPixKeyAddPixKeyButton);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
+        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProductEndPage.class));
 
     }
 }

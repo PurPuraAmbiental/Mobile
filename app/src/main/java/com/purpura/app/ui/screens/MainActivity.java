@@ -1,6 +1,7 @@
 package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.purpura.app.R;
 import com.purpura.app.databinding.ActivityMainBinding;
 
@@ -25,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.homeFragment, R.id.shoppingCartFragment, R.id.chatListFragment, R.id.notificationsFragment, R.id.accountFragment)
                 .build();

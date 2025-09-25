@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PurpuraApp"
         tools:targetApi="31">
         <activity
-            android:name=".Dashboards"
+            android:name=".ui.screens.Dashboards"
             android:exported="false" />
         <activity
             android:name=".ui.screens.errors.GenericError"
