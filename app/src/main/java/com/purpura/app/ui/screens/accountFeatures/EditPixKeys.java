@@ -30,6 +30,7 @@ public class EditPixKeys extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.editPixKeyBackButton);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(EditPixKeys.this, AccountFragment.class));
+
     }
 }

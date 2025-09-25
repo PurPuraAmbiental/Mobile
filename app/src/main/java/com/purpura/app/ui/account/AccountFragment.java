@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.purpura.app.R;
 import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
 import com.purpura.app.ui.screens.accountFeatures.MyOrders;
@@ -76,15 +77,6 @@ public class AccountFragment extends Fragment {
         myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
         myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
 
-        logOutIcon.setOnClickListener(v -> {
-            firebaseMethods.logout();
-            methods.openScreenFragments(this, RegisterOrLogin.class);
-        });
-        logOut.setOnClickListener(v -> {
-            firebaseMethods.logout();
-            methods.openScreenFragments(this, RegisterOrLogin.class);
-        });
-
         changePasswordIcon.setOnClickListener(v -> showPasswordReset());
         changePassword.setOnClickListener(v -> showPasswordReset());
 
@@ -97,7 +89,23 @@ public class AccountFragment extends Fragment {
         myProductsIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
         myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
 
+        logOutIcon.setOnClickListener(v -> {
+            methods.abrirPopUp(this.getContext(),
+                    () -> logOut(),
+                    null);
+        });
+        logOut.setOnClickListener(v -> {
+            methods.abrirPopUp(this.getContext(),
+                    () -> logOut(),
+                    null);
+        });
+
         return root;
+    }
+
+    private void logOut() {
+        firebaseMethods.logout();
+        methods.openScreenFragments(this, RegisterOrLogin.class);
     }
 
     private void showPasswordReset() {
@@ -109,12 +117,12 @@ public class AccountFragment extends Fragment {
         alert.setView(editTextEmail);
 
         alert.setPositiveButton("Enviar", (dialog, which) -> {
-            String email = editTextEmail.getText().toString();
-            objAutenticar.sendPasswordResetEmail(email);
+            objAutenticar.sendPasswordResetEmail(editTextEmail.getText().toString());
             Toast.makeText(this.getContext(), "Email Enviado", Toast.LENGTH_LONG).show();
         });
         alert.show();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
