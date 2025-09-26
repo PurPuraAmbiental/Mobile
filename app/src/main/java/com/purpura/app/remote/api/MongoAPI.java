@@ -30,7 +30,7 @@ public interface MongoAPI {
     @GET("empresa/{cnpj}/endereco/{id}")
     Call<Adress> getAdressById(@Path("cnpj") String cnpj, @Path("id") String id);
     @GET("empresa/{cnpj}/residuo/all")
-    Call<List<Residue>> getAllResiduos(@Path("cnpj") String cnpj, @Body Residue residue);
+    Call<List<Residue>> getAllResiduos(@Path("cnpj") String cnpj);
     @GET("empresa/{cnpj}/pix/all")
     Call<List<PixKey>> getAllPixKeys(@Path("cnpj") String cnpj);
     @GET("empresa/{cnpj}/endereco/all")
