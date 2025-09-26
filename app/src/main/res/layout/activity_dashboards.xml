@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/semBarra"
-    tools:context=".Dashboards">
+    tools:context=".ui.screens.Dashboards">
 
     <ImageView
         android:id="@+id/dashboardsBackButton"
@@ -21,7 +21,7 @@
     <WebView
         android:id="@+id/dasboardWebView"
         android:layout_width="match_parent"
-        android:layout_height="750dp"
+        android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

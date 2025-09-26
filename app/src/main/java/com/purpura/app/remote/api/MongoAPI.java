@@ -1,9 +1,10 @@
-package com.purpura.app.API;
+package com.purpura.app.remote.api;
 
 import com.purpura.app.model.Adress;
 import com.purpura.app.model.Company;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.model.Residue;
+import com.purpura.app.remote.util.Api;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+@Api("https://mongodb-api-purpura.onrender.com/")
 public interface MongoAPI {
 
     //GET

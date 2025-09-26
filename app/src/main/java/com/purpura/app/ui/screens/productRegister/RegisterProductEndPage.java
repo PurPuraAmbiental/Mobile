@@ -1,6 +1,7 @@
 package com.purpura.app.ui.screens.productRegister;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +10,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.R;
+import com.purpura.app.configuration.Methods;
+import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 
 public class RegisterProductEndPage extends AppCompatActivity {
+
+    Methods methods = new Methods();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +27,9 @@ public class RegisterProductEndPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button continueButton = findViewById(R.id.registerProductEnd);
+
+        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
     }
 }
