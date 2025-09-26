@@ -41,8 +41,8 @@ public interface MongoAPI {
     Call<List<Company>> getAllCompanies();
 
     //POST
-    @POST("/empresa/")
-    Call<Company> createCompany(@Path("cnpj") String cnpj, @Body Company company);
+    @POST("empresa/")
+    Call<Company> createCompany(@Body Company company);
     @POST("empresa/{cnpj}/residuo")
     Call<Residue> createResidue(@Path("cnpj") String cnpj, @Body Residue residue);
     @POST("empresa/{cnpj}/pix")
@@ -51,23 +51,23 @@ public interface MongoAPI {
     Call<Adress> createAdress(@Path("cnpj") String cnpj, @Body Adress adress);
 
     //PUT
-    @PUT("/empresa/{cnpj}")
+    @PUT("empresa/{cnpj}")
     Call<Company> updateCompany(@Path("cnpj") String cnpj, @Body Company company);
-    @PUT("/empresa/{cnpj}/residuo/{id}")
+    @PUT("empresa/{cnpj}/residuo/{id}")
     Call<Residue> updateResidue(@Path("cnpj") String cnpj, @Path("id") String id, @Body Residue residue);
-    @PUT("/empresa/{cnpj}/pix/{id}")
+    @PUT("empresa/{cnpj}/pix/{id}")
     Call<PixKey> updatePixKey(@Path("cnpj") String cnpj, @Path("id") String id, @Body PixKey pixKey);
-    @PUT("/empresa/{cnpj}/endereco/{id}")
+    @PUT("empresa/{cnpj}/endereco/{id}")
     Call<Adress> updateAdress(@Path("cnpj") String cnpj, @Path("id") String id, @Body Adress adress);
 
     //DELETE
-    @DELETE("/empresa/{cnpj}")
+    @DELETE("empresa/{cnpj}")
     Call<Company> deleteCompany(@Path("cnpj") String cnpj);
-    @DELETE("/empresa/{cnpj}/residuo/{id}")
+    @DELETE("empresa/{cnpj}/residuo/{id}")
     Call<Residue> deleteResidue(@Path("cnpj") String cnpj, @Path("id") String id);
-    @DELETE("/empresa/{cnpj}/pix/{id}")
+    @DELETE("empresa/{cnpj}/pix/{id}")
     Call<PixKey> deletePixKey(@Path("cnpj") String cnpj, @Path("id") String id);
-    @DELETE("/empresa/{cnpj}/endereco/{id}")
+    @DELETE("empresa/{cnpj}/endereco/{id}")
     Call<Adress> deleteAdress(@Path("cnpj") String cnpj, @Path("id") String id);
 
 }

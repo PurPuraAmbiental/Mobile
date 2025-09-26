@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.purpura.app.model.Adress;
+import com.purpura.app.model.Company;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.remote.api.MongoAPI;
 import com.purpura.app.remote.util.RetrofitService;
@@ -60,7 +61,25 @@ public class MongoService {
                 Toast.makeText(context, "Erro ao criar chave", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    //PUT
+
+    public void updateCompany(String cnpj, Company company, Context context){
+        mongoAPI.updateCompany(cnpj, company);
+        Call<Company> call = mongoAPI.updateCompany(cnpj, company);
+        call.enqueue(new Callback<Company>() {
+            @Override
+            public void onResponse(Call<Company> call, Response<Company> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(context,"Empresa atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Company> call, Throwable t) {
+                Toast.makeText(context, "Erro ao atualizar empresa", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
