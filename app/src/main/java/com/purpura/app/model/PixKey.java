@@ -19,4 +19,9 @@ public class PixKey {
     public void setKey(String key) {
         this.key = key;
     }
+
+    public PixKey(String name, String key) {
+        this.name = name;
+        this.key = key;
+    }
 }

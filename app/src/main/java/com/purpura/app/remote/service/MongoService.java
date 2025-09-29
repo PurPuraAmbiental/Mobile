@@ -58,12 +58,6 @@ public class    MongoService {
         return call;
     }
 
-    public Call<Company> getCompanyByCNPJ(String cnpj){
-        mongoAPI.getCompanyByCNPJ(cnpj);
-        Call<Company> call = mongoAPI.getCompanyByCNPJ(cnpj);
-        return call;
-    }
-
     public Call<Residue> getResidueById(String cnpj, String id){
         mongoAPI.getResidueById(cnpj, id);
         Call<Residue> call = mongoAPI.getResidueById(cnpj, id);
@@ -81,10 +75,30 @@ public class    MongoService {
         return call;
     }
 
+    public Company getCompanyByCnpj(String cnpj, Context context){
+
+        Call<Company> call = mongoAPI.getCompanyByCNPJ(cnpj);
+        Company company = null;
+
+        call.enqueue(new Callback<Company>() {
+            public void onResponse(Call<Company> call, Response<Company> response) {
+                if(response.isSuccessful()){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Company> call, Throwable t) {
+
+            }
+        });
+
+        return company;
+    }
+
     //Create - POST
     public void createAdress(String cnpj,Adress adress, Context context){
 
-        mongoAPI.createAdress(cnpj, adress);
         Call<Adress> call = mongoAPI.createAdress(cnpj, adress);
 
         call.enqueue(new Callback<Adress>() {
@@ -105,7 +119,6 @@ public class    MongoService {
 
     public void createPixKey(String cnpj, PixKey pixKey, Context context){
 
-        mongoAPI.createPixKey(cnpj, pixKey);
         Call<PixKey> call = mongoAPI.createPixKey(cnpj, pixKey);
 
         call.enqueue(new Callback<PixKey>() {
@@ -121,11 +134,27 @@ public class    MongoService {
                 Toast.makeText(context, "Erro ao criar chave", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    //PUT
+
+    public void updateCompany(String cnpj, Company company, Context context){
+        Call<Company> call = mongoAPI.updateCompany(cnpj, company);
+        call.enqueue(new Callback<Company>() {
+            @Override
+            public void onResponse(Call<Company> call, Response<Company> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(context,"Empresa atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Company> call, Throwable t) {
+                Toast.makeText(context, "Erro ao atualizar empresa", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void createCompany(Company company, Context context){
-        mongoAPI.createCompany(company);
         Call<Company> call = mongoAPI.createCompany(company);
 
         call.enqueue(new Callback<Company>() {
@@ -144,7 +173,6 @@ public class    MongoService {
     }
 
     public void createResidue(String cnpj, Residue residue, Context context){
-        mongoAPI.createResidue(cnpj, residue);
         Call<Residue> call = mongoAPI.createResidue(cnpj, residue);
 
         call.enqueue(new Callback<Residue>() {
@@ -163,17 +191,17 @@ public class    MongoService {
     }
 
     // Update - PUT
-    public void updateAdress(String cnpj, String id, Adress adress, Context context){
-        mongoAPI.updateAdress(cnpj, id, adress);
+    public void updateAdress(String cnpj, String id, Adress adress, Context context) {
         Call<Adress> call = mongoAPI.updateAdress(cnpj, id, adress);
 
         call.enqueue(new Callback<Adress>() {
             @Override
             public void onResponse(Call<Adress> call, Response<Adress> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(context,"Endereço atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Endereço atualizado com sucesso", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<Adress> call, Throwable t) {
                 Toast.makeText(context, "Erro ao atualizar endereço", Toast.LENGTH_SHORT).show();
@@ -181,26 +209,7 @@ public class    MongoService {
         });
     }
 
-    public void updateCompany(String cnpj, Company company, Context context){
-        mongoAPI.updateCompany(cnpj, company);
-        Call<Company> call = mongoAPI.updateCompany(cnpj, company);
-
-        call.enqueue(new Callback<Company>() {
-            @Override
-            public void onResponse(Call<Company> call, Response<Company> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(context,"Empresa atualizada com sucesso", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onFailure(Call<Company> call, Throwable t) {
-                Toast.makeText(context, "Erro ao atualizar empresa", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     public void updatePixKey(String cnpj, String id, PixKey pixKey, Context context){
-        mongoAPI.updatePixKey(cnpj, id, pixKey);
         Call<PixKey> call = mongoAPI.updatePixKey(cnpj, id, pixKey);
 
         call.enqueue(new Callback<PixKey>() {
@@ -218,7 +227,6 @@ public class    MongoService {
     }
 
     public void updateResidue(String cnpj, String id, Residue residue, Context context){
-        mongoAPI.updateResidue(cnpj, id, residue);
         Call<Residue> call = mongoAPI.updateResidue(cnpj, id, residue);
 
         call.enqueue(new Callback<Residue>() {
@@ -236,9 +244,7 @@ public class    MongoService {
     }
 
     // Create - Delete
-
     public void deleteAdress(String cnpj, String id, Context context){
-        mongoAPI.deleteAdress(cnpj, id);
         Call<Adress> call = mongoAPI.deleteAdress(cnpj, id);
 
         call.enqueue(new Callback<Adress>() {
@@ -256,7 +262,6 @@ public class    MongoService {
     }
 
     public void deleteCompany(String cnpj, Context context){
-        mongoAPI.deleteCompany(cnpj);
         Call<Company> call = mongoAPI.deleteCompany(cnpj);
 
         call.enqueue(new Callback<Company>() {
@@ -274,7 +279,6 @@ public class    MongoService {
     }
 
     public void deletePixKey(String cnpj, String id, Context context){
-        mongoAPI.deletePixKey(cnpj, id);
         Call<PixKey> call = mongoAPI.deletePixKey(cnpj, id);
 
         call.enqueue(new Callback<PixKey>() {
@@ -292,7 +296,6 @@ public class    MongoService {
     }
 
     public void deleteResidue(String cnpj, String id, Context context){
-        mongoAPI.deleteResidue(cnpj, id);
         Call<Residue> call = mongoAPI.deleteResidue(cnpj, id);
 
         call.enqueue(new Callback<Residue>() {

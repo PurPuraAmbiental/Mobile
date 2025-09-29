@@ -1,8 +1,7 @@
 package com.purpura.app.model;
 
 public class Company {
-
-    private final String cnpj;
+    private String cnpj;
     private String email;
     private String imagem;
     private String name;
@@ -46,5 +45,10 @@ public class Company {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 }

@@ -145,18 +145,11 @@ public class Register extends AppCompatActivity {
                                     user.updateProfile(profile).addOnCompleteListener(task2 -> {
                                         Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
                                         methods.openScreenActivity(this, MainActivity.class);
-                                        //finish();
                                     });
-//                                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-//                                    methods.openScreenActivity(this, MainActivity.class);
-//                                    finish();
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(this, "Erro ao salvar no Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
                                 });
-                        // Atualiza nome no perfil
-
-
                     }
                 } else {
                     Toast.makeText(this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();

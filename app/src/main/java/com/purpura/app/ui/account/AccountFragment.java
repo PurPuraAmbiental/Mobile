@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.purpura.app.model.Company;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
 import com.purpura.app.ui.screens.accountFeatures.MyOrders;
@@ -29,6 +31,7 @@ import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
 public class AccountFragment extends Fragment {
 
     FirebaseAuth objAutenticar = FirebaseAuth.getInstance();
+    MongoService service = new MongoService();
     Methods methods = new Methods();
     FirebaseMethods firebaseMethods = new FirebaseMethods();
     Login login = new Login();
@@ -89,12 +92,12 @@ public class AccountFragment extends Fragment {
         myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
 
         logOutIcon.setOnClickListener(v -> {
-            methods.abrirPopUp(this.getContext(),
+            methods.openConfirmationPopUp(this.getContext(),
                     () -> logOut(),
                     null);
         });
         logOut.setOnClickListener(v -> {
-            methods.abrirPopUp(this.getContext(),
+            methods.openConfirmationPopUp(this.getContext(),
                     () -> logOut(),
                     null);
         });

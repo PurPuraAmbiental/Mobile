@@ -12,12 +12,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
 import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 
 public class RegisterProduct extends AppCompatActivity {
 
     Methods methods = new Methods();
+    MongoService mongoService = new MongoService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class RegisterProduct extends AppCompatActivity {
         Button continueButton = findViewById(R.id.registerProductAddProductButton);
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
+        continueButton.setOnClickListener(v -> {
+        });
+
     }
 }
