@@ -12,6 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.R;
 import com.purpura.app.model.PixKey;
@@ -22,8 +24,6 @@ public class RegisterPixKey extends AppCompatActivity {
 
     Methods methods = new Methods();
     MongoService mongoService = new MongoService();
-    Bundle bundle = getIntent().getExtras();
-    String CNPJ = bundle.getString("CNPJ");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,18 @@ public class RegisterPixKey extends AppCompatActivity {
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
         continueButton.setOnClickListener(v -> {
             try{
-                mongoService.createPixKey(CNPJ, pixKey, this);
+                FirebaseFirestore.getInstance()
+                        .collection("empresa")
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .get()
+                        .addOnSuccessListener(document -> {
+                            if (document.exists()) {
+                                String cnpj = document.getString("cnpj");
+                                mongoService.createPixKey(cnpj, pixKey, this);
+                                methods.openScreenActivity(this, RegisterProductEndPage.class);
+                            }
+                        });
+
             }catch (Exception e){
                 e.printStackTrace();
             }
