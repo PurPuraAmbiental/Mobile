@@ -1,10 +1,13 @@
 package com.purpura.app.configuration;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +17,57 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.accountFeatures.FirstFragment;
 
 public class Methods {
+
+    private String hashUser; // variável da classe
+
+    public void loadCompanyHash(Context context) {
+        String uid = FirebaseAuth.getInstance().getCurrentUser() != null
+                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : null;
+
+        if (uid == null) {
+            Log.e("Firestore", "Usuário não autenticado");
+            return;
+        }
+
+        FirebaseFirestore.getInstance()
+                .collection("empresa")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(document -> {
+                    Company company = document.toObject(Company.class);
+                    if (company != null) {
+                        hashUser = company.getHashUser(); // ✅ salva o valor aqui
+                        Log.d("HASH", "Hash recebido: " + hashUser);
+                    } else {
+                        hashUser = null;
+                        Log.d("HASH", "Empresa não encontrada");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    hashUser = null;
+                    Log.e("Firestore", "Erro ao buscar empresa", e);
+                });
+    }
+
+    String hash = hashUser;
+
+    public String getHash(){
+        return hash;
+    }
+
+    public void openActivityToMongoService(Context context, Class<?> nextScreen){
+        Intent route = new Intent(context, nextScreen);
+        context.startActivity(route);
+    }
 
     MongoService mongoService;
 
@@ -83,6 +131,7 @@ public class Methods {
         String cnpj = ((EditText) popupView.findViewById(R.id.popUpEditCompanyCnpj)).getText().toString();
 
         Company companyToSave = new Company(
+                null,
                 ((EditText) popupView.findViewById(R.id.popUpEditCompanyName)).getText().toString(),
                 ((EditText) popupView.findViewById(R.id.popUpEditCompanyEmail)).getText().toString(),
                 cnpj,

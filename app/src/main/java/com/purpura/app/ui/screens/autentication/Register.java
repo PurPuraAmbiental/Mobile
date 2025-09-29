@@ -30,11 +30,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.MainActivity;
 
 public class Register extends AppCompatActivity {
 
     Methods methods = new Methods();
+    MongoService mongoService = new MongoService();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     GoogleSignInClient googleSignInClient;
 
@@ -128,7 +130,7 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        Company empresa = new Company(cnpj, email, "", nome, telefone);
+                        Company empresa = new Company(null, cnpj, email, "", nome, telefone);
 
                         // Salva no Firestore
                         FirebaseFirestore.getInstance()
@@ -136,24 +138,18 @@ public class Register extends AppCompatActivity {
                                 .document(user.getUid())
                                 .set(empresa)
                                 .addOnSuccessListener(aVoid -> {
-                                    Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                                    methods.openScreenActivity(this, MainActivity.class);
-                                    finish();
+                                    mongoService.createCompany(empresa, this);
+                                    UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(nome)
+                                            .build();
+                                    user.updateProfile(profile).addOnCompleteListener(task2 -> {
+                                        Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                        methods.openScreenActivity(this, MainActivity.class);
+                                    });
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(this, "Erro ao salvar no Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
                                 });
-                        // Atualiza nome no perfil
-                        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(nome)
-                                .build();
-                      
-                      user.updateProfile(profile).addOnCompleteListener(task2 -> {
-                            Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-                            methods.openScreenActivity(this, MainActivity.class);
-                            finish();
-                        });
-                      
                     }
                 } else {
                     Toast.makeText(this, "Erro ao cadastrar: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();

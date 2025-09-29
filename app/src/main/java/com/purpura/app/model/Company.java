@@ -2,13 +2,15 @@ package com.purpura.app.model;
 
 public class Company {
 
-    private final String cnpj;
+    private String hashUser;
+    private String cnpj;
     private String email;
     private String imagem;
     private String name;
     private String phone;
 
-    public Company(String cnpj, String email, String imagem, String nome, String telefone) {
+    public Company(String hashUser, String cnpj, String email, String imagem, String nome, String telefone) {
+        this.hashUser = hashUser;
         this.cnpj = cnpj;
         this.email = email;
         this.imagem = imagem;
@@ -46,5 +48,17 @@ public class Company {
     }
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getHashUser() {
+        return hashUser;
+    }
+
+    public void setHashUser(String hashUser) {
+        this.hashUser = hashUser;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 }

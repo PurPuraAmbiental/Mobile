@@ -20,7 +20,7 @@ import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
 import com.purpura.app.ui.screens.accountFeatures.MyOrders;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.database.firebase.FirebaseMethods;
+import com.purpura.app.remote.firebase.FirebaseMethods;
 import com.purpura.app.databinding.FragmentAccountBinding;
 import com.purpura.app.ui.screens.accountFeatures.EditAdresses;
 import com.purpura.app.ui.screens.accountFeatures.EditPixKeys;
@@ -66,7 +66,7 @@ public class AccountFragment extends Fragment {
         TextView changePassword = binding.accountPasswordText;
         //Editar perfil
         ImageView editProfileIcon = binding.accountProfileImage;
-        TextView editProfileText = binding.accountProfileText;
+        TextView editProfile = binding.accountProfileText;
         //Sair da conta
         ImageView logOutIcon = binding.accountLogOutIcon;
         TextView logOut = binding.accountLogOutText;
@@ -90,13 +90,6 @@ public class AccountFragment extends Fragment {
 
         myProductsIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
         myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
-
-        editProfileIcon.setOnClickListener(v -> {
-            methods.openUpdateCompanyPopUp(this.getContext());
-        });
-        editProfileText.setOnClickListener(v -> {
-            methods.openUpdateCompanyPopUp(this.getContext());
-        });
 
         logOutIcon.setOnClickListener(v -> {
             methods.openConfirmationPopUp(this.getContext(),

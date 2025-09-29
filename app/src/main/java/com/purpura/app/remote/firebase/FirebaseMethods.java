@@ -1,4 +1,4 @@
-package com.purpura.app.database.firebase;
+package com.purpura.app.remote.firebase;
 
 import com.google.firebase.auth.FirebaseAuth;
 
