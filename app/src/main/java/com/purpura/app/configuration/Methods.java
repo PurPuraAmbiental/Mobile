@@ -25,51 +25,12 @@ import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.accountFeatures.FirstFragment;
 
 public class Methods {
-
-    private String hashUser; // variável da classe
-
-    public void loadCompanyHash(Context context) {
-        String uid = FirebaseAuth.getInstance().getCurrentUser() != null
-                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
-                : null;
-
-        if (uid == null) {
-            Log.e("Firestore", "Usuário não autenticado");
-            return;
-        }
-
-        FirebaseFirestore.getInstance()
-                .collection("empresa")
-                .document(uid)
-                .get()
-                .addOnSuccessListener(document -> {
-                    Company company = document.toObject(Company.class);
-                    if (company != null) {
-                        hashUser = company.getHashUser(); // ✅ salva o valor aqui
-                        Log.d("HASH", "Hash recebido: " + hashUser);
-                    } else {
-                        hashUser = null;
-                        Log.d("HASH", "Empresa não encontrada");
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    hashUser = null;
-                    Log.e("Firestore", "Erro ao buscar empresa", e);
-                });
-    }
-
-    String hash = hashUser;
-
-    public String getHash(){
-        return hash;
-    }
+    MongoService mongoService;
 
     public void openActivityToMongoService(Context context, Class<?> nextScreen){
         Intent route = new Intent(context, nextScreen);
         context.startActivity(route);
     }
-
-    MongoService mongoService;
 
     public void openScreenActivity(Activity actualScreen, Class<?> nextScreen) {
         Intent route = new Intent(actualScreen, nextScreen);
@@ -131,7 +92,6 @@ public class Methods {
         String cnpj = ((EditText) popupView.findViewById(R.id.popUpEditCompanyCnpj)).getText().toString();
 
         Company companyToSave = new Company(
-                null,
                 ((EditText) popupView.findViewById(R.id.popUpEditCompanyName)).getText().toString(),
                 ((EditText) popupView.findViewById(R.id.popUpEditCompanyEmail)).getText().toString(),
                 cnpj,

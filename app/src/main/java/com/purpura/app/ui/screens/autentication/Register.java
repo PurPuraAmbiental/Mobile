@@ -130,7 +130,7 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        Company empresa = new Company(null, cnpj, email, "", nome, telefone);
+                        Company empresa = new Company(cnpj, email, "", nome, telefone);
 
                         // Salva no Firestore
                         FirebaseFirestore.getInstance()

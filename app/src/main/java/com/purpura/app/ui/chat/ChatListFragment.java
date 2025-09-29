@@ -27,7 +27,6 @@ public class ChatListFragment extends Fragment {
     private String mParam2;
     String hash;
     private WebView chatListWebView;
-    private Company companyReturn;
     private Methods methods = new Methods();
     private MongoService mongoService = new MongoService();
 
@@ -63,24 +62,26 @@ public class ChatListFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        chatListWebView = view.findViewById(R.id.chatListWebView);
+        chatListWebView.getSettings().setJavaScriptEnabled(true);
+        chatListWebView.setWebViewClient(new WebViewClient());
+
         try{
 
-            String hashUser;
+            FirebaseFirestore.getInstance()
+                    .collection("empresa")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(document -> {
+                        if (document.exists()) {
+                            String cnpj = document.getString("cnpj");
 
-            try{
-                hashUser = methods.getHash();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                            String url = "https://purpura-react-site.onrender.com/#cnpj=" + cnpj;
 
-            System.out.println("jidnifb owunvouwnheouwhnvourdhnvoudrhvou      " + hashUser);
+                            chatListWebView.loadUrl(url);
+                        }
+                    });
 
-            String url = "https://purpura-react-site.onrender.com/#login=" + hashUser;
-
-            chatListWebView = view.findViewById(R.id.chatListWebView);
-            chatListWebView.getSettings().setJavaScriptEnabled(true);
-            chatListWebView.setWebViewClient(new WebViewClient());
-            chatListWebView.loadUrl("https://purpura-react-site.onrender.com/#login=");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

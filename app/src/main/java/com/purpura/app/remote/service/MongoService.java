@@ -78,29 +78,22 @@ public class    MongoService {
     public Company getCompanyByCnpj(String cnpj, Context context){
 
         Call<Company> call = mongoAPI.getCompanyByCNPJ(cnpj);
+        Company company = null;
 
         call.enqueue(new Callback<Company>() {
-
-            Company companyReturn;
-
-            @Override
             public void onResponse(Call<Company> call, Response<Company> response) {
-                if (response.isSuccessful()) {
-                    companyReturn = response.body();
+                if(response.isSuccessful()){
+
                 }
-                companyReturn = null;
             }
 
             @Override
             public void onFailure(Call<Company> call, Throwable t) {
-                companyReturn = null;
-            }
 
+            }
         });
 
-
-        return null;
-
+        return company;
     }
 
     //Create - POST
