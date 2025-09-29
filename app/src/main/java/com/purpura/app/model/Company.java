@@ -5,15 +5,15 @@ public class Company {
     private final String cnpj;
     private String email;
     private String imagem;
-    private String name;
-    private String phone;
+    private String nome;
+    private String telefone;
 
     public Company(String cnpj, String email, String imagem, String nome, String telefone) {
         this.cnpj = cnpj;
         this.email = email;
         this.imagem = imagem;
-        this.name = nome;
-        this.phone = telefone;
+        this.nome = nome;
+        this.telefone = telefone;
     }
 
     public String getCnpj() {
@@ -34,17 +34,17 @@ public class Company {
         this.imagem = imagem;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTelefone() {
+        return telefone;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
