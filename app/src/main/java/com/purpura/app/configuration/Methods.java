@@ -20,6 +20,12 @@ import com.purpura.app.ui.screens.accountFeatures.FirstFragment;
 
 public class Methods {
 
+
+    public void openActivityToMongoService(Context context, Class<?> nextScreen){
+        Intent route = new Intent(context, nextScreen);
+        context.startActivity(route);
+    }
+
     public void openScreenActivity(Activity actualScreen, Class<?> nextScreen) {
         Intent route = new Intent(actualScreen, nextScreen);
         actualScreen.startActivity(route);
