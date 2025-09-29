@@ -1,27 +1,30 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
-
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.purpura.app.MyPurchasesFragment;
+import com.purpura.app.MySalesFragment;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.ui.account.AccountFragment;
 
 public class MyOrders extends AppCompatActivity {
 
+
+    private String[] labels = new String[]{"Compras", "Vendas"};
+    private MyOrdersAdapter adapter;
     Methods methods = new Methods();
 
     @Override
@@ -36,36 +39,44 @@ public class MyOrders extends AppCompatActivity {
             return insets;
         });
 
-        // Views
-        View purchaseView = findViewById(R.id.purchaseView);
-        View salesView = findViewById(R.id.salesView);
-        TextView purchaseText = findViewById(R.id.purchaseText);
-        TextView salesText = findViewById(R.id.salesText);
-        RecyclerView purchaseRecyclerView = findViewById(R.id.purchaseRecycleView);
-        RecyclerView salesRecyclerView = findViewById(R.id.salesRecycleView);
-        ImageView backButton = findViewById(R.id.myOrdersBackButton);
+        //Views
+        TabLayout myOrdersTableLayout = findViewById(R.id.myOrdersTabLayout);
+        ViewPager2 myOrdersViewPage = findViewById(R.id.myOrdersViewPage);
+        adapter = new MyOrdersAdapter(this);
+        myOrdersViewPage.setAdapter(adapter);
 
-        View.OnClickListener openPurchases = v -> {
-            purchaseRecyclerView.setVisibility(VISIBLE);
-            purchaseRecyclerView.setBackgroundColor(Color.GREEN);
-            salesRecyclerView.setVisibility(INVISIBLE);
-        };
-        purchaseView.setOnClickListener(openPurchases);
-        purchaseText.setOnClickListener(openPurchases);
+        //Adapters
+        MyOrdersAdapter myOrdersAdapter = new MyOrdersAdapter(this);
 
-        View.OnClickListener openSales = v -> {
-            salesRecyclerView.setVisibility(VISIBLE);
-            salesRecyclerView.setBackgroundColor(Color.RED);
-            purchaseRecyclerView.setVisibility(INVISIBLE);
-        };
-        salesView.setOnClickListener(openSales);
-        salesText.setOnClickListener(openSales);
+        new TabLayoutMediator(myOrdersTableLayout, myOrdersViewPage,
+                (tab, position) -> tab.setText(labels[position])
+        ).attach();
 
-        purchaseRecyclerView.setVisibility(VISIBLE);
-        salesRecyclerView.setVisibility(INVISIBLE);
+    }
 
-        backButton.setOnClickListener(v -> {
-            methods.openScreenActivity(this, AccountFragment.class);
-        });
+    public class MyOrdersAdapter extends FragmentStateAdapter {
+
+        public MyOrdersAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
+                    return new MyPurchasesFragment();
+                case 1:
+                    return new MySalesFragment();
+            }
+            return new MyPurchasesFragment();
+        }
+
+        @Override
+        public int getItemCount() {
+            return labels.length;
+        }
     }
 }
+
+

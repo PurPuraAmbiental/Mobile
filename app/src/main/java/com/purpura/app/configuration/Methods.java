@@ -7,19 +7,25 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
+import com.purpura.app.model.Company;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.accountFeatures.FirstFragment;
 
 public class Methods {
-
+    MongoService mongoService;
 
     public void openActivityToMongoService(Context context, Class<?> nextScreen){
         Intent route = new Intent(context, nextScreen);
@@ -43,7 +49,7 @@ public class Methods {
         }
     }
 
-    public void abrirPopUp(Context context, Runnable confirmAction, Runnable cancelAction) {
+    public void openConfirmationPopUp(Context context, Runnable confirmAction, Runnable cancelAction) {
         View popupView = LayoutInflater.from(context)
                 .inflate(R.layout.confirm_alterations, null);
 
@@ -75,7 +81,32 @@ public class Methods {
         dialog.show();
     }
 
+    public void openUpdateCompanyPopUp(Context context){
+        View popupView = LayoutInflater.from(context)
+            .inflate(R.layout.pop_up_edit_profile_card, null);
 
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(popupView)
+                .create();
+
+        String cnpj = ((EditText) popupView.findViewById(R.id.popUpEditCompanyCnpj)).getText().toString();
+
+        Company companyToSave = new Company(
+                ((EditText) popupView.findViewById(R.id.popUpEditCompanyName)).getText().toString(),
+                ((EditText) popupView.findViewById(R.id.popUpEditCompanyEmail)).getText().toString(),
+                cnpj,
+                ((EditText) popupView.findViewById(R.id.popUpEditCompanyPhone)).getText().toString(),
+                ((EditText) popupView.findViewById(R.id.popUpEditCompanyImage)).getText().toString()
+        );
+
+        popupView.findViewById(R.id.popUpEditCompanyConfirmAlterations).setOnClickListener(v -> {
+            openConfirmationPopUp(
+                    context,
+                    () -> mongoService.updateCompany(cnpj, companyToSave, context),
+                    null);
+        });
+
+    }
 
     public static void copyText(Context context, String texto) {
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
