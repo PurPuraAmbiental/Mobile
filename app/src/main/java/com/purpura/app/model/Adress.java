@@ -38,4 +38,11 @@ public class Adress {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    public Adress(String nome, String cep, String complement, int number) {
+        this.nome = nome;
+        this.cep = cep;
+        this.complement = complement;
+        this.number = number;
+    }
 }

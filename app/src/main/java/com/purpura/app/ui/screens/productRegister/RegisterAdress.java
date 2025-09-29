@@ -2,6 +2,7 @@ package com.purpura.app.ui.screens.productRegister;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,13 +11,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.model.Adress;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
 
 public class RegisterAdress extends AppCompatActivity {
 
     Methods methods = new Methods();
+    MongoService mongoService = new MongoService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,31 @@ public class RegisterAdress extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.registerAdressBackButton);
         Button continueButton = findViewById(R.id.registerAdressValidateZipCode);
 
+        EditText name = findViewById(R.id.registerAdressName);
+        EditText zipCode = findViewById(R.id.registerAdressZipCode);
+        EditText number = findViewById(R.id.registerAdressNumber);
+        EditText complement = findViewById(R.id.registerAdressComplement);
+        Adress adress = new Adress(name.getText().toString(), zipCode.getText().toString(), complement.getText().toString(),Integer.parseInt(number.getText().toString()));
+
+
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProduct.class));
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterPixKey.class));
+        continueButton.setOnClickListener(v -> {
+            try{
+                FirebaseFirestore.getInstance()
+                        .collection("empresa")
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .get()
+                        .addOnSuccessListener(document -> {
+                            if (document.exists()) {
+                                String cnpj = document.getString("cnpj");
+                                mongoService.createAdress(cnpj, adress, this);
+                                methods.openScreenActivity(this, RegisterPixKey.class);
+                            }
+                        });
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
     }
 }
