@@ -19,11 +19,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.MainActivity;
 
 public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
 
     Methods methods = new Methods();
+    MongoService mongoService = new MongoService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,5 +102,6 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
                             "Erro ao salvar: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 });
+        mongoService.createCompany(empresa, this);
     }
 }
