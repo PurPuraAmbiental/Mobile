@@ -33,12 +33,12 @@
         tools:layout="@layout/fragment_chat_list" />
     <fragment
         android:id="@+id/myPurchasesFragment"
-        android:name="com.purpura.app.MyPurchasesFragment"
+        android:name="com.purpura.app.ui.screens.MyPurchasesFragment"
         android:label="fragment_my_purchases"
         tools:layout="@layout/fragment_my_purchases" />
     <fragment
         android:id="@+id/mySalesFragment"
-        android:name="com.purpura.app.MySalesFragment"
+        android:name="com.purpura.app.ui.screens.MySalesFragment"
         android:label="fragment_my_sales"
         tools:layout="@layout/fragment_my_sales" />
 </navigation>

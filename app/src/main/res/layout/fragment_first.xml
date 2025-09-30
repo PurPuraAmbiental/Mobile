@@ -7,6 +7,7 @@
     tools:context=".ui.screens.accountFeatures.FirstFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myProductsRecyclerView"
         android:layout_width="320sp"
         android:layout_height="762dp"
         android:layout_marginTop="20dp"
