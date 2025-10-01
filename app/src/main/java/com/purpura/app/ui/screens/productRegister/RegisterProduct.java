@@ -46,16 +46,17 @@ public class RegisterProduct extends AppCompatActivity {
         EditText weight = findViewById(R.id.registerProductWeight);
         EditText unitMeasure = findViewById(R.id.registerProductWeightType);
         EditText quantity = findViewById(R.id.registerProductQuantity);
-        EditText iamge = findViewById(R.id.registerProductImage);
-        if(name != null && weight != null && price != null && unitMeasure != null && quantity != null && iamge != null){
+        EditText image = findViewById(R.id.registerProductImage);
+        if(name != null && weight != null && price != null && unitMeasure != null && quantity != null && image != null){
             Residue residue = new Residue(
+                    null,
                     name.getText().toString(),
                     description.getText().toString(),
                     Double.parseDouble(weight.toString()),
                     Double.parseDouble(price.toString()),
                     Integer.parseInt(quantity.toString()),
                     unitMeasure.getText().toString(),
-                    iamge.getText().toString()
+                    image.getText().toString()
             );
 
             continueButton.setOnClickListener(v -> {
@@ -79,7 +80,6 @@ public class RegisterProduct extends AppCompatActivity {
         } else{
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
         }
-
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
 

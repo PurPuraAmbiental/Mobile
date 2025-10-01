@@ -44,7 +44,6 @@ public class RegisterAdress extends AppCompatActivity {
         EditText complement = findViewById(R.id.registerAdressComplement);
         Adress adress = new Adress(name.getText().toString(), zipCode.getText().toString(), complement.getText().toString(),Integer.parseInt(number.getText().toString()));
 
-
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProduct.class));
         continueButton.setOnClickListener(v -> {
             try{
