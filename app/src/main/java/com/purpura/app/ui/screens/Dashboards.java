@@ -1,10 +1,13 @@
 package com.purpura.app.ui.screens;
 
 import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -27,6 +30,12 @@ public class Dashboards extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        WebView webView = findViewById(R.id.dasboardWebView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://app.powerbi.com/view?r=eyJrIjoiYjIxY2ZmZDEtN2Y3ZS00YzFjLWE3NGYtMGQ1MmZhNTUyMDUzIiwidCI6ImIxNDhmMTRjLTIzOTctNDAyYy1hYjZhLTFiNDcxMTE3N2FjMCJ9");
 
         ImageView backButton = findViewById(R.id.dashboardsBackButton);
 

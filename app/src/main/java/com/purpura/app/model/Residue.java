@@ -1,77 +1,87 @@
 package com.purpura.app.model;
 
 public class Residue {
-    private String name;
-    private String description;
-    private double weight;
-    private double price;
-    private int quantity;
-    private String unitMesure;
-    private String photoUrl;
+    private String id;
+    private String nome;
+    private String descricao;
+    private double peso;
+    private double preco;
+    private int estoque;
+    private String tipoUnidade;
+    private String urlFoto;
 
-    public Residue(String name, String description, double weight, double price, int quantity, String unitMesure, String photoUrl) {
-        this.name = name;
-        this.description = description;
-        this.weight = weight;
-        this.price = price;
-        this.quantity = quantity;
-        this.unitMesure = unitMesure;
-        this.photoUrl = photoUrl;
+    public Residue(String id, String nome, String descricao, double peso, double preco, int estoque, String tipoUnidade, String urlFoto) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.peso = peso;
+        this.preco = preco;
+        this.estoque = estoque;
+        this.tipoUnidade = tipoUnidade;
+        this.urlFoto = urlFoto;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getPeso() {
+        return peso;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
-    public String getUnitMesure() {
-        return unitMesure;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setUnitMesure(String unitMesure) {
-        this.unitMesure = unitMesure;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
+    public String getId() {
+        return id;
     }
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTipoUnidade() {
+        return tipoUnidade;
+    }
+
+    public void setTipoUnidade(String tipoUnidade) {
+        this.tipoUnidade = tipoUnidade;
     }
 }

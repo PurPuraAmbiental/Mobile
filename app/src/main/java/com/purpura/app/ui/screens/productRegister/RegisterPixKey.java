@@ -46,7 +46,6 @@ public class RegisterPixKey extends AppCompatActivity {
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
         continueButton.setOnClickListener(v -> {
             try{
-                System.out.println("AADJVNHEDJVNEDNVEDNCVOEDNCVOEDNCOIENCODENFCOUEDNC");
                 FirebaseFirestore.getInstance()
                         .collection("empresa")
                         .document(FirebaseAuth.getInstance().getCurrentUser().getUid())

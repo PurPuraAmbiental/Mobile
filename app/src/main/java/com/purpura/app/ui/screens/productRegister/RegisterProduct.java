@@ -40,48 +40,64 @@ public class RegisterProduct extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.registerProductBackButton);
         Button continueButton = findViewById(R.id.registerProductAddProductButton);
 
-        EditText name = findViewById(R.id.registerProductName);
-        EditText description = findViewById(R.id.registerProductDescription);
-        EditText price = findViewById(R.id.registerProductPrice);
-        EditText weight = findViewById(R.id.registerProductWeight);
-        EditText unitMeasure = findViewById(R.id.registerProductWeightType);
-        EditText quantity = findViewById(R.id.registerProductQuantity);
-        EditText iamge = findViewById(R.id.registerProductImage);
-        if(name != null && weight != null && price != null && unitMeasure != null && quantity != null && iamge != null){
+        EditText nome = findViewById(R.id.registerProductName);
+        EditText descricao = findViewById(R.id.registerProductDescription);
+        EditText preco = findViewById(R.id.registerProductPrice);
+        EditText peso = findViewById(R.id.registerProductWeight);
+        EditText unidadeMedida = findViewById(R.id.registerProductWeightType);
+        EditText quantidade = findViewById(R.id.registerProductQuantity);
+        EditText urlFoto = findViewById(R.id.registerProductImage);
+
+        continueButton.setOnClickListener(v -> {
+            String nomeTxt = nome.getText().toString().trim();
+            String descricaoTxt = descricao.getText().toString().trim();
+            String precoTxt = preco.getText().toString().trim();
+            String pesoTxt = peso.getText().toString().trim();
+            String unidadeTxt = unidadeMedida.getText().toString().trim();
+            String quantidadeTxt = quantidade.getText().toString().trim();
+            String urlFotoTxt = urlFoto.getText().toString().trim();
+
+            if (nomeTxt.isEmpty() || descricaoTxt.isEmpty() || precoTxt.isEmpty() || pesoTxt.isEmpty()
+                    || unidadeTxt.isEmpty() || quantidadeTxt.isEmpty() || urlFotoTxt.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            double precoVal = Double.parseDouble(precoTxt);
+            double pesoVal = Double.parseDouble(pesoTxt);
+            int quantidadeVal = Integer.parseInt(quantidadeTxt);
+
             Residue residue = new Residue(
-                    name.getText().toString(),
-                    description.getText().toString(),
-                    Double.parseDouble(weight.toString()),
-                    Double.parseDouble(price.toString()),
-                    Integer.parseInt(quantity.toString()),
-                    unitMeasure.getText().toString(),
-                    iamge.getText().toString()
+                    null,
+                    nomeTxt,
+                    descricaoTxt,
+                    pesoVal,
+                    precoVal,
+                    quantidadeVal,
+                    unidadeTxt,
+                    urlFotoTxt
             );
 
-            continueButton.setOnClickListener(v -> {
-                try{
-                    FirebaseFirestore.getInstance()
-                            .collection("empresa")
-                            .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .get()
-                            .addOnSuccessListener(document -> {
-                                if (document.exists()) {
-                                    String cnpj = document.getString("cnpj");
-                                    mongoService.createResidue(cnpj, residue, this);
-                                    methods.openScreenActivity(this, RegisterAdress.class);
-                                }
-                            });
+            try {
+                FirebaseFirestore.getInstance()
+                        .collection("empresa")
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .get()
+                        .addOnSuccessListener(document -> {
+                            if (document.exists()) {
+                                String cnpj = document.getString("cnpj");
+                                mongoService.createResidue(cnpj, residue, this);
+                                methods.openScreenActivity(this, RegisterAdress.class);
+                            }
+                        });
 
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            });
-        } else{
-            Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
-        }
-
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Erro ao cadastrar produto", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
-
     }
+
 }

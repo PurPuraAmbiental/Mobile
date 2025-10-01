@@ -41,18 +41,15 @@ public class ResiduesAdapter extends RecyclerView.Adapter<ResiduesAdapter.Residu
         Residue residue = products.get(position);
 
         Glide.with(holder.residueImage.getContext())
-                .load(residue.getPhotoUrl())
+                .load(residue.getUrlFoto())
                 .into(holder.residueImage);
 
-        // Define o nome do produto
-        holder.residueName.setText(residue.getName());
+        holder.residueName.setText(residue.getNome());
 
-        // Botão editar
         holder.editResidueButton.setOnClickListener(v -> {
 
         });
 
-        // Botão deletar
         holder.deleteResidueButton.setOnClickListener(v -> {
 
         });
