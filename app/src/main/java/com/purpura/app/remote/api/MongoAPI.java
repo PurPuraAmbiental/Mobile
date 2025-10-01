@@ -41,7 +41,7 @@ public interface MongoAPI {
     Call<List<Company>> getAllCompanies();
 
     //POST
-    @POST("/empresa/")
+    @POST("/empresa")
     Call<Company> createCompany(@Body Company company);
     @POST("/empresa/{cnpj}/residuo")
     Call<Residue> createResidue(@Path("cnpj") String cnpj, @Body Residue residue);

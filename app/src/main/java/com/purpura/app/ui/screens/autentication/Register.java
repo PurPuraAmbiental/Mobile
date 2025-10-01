@@ -138,14 +138,13 @@ public class Register extends AppCompatActivity {
                                 .document(user.getUid())
                                 .set(empresa)
                                 .addOnSuccessListener(aVoid -> {
-                                    mongoService.createCompany(empresa, this);
-                                    UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName(nome)
-                                            .build();
-                                    user.updateProfile(profile).addOnCompleteListener(task2 -> {
-                                        Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                    try{
+                                        mongoService.createCompany(empresa, this);
+                                        Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
                                         methods.openScreenActivity(this, MainActivity.class);
-                                    });
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
                                 })
                                 .addOnFailureListener(e -> {
                                     Toast.makeText(this, "Erro ao salvar no Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();

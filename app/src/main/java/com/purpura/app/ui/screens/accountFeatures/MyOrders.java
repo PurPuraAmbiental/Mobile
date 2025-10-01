@@ -15,8 +15,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.purpura.app.MyPurchasesFragment;
-import com.purpura.app.MySalesFragment;
+import com.purpura.app.ui.screens.MyPurchasesFragment;
+import com.purpura.app.ui.screens.MySalesFragment;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 

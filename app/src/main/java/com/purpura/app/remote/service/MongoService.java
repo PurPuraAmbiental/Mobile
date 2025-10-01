@@ -1,8 +1,10 @@
 package com.purpura.app.remote.service;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Adress;
 import com.purpura.app.model.Company;
@@ -154,23 +156,29 @@ public class    MongoService {
         });
     }
 
-    public void createCompany(Company company, Context context){
+    public void createCompany(Company company, Context context) {
         Call<Company> call = mongoAPI.createCompany(company);
 
         call.enqueue(new Callback<Company>() {
             @Override
             public void onResponse(Call<Company> call, Response<Company> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(context,"Empresa criada com sucesso", Toast.LENGTH_SHORT).show();
+                    Log.d("API", "Empresa criada: " + new Gson().toJson(response.body()));
+                    Toast.makeText(context, "Empresa criada com sucesso", Toast.LENGTH_SHORT).show();
                     methods.openActivityToMongoService(context, MainActivity.class);
+                } else {
+                    Log.e("API", "Erro: " + response.code() + " - " + response.message());
+                    Toast.makeText(context, "Erro ao criar empresa: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<Company> call, Throwable t) {
-                Toast.makeText(context, "Erro ao criar empresa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Falha na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     public void createResidue(String cnpj, Residue residue, Context context){
         Call<Residue> call = mongoAPI.createResidue(cnpj, residue);
