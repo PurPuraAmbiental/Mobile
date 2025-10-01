@@ -159,7 +159,7 @@ public class    MongoService {
     public void createCompany(Company company, Context context) {
         Call<Company> call = mongoAPI.createCompany(company);
 
-        call.enqueue(new Callback<Company>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Company> call, Response<Company> response) {
                 if (response.isSuccessful()) {

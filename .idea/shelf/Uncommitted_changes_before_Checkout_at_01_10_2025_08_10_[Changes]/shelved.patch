@@ -1,0 +1,162 @@
+Index: app/src/main/java/com/purpura/app/configuration/Methods.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.purpura.app.configuration;\r\n\r\nimport static androidx.core.content.ContentProviderCompat.requireContext;\r\n\r\nimport android.app.Activity;\r\nimport android.content.ClipData;\r\nimport android.content.ClipboardManager;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.util.Log;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.EditText;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AlertDialog;\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.firestore.FirebaseFirestore;\r\nimport com.purpura.app.R;\r\nimport com.purpura.app.model.Company;\r\nimport com.purpura.app.remote.service.MongoService;\r\nimport com.purpura.app.ui.screens.accountFeatures.FirstFragment;\r\n\r\npublic class Methods {\r\n    MongoService mongoService;\r\n\r\n    public void openActivityToMongoService(Context context, Class<?> nextScreen){\r\n        Intent route = new Intent(context, nextScreen);\r\n        context.startActivity(route);\r\n    }\r\n\r\n    public void openScreenActivity(Activity actualScreen, Class<?> nextScreen) {\r\n        Intent route = new Intent(actualScreen, nextScreen);\r\n        actualScreen.startActivity(route);\r\n    }\r\n\r\n    public void openScreenFirstFragment(FirstFragment actualScreen, Class<?> nextScreen) {\r\n        Intent route = new Intent(actualScreen.getContext(), nextScreen);\r\n        actualScreen.startActivity(route);\r\n    }\r\n\r\n    public void openScreenFragments(Fragment actualScreen, Class<?> nextScreen) {\r\n        if (actualScreen.getContext() != null) {\r\n            Intent route = new Intent(actualScreen.getContext(), nextScreen);\r\n            actualScreen.startActivity(route);\r\n        }\r\n    }\r\n\r\n    public void openConfirmationPopUp(Context context, Runnable confirmAction, Runnable cancelAction) {\r\n        View popupView = LayoutInflater.from(context)\r\n                .inflate(R.layout.confirm_alterations, null);\r\n\r\n        AlertDialog dialog = new AlertDialog.Builder(context)\r\n                .setView(popupView)\r\n                .create();\r\n\r\n        popupView.findViewById(R.id.popUpConfirmAlterations).setOnClickListener(v -> {\r\n            confirmAction.run();\r\n            dialog.dismiss();\r\n        });\r\n\r\n        if (cancelAction == null){\r\n            popupView.findViewById(R.id.popUpCancelAlterations).setVisibility(View.GONE);\r\n        } else {\r\n            popupView.findViewById(R.id.popUpCancelAlterations).setOnClickListener(v -> {\r\n                cancelAction.run();\r\n                dialog.dismiss();\r\n            });\r\n        }\r\n\r\n        if (dialog.getWindow() != null) {\r\n            dialog.getWindow().setLayout(\r\n                    (int)(context.getResources().getDisplayMetrics().widthPixels * 0.85),\r\n                    ViewGroup.LayoutParams.MATCH_PARENT\r\n            );\r\n        }\r\n\r\n        dialog.show();\r\n    }\r\n\r\n    public void openUpdateCompanyPopUp(Context context){\r\n        View popupView = LayoutInflater.from(context)\r\n            .inflate(R.layout.pop_up_edit_profile_card, null);\r\n\r\n        AlertDialog dialog = new AlertDialog.Builder(context)\r\n                .setView(popupView)\r\n                .create();\r\n\r\n        String cnpj = ((EditText) popupView.findViewById(R.id.popUpEditCompanyCnpj)).getText().toString();\r\n\r\n        Company companyToSave = new Company(\r\n                ((EditText) popupView.findViewById(R.id.popUpEditCompanyName)).getText().toString(),\r\n                ((EditText) popupView.findViewById(R.id.popUpEditCompanyEmail)).getText().toString(),\r\n                cnpj,\r\n                ((EditText) popupView.findViewById(R.id.popUpEditCompanyPhone)).getText().toString(),\r\n                ((EditText) popupView.findViewById(R.id.popUpEditCompanyImage)).getText().toString()\r\n        );\r\n\r\n        popupView.findViewById(R.id.popUpEditCompanyConfirmAlterations).setOnClickListener(v -> {\r\n            openConfirmationPopUp(\r\n                    context,\r\n                    () -> mongoService.updateCompany(cnpj, companyToSave, context),\r\n                    null);\r\n        });\r\n\r\n    }\r\n\r\n    public static void copyText(Context context, String texto) {\r\n        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);\r\n        ClipData clip = ClipData.newPlainText(\"texto\", texto);\r\n        clipboard.setPrimaryClip(clip);\r\n\r\n        Toast.makeText(context, \"Copiado para a área de transferência!\", Toast.LENGTH_SHORT).show();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/purpura/app/configuration/Methods.java b/app/src/main/java/com/purpura/app/configuration/Methods.java
+--- a/app/src/main/java/com/purpura/app/configuration/Methods.java	(revision 94b602400073d1c713768b59a0cd76607f123087)
++++ b/app/src/main/java/com/purpura/app/configuration/Methods.java	(date 1759231466793)
+@@ -1,13 +1,11 @@
+ package com.purpura.app.configuration;
+ 
+-import static androidx.core.content.ContentProviderCompat.requireContext;
+ 
+ import android.app.Activity;
+ import android.content.ClipData;
+ import android.content.ClipboardManager;
+ import android.content.Context;
+ import android.content.Intent;
+-import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -17,8 +15,6 @@
+ import androidx.appcompat.app.AlertDialog;
+ import androidx.fragment.app.Fragment;
+ 
+-import com.google.firebase.auth.FirebaseAuth;
+-import com.google.firebase.firestore.FirebaseFirestore;
+ import com.purpura.app.R;
+ import com.purpura.app.model.Company;
+ import com.purpura.app.remote.service.MongoService;
+Index: app/src/main/java/com/purpura/app/ui/screens/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.purpura.app.ui.screens;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\n\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.appcompat.app.AppCompatDelegate;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\nimport androidx.navigation.ui.AppBarConfiguration;\r\nimport androidx.navigation.ui.NavigationUI;\r\n\r\nimport com.google.android.material.snackbar.Snackbar;\r\nimport com.purpura.app.R;\r\nimport com.purpura.app.databinding.ActivityMainBinding;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    private ActivityMainBinding binding;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        binding = ActivityMainBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n\r\n        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);\r\n\r\n        BottomNavigationView navView = findViewById(R.id.nav_view);\r\n        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(\r\n                R.id.homeFragment, R.id.shoppingCartFragment, R.id.chatListFragment, R.id.notificationsFragment, R.id.accountFragment)\r\n                .build();\r\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);\r\n        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);\r\n        NavigationUI.setupWithNavController(binding.navView, navController);\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/purpura/app/ui/screens/MainActivity.java b/app/src/main/java/com/purpura/app/ui/screens/MainActivity.java
+--- a/app/src/main/java/com/purpura/app/ui/screens/MainActivity.java	(revision 94b602400073d1c713768b59a0cd76607f123087)
++++ b/app/src/main/java/com/purpura/app/ui/screens/MainActivity.java	(date 1759279185906)
+@@ -1,7 +1,6 @@
+ package com.purpura.app.ui.screens;
+ 
+ import android.os.Bundle;
+-import android.view.View;
+ 
+ import com.google.android.material.bottomnavigation.BottomNavigationView;
+ 
+@@ -11,14 +10,15 @@
+ import androidx.navigation.Navigation;
+ import androidx.navigation.ui.AppBarConfiguration;
+ import androidx.navigation.ui.NavigationUI;
++import androidx.recyclerview.widget.RecyclerView;
+ 
+-import com.google.android.material.snackbar.Snackbar;
+ import com.purpura.app.R;
+ import com.purpura.app.databinding.ActivityMainBinding;
+ 
+ public class MainActivity extends AppCompatActivity {
+ 
+     private ActivityMainBinding binding;
++    private RecyclerView recyclerView;
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -36,6 +36,7 @@
+         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+         NavigationUI.setupWithNavController(binding.navView, navController);
++
+     }
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ui.home.HomeFragment\">\r\n\r\n    <androidx.appcompat.widget.Toolbar\r\n        android:id=\"@+id/toolbar3\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"70sp\"\r\n        android:background=\"#744E9E\"\r\n        android:minHeight=\"?attr/actionBarSize\"\r\n        android:theme=\"?attr/actionBarTheme\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView15\"\r\n        android:layout_width=\"205sp\"\r\n        android:layout_height=\"40sp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/toolbar3\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@drawable/white_name\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/text_home\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"8dp\"\r\n        android:layout_marginEnd=\"8dp\"\r\n        android:textAlignment=\"center\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:layout_width=\"320sp\"\r\n        android:layout_height=\"550dp\"\r\n        android:layout_marginTop=\"10dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.494\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView6\" />\r\n\r\n    <com.google.android.material.textfield.TextInputEditText\r\n        android:id=\"@+id/textInputEditText2\"\r\n        android:layout_width=\"260sp\"\r\n        android:layout_height=\"50sp\"\r\n        android:layout_marginStart=\"30dp\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:background=\"@drawable/round_border\"\r\n        android:backgroundTint=\"#724B9B\"\r\n        android:hint=\"Pesquise\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.122\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/toolbar3\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView21\"\r\n        android:layout_width=\"50sp\"\r\n        android:layout_height=\"50sp\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginEnd=\"40dp\"\r\n        android:src=\"@drawable/search_icon\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.062\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/textInputEditText2\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/toolbar3\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView6\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:text=\"Produtos\"\r\n        android:textColor=\"#014D0F\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.143\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textInputEditText2\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+--- a/app/src/main/res/layout/fragment_home.xml	(revision 94b602400073d1c713768b59a0cd76607f123087)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1759279018226)
+@@ -41,6 +41,7 @@
+         app:layout_constraintStart_toStartOf="parent" />
+ 
+     <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/productReclyclerView"
+         android:layout_width="320sp"
+         android:layout_height="550dp"
+         android:layout_marginTop="10dp"
+Index: app/src/main/java/com/purpura/app/ui/home/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.purpura.app.ui.home;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.lifecycle.ViewModelProvider;\r\n\r\nimport com.purpura.app.databinding.FragmentHomeBinding;\r\n\r\npublic class HomeFragment extends Fragment {\r\n\r\n    private FragmentHomeBinding binding;\r\n\r\n    public View onCreateView(@NonNull LayoutInflater inflater,\r\n                             ViewGroup container, Bundle savedInstanceState) {\r\n        HomeViewModel homeViewModel =\r\n                new ViewModelProvider(this).get(HomeViewModel.class);\r\n\r\n        binding = FragmentHomeBinding.inflate(inflater, container, false);\r\n        View root = binding.getRoot();\r\n\r\n        final TextView textView = binding.textHome;\r\n        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);\r\n        return root;\r\n    }\r\n\r\n    @Override\r\n    public void onDestroyView() {\r\n        super.onDestroyView();\r\n        binding = null;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/purpura/app/ui/home/HomeFragment.java b/app/src/main/java/com/purpura/app/ui/home/HomeFragment.java
+--- a/app/src/main/java/com/purpura/app/ui/home/HomeFragment.java	(revision 94b602400073d1c713768b59a0cd76607f123087)
++++ b/app/src/main/java/com/purpura/app/ui/home/HomeFragment.java	(date 1759279718287)
+@@ -9,12 +9,15 @@
+ import androidx.annotation.NonNull;
+ import androidx.fragment.app.Fragment;
+ import androidx.lifecycle.ViewModelProvider;
++import androidx.recyclerview.widget.RecyclerView;
+ 
++import com.purpura.app.R;
+ import com.purpura.app.databinding.FragmentHomeBinding;
+ 
+ public class HomeFragment extends Fragment {
+ 
+     private FragmentHomeBinding binding;
++    private RecyclerView recyclerView;
+ 
+     public View onCreateView(@NonNull LayoutInflater inflater,
+                              ViewGroup container, Bundle savedInstanceState) {
+@@ -26,6 +29,7 @@
+ 
+         final TextView textView = binding.textHome;
+         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
++        recyclerView = binding.productReclyclerView;
+         return root;
+     }
+ 
+@@ -34,4 +38,8 @@
+         super.onDestroyView();
+         binding = null;
+     }
++
++    private void setupRecyclerView() {
++
++    }
+ }
+\ No newline at end of file
+Index: .idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetSelector\">\r\n    <selectionStates>\r\n      <SelectionState runConfigName=\"app\">\r\n        <option name=\"selectionMode\" value=\"DROPDOWN\" />\r\n        <DropdownSelection timestamp=\"2025-09-22T12:07:04.978252200Z\">\r\n          <Target type=\"DEFAULT_BOOT\">\r\n            <handle>\r\n              <DeviceId pluginId=\"PhysicalDevice\" identifier=\"serial=RQCX603ZFSR\" />\r\n            </handle>\r\n          </Target>\r\n        </DropdownSelection>\r\n        <DialogSelection>\r\n          <targets>\r\n            <Target type=\"DEFAULT_BOOT\">\r\n              <handle>\r\n                <DeviceId pluginId=\"LocalEmulator\" identifier=\"path=C:\\Users\\Isadorajardim-ieg\\.android\\avd\\Medium_Phone_2.avd\" />\r\n              </handle>\r\n            </Target>\r\n            <Target type=\"DEFAULT_BOOT\">\r\n              <handle>\r\n                <DeviceId pluginId=\"LocalEmulator\" identifier=\"path=C:\\Users\\Isadorajardim-ieg\\.android\\avd\\Pixel_8_Pro.avd\" />\r\n              </handle>\r\n            </Target>\r\n          </targets>\r\n        </DialogSelection>\r\n      </SelectionState>\r\n    </selectionStates>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml
+--- a/.idea/deploymentTargetSelector.xml	(revision 94b602400073d1c713768b59a0cd76607f123087)
++++ b/.idea/deploymentTargetSelector.xml	(date 1759158717065)
+@@ -4,10 +4,10 @@
+     <selectionStates>
+       <SelectionState runConfigName="app">
+         <option name="selectionMode" value="DROPDOWN" />
+-        <DropdownSelection timestamp="2025-09-22T12:07:04.978252200Z">
++        <DropdownSelection timestamp="2025-09-29T14:10:01.256642800Z">
+           <Target type="DEFAULT_BOOT">
+             <handle>
+-              <DeviceId pluginId="PhysicalDevice" identifier="serial=RQCX603ZFSR" />
++              <DeviceId pluginId="PhysicalDevice" identifier="serial=RQCY406TAEM" />
+             </handle>
+           </Target>
+         </DropdownSelection>
