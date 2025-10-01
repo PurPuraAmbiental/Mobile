@@ -3,14 +3,14 @@ package com.purpura.app.model;
 public class Company {
     private String cnpj;
     private String email;
-    private String imagem;
+    private String urlFoto;
     private String nome;
     private String telefone;
 
     public Company(String cnpj, String email, String imagem, String nome, String telefone) {
         this.cnpj = cnpj;
         this.email = email;
-        this.imagem = imagem;
+        this.urlFoto = imagem;
         this.nome = nome;
         this.telefone = telefone;
     }
@@ -26,11 +26,11 @@ public class Company {
         this.email = email;
     }
 
-    public String getImagem() {
-        return imagem;
+    public String getUrlFoto() {
+        return urlFoto;
     }
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public String getNome() {
@@ -40,11 +40,11 @@ public class Company {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public String getPhone() {
         return telefone;
     }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.telefone = phone;
     }
 
 

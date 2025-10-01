@@ -42,7 +42,7 @@ public interface MongoAPI {
 
     //POST
     @POST("/empresa")
-    Call<Company> createCompany(@Path("empresa") @Body Company company);
+    Call<Company> createCompany(@Body Company company);
     @POST("/empresa/{cnpj}/residuo")
     Call<Residue> createResidue(@Path("cnpj") String cnpj, @Body Residue residue);
     @POST("/empresa/{cnpj}/pix")

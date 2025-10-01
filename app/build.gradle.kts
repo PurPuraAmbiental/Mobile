@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
+    implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
 
     // Testes
     testImplementation(libs.junit)
