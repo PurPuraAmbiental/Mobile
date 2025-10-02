@@ -1,4 +1,4 @@
-package com.purpura.app.adapters.residues;
+package com.purpura.app.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;

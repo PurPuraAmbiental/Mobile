@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -73,6 +74,10 @@
         <activity
             android:name=".ui.screens.errors.InternetError"
             android:exported="false" />
+        <activity
+            android:name=".ui.account.AccountFragment"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.screens.autentication.Register"
             android:exported="false" />

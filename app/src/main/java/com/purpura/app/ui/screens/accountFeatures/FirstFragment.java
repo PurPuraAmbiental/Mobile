@@ -1,12 +1,9 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
-import static android.content.Intent.getIntent;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -16,15 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.purpura.app.adapters.ResidueAdapter;
+import com.purpura.app.adapters.ResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.FragmentFirstBinding;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
-import com.purpura.app.ui.screens.MainActivity;
 import com.purpura.app.ui.screens.errors.GenericError;
-import com.purpura.app.ui.screens.productRegister.RegisterPixKey;
 
 import java.util.List;
 
@@ -59,16 +54,16 @@ public class FirstFragment extends Fragment {
                     .addOnSuccessListener(document -> {
                         if (document.exists()) {
                             String cnpj = document.getString("cnpj");
+                            System.out.println(cnpj);
                             Call<List<Residue>> call = mongoService.getAllResiduos(cnpj);
                             call.enqueue(new Callback<List<Residue>>() {
                                 @Override
                                 public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {
                                     if(response.isSuccessful()){
                                         List<Residue> residues = response.body();
-                                        myProductsRecyclerView.setAdapter(new ResidueAdapter(residues));
+                                        myProductsRecyclerView.setAdapter(new ResiduesAdapter(residues));
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Call<List<Residue>> call, Throwable t) {
                                     methods.openScreenFirstFragment(FirstFragment.this, GenericError.class);

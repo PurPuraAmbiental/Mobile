@@ -2,11 +2,8 @@ package com.purpura.app.ui.screens.accountFeatures;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.navigation.NavController;
@@ -17,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.purpura.app.R;
-import com.purpura.app.adapters.residues.ResiduesAdapter;
+import com.purpura.app.adapters.ResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.ActivityMyProductsBinding;
 import com.purpura.app.model.Residue;

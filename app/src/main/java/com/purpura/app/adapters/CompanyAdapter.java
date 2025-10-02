@@ -1,4 +1,4 @@
-package com.purpura.app.adapters.company;
+package com.purpura.app.adapters;
 
 import android.view.View;
 import android.view.ViewGroup;

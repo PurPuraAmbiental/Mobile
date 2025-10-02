@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
     implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
+    implementation("com.cloudinary:cloudinary-android:3.0.2")
 
     // Testes
     testImplementation(libs.junit)

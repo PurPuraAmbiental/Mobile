@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,12 @@ public class Methods {
             Intent route = new Intent(actualScreen.getContext(), nextScreen);
             actualScreen.startActivity(route);
         }
+    }
+
+    public void openScreenActivityWithBundle(Activity actualScreen, Class<?> nextScreen, Bundle bundle) {
+        Intent route = new Intent(actualScreen, nextScreen);
+        route.putExtras(bundle);
+        actualScreen.startActivity(route);
     }
 
     public void openConfirmationPopUp(Context context, Runnable confirmAction, Runnable cancelAction) {

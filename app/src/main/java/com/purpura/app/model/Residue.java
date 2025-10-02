@@ -9,8 +9,10 @@ public class Residue {
     private int estoque;
     private String tipoUnidade;
     private String urlFoto;
+    private String idChavePix;
+    private String idEndereco;
 
-    public Residue(String id, String nome, String descricao, double peso, double preco, int estoque, String tipoUnidade, String urlFoto) {
+    public Residue(String id, String nome, String descricao, double peso, double preco, int estoque, String tipoUnidade, String urlFoto, String idChavePix, String idEndereco) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -19,6 +21,8 @@ public class Residue {
         this.estoque = estoque;
         this.tipoUnidade = tipoUnidade;
         this.urlFoto = urlFoto;
+        this.idChavePix = idChavePix;
+        this.idEndereco = idEndereco;
     }
 
     public String getNome() {
