@@ -9,13 +9,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.model.PixKey;
+import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 
 public class RegisterProductEndPage extends AppCompatActivity {
 
     Methods methods = new Methods();
+    Bundle bundle = getIntent().getExtras();
+    MongoService mongoService = new MongoService();
+    String pixKeyName = bundle.getString("pixKeyName");
+    String pixKeyPixKey = bundle.getString("pixKey");
+    PixKey pixKey = new PixKey(pixKeyName, pixKeyPixKey);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,23 @@ public class RegisterProductEndPage extends AppCompatActivity {
 
         Button continueButton = findViewById(R.id.registerProductEnd);
 
-        continueButton.setOnClickListener(v -> methods.openScreenActivity(this, MyProducts.class));
+        continueButton.setOnClickListener(v -> {
+            try{
+                FirebaseFirestore.getInstance()
+                        .collection("empresa")
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .get()
+                        .addOnSuccessListener(document -> {
+                            if (document.exists()) {
+                                String cnpj = document.getString("cnpj");
+                                mongoService.createPixKey(cnpj, pixKey, this);
+                                methods.openScreenActivity(this, RegisterProductEndPage.class);
+                            }
+                        });
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
     }
 }

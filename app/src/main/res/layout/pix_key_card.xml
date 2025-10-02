@@ -35,7 +35,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/pixKeyCardPixKey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
@@ -55,10 +55,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.404"
             app:layout_constraintStart_toEndOf="@+id/imageView27"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/pixKeyCardPixKey" />
 
         <ImageView
-            android:id="@+id/imageView28"
+            android:id="@+id/pixKeyCardDeletePixKey"
             android:layout_width="35sp"
             android:layout_height="35sp"
             android:layout_marginTop="25dp"

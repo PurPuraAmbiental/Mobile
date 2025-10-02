@@ -75,7 +75,9 @@ public class RegisterProduct extends AppCompatActivity {
                     precoVal,
                     quantidadeVal,
                     unidadeTxt,
-                    urlFotoTxt
+                    urlFotoTxt,
+                    null,
+                    null
             );
 
             try {

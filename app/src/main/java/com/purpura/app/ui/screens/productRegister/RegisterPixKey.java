@@ -23,6 +23,7 @@ import com.purpura.app.ui.account.AccountFragment;
 public class RegisterPixKey extends AppCompatActivity {
 
     Methods methods = new Methods();
+    Bundle bundle = new Bundle();
     MongoService mongoService = new MongoService();
 
     @Override
@@ -45,22 +46,9 @@ public class RegisterPixKey extends AppCompatActivity {
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
         continueButton.setOnClickListener(v -> {
-            try{
-                FirebaseFirestore.getInstance()
-                        .collection("empresa")
-                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .get()
-                        .addOnSuccessListener(document -> {
-                            if (document.exists()) {
-                                String cnpj = document.getString("cnpj");
-                                mongoService.createPixKey(cnpj, pixKey, this);
-                                methods.openScreenActivity(this, RegisterProductEndPage.class);
-                            }
-                        });
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            bundle.putString("pixKeyName", pixKeyNameInput.getText().toString());
+            bundle.putString("pixKey", pixKeyInput.getText().toString());
+            methods.openScreenActivityWithBundle(this, RegisterProductEndPage.class, bundle);
         });
 
     }

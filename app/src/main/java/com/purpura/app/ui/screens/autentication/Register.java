@@ -101,6 +101,7 @@ public class Register extends AppCompatActivity {
         EditText edtCNPJ = findViewById(R.id.registerCNPJ);
         EditText edtSenha = findViewById(R.id.registerPassword);
         Button btnCadastrar = findViewById(R.id.registerButton);
+        String img = findViewById(R.id.registerImage).toString();
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
         TextView txtLogin = findViewById(R.id.registerLoginText);
 
@@ -111,8 +112,9 @@ public class Register extends AppCompatActivity {
             String email = edtEmail.getText().toString().trim();
             String cnpj = edtCNPJ.getText().toString().trim();
             String senha = edtSenha.getText().toString().trim();
+            String imagem = findViewById(R.id.registerImage).toString();
 
-            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || telefone.isEmpty() || cnpj.isEmpty()) {
+            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || telefone.isEmpty() || cnpj.isEmpty() || imagem.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -132,9 +134,8 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        Company empresa = new Company(cnpj, email, "", nome, telefone);
+                        Company empresa = new Company(cnpj, email, imagem, nome, telefone);
 
-                        // Salva no Firestore
                         FirebaseFirestore.getInstance()
                                 .collection("empresa")
                                 .document(user.getUid())
@@ -158,7 +159,6 @@ public class Register extends AppCompatActivity {
             });
         });
 
-        // Configuração do Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("875459757357-fhss1jko4af6m0mj5jl9l65g2njufe0e.apps.googleusercontent.com")
                 .requestEmail()
