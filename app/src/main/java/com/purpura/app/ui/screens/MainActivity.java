@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         EdgeToEdge.enable(this);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.purple_200));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.purple_200));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.roxo_padrao));
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
             Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

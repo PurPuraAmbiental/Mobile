@@ -28,9 +28,12 @@
                 android:background="@color/roxo_padrao"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView15"
@@ -56,8 +59,8 @@
 
             <ImageView
                 android:id="@+id/backgroundAccount"
-                android:layout_width="match_parent"
-                android:layout_height="257dp"
+                android:layout_width="422dp"
+                android:layout_height="250dp"
                 android:src="@drawable/account_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
