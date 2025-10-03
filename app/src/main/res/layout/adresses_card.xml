@@ -8,7 +8,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10px">
+
+        <ImageView
+            android:id="@+id/imageView31"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/location_purple_icon" />
 
         <TextView
             android:id="@+id/pixKeyCardPixKey"
@@ -18,7 +30,7 @@
             android:layout_marginTop="8dp"
             android:text="CEP: 00000-000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.013"
+            app:layout_constraintHorizontal_bias="0.012"
             app:layout_constraintStart_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toBottomOf="@+id/pixKeyCardName" />
 
@@ -32,6 +44,7 @@
             android:text="XXX - Av. Paulista"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,11 +53,11 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#744D9F"
+            android:backgroundTint="@color/roxo_padrao"
             android:text="Editar"
             app:cornerRadius="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.436"
+            app:layout_constraintHorizontal_bias="0.38"
             app:layout_constraintStart_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toBottomOf="@+id/pixKeyCardPixKey" />
 
@@ -52,23 +65,12 @@
             android:id="@+id/pixKeyCardDeletePixKey"
             android:layout_width="35sp"
             android:layout_height="35sp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.766"
+            app:layout_constraintHorizontal_bias="0.669"
             app:layout_constraintStart_toEndOf="@+id/pixKeyCardName"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/delete_icon" />
-
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="95sp"
-            android:layout_height="95sp"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.091"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/location_purple_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

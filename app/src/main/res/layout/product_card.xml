@@ -68,7 +68,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productCardProductName"
-            app:srcCompat="@drawable/green_weight_vector" />
+            app:srcCompat="@drawable/weight_vector" />
 
         <TextView
             android:id="@+id/productCardProductWeight"

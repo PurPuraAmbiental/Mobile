@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/semBarra"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4CFFF"
-    tools:context=".ui.screens.SplashScreen"
-    >
+    android:background="@color/magenta_claro"
+    android:theme="@style/semBarra"
+    tools:context=".ui.screens.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView"

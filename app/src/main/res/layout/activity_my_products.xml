@@ -16,7 +16,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:backgroundTint="#744D9F"
+        app:backgroundTint="@color/roxo_padrao"
         app:srcCompat="@drawable/baseline_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
