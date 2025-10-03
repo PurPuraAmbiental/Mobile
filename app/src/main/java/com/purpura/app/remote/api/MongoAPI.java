@@ -29,6 +29,8 @@ public interface MongoAPI {
     Call<PixKey> getPixKeyById(@Path("cnpj") String cnpj, @Path("id") String id);
     @GET("/empresa/{cnpj}/endereco/{id}")
     Call<Adress> getAdressById(@Path("cnpj") String cnpj, @Path("id") String id);
+    @GET("/empresa/{cnpj}/residuo/viewmain")
+    Call<List<Residue>> getAllResiduosMain(@Path("cnpj") String cnpj);
     @GET("/empresa/{cnpj}/residuo/all")
     Call<List<Residue>> getAllResiduos(@Path("cnpj") String cnpj);
     @GET("/empresa/{cnpj}/pix/all")

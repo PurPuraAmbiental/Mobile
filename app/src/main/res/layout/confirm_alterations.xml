@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginBottom="10sp"
-        android:backgroundTint="#007818"
+        android:backgroundTint="@color/verde_padrao"
         android:text="Confirmar "
         app:cornerRadius="15sp" />
 

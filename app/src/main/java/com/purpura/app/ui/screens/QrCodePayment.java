@@ -36,7 +36,7 @@ public class QrCodePayment extends AppCompatActivity {
 
         //----- SetOnClickListener -----//
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, ChoosePaymentMethod.class));
+        backButton.setOnClickListener(v -> methods.openScreenActivity(this, MainActivity.class));
 
         continueButton.setOnClickListener(v -> methods.openScreenActivity(this, PaymentStatus.class));
 

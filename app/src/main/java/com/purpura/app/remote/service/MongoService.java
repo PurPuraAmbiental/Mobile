@@ -43,31 +43,26 @@ public class    MongoService {
     }
 
     public Call<List<PixKey>> getAllPixKeys(String cnpj){
-        mongoAPI.getAllPixKeys(cnpj);
         Call<List<PixKey>> call = mongoAPI.getAllPixKeys(cnpj);
         return call;
     }
 
     public Call<List<Residue>> getAllResiduos(String cnpj){
-        mongoAPI.getAllResiduos(cnpj);
         Call<List<Residue>> call = mongoAPI.getAllResiduos(cnpj);
         return call;
     }
 
     public Call<List<Company>> searchCompany(String cnpj){
-        mongoAPI.searchCompany(cnpj);
         Call<List<Company>> call = mongoAPI.searchCompany(cnpj);
         return call;
     }
 
     public Call<Residue> getResidueById(String cnpj, String id){
-        mongoAPI.getResidueById(cnpj, id);
         Call<Residue> call = mongoAPI.getResidueById(cnpj, id);
         return call;
     }
 
     public Call<PixKey> getPixKeyById(String cnpj, String id){
-        mongoAPI.getPixKeyById(cnpj, id);
         Call<PixKey> call = mongoAPI.getPixKeyById(cnpj, id);
         return call;
     }

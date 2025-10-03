@@ -43,7 +43,7 @@
             android:layout_marginTop="15dp"
             app:layout_constraintStart_toEndOf="@+id/shoppingCartImage"
             app:layout_constraintTop_toBottomOf="@+id/shoppingCartCardTitle"
-            app:srcCompat="@drawable/green_weight_vector" />
+            app:srcCompat="@drawable/weight_vector" />
 
         <TextView
             android:id="@+id/shoppingCartCardWeight"

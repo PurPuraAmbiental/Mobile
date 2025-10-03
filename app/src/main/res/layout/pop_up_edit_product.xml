@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:text="Editar Produto"
-            android:textColor="#744D9F"
+            android:textColor="@color/roxo_padrao"
             android:textSize="24sp" />
 
         <View
@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginBottom="10sp"
-        android:backgroundTint="#007818"
+        android:backgroundTint="@color/verde_padrao"
         android:text="Confirmar alteração"
         app:cornerRadius="15sp" />
 
