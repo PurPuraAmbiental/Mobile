@@ -21,6 +21,7 @@ import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
 import com.purpura.app.ui.screens.errors.GenericError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

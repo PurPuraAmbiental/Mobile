@@ -43,7 +43,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
         Address address1 = address.get(position);
 
         holder.addressCardName.setText(address1.getNome());
-        holder.addresCardAddress.setText(address1.getCep());
+        holder.addresCardZipCode.setText(address1.getCep());
 
         holder.addressCardButtonEdit.setOnClickListener(v -> {
         });
@@ -85,15 +85,15 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
 
         TextView addressCardName;
         Button addressCardButtonEdit;
-        TextView addresCardAddress;
+        TextView addresCardZipCode;
         ImageView addressCardDeleteButton;
 
         public AddressViewHolder(@NonNull View itemView) {
             super(itemView);
-            addressCardName = itemView.findViewById(R.id.addressCardName);
-            addressCardButtonEdit = itemView.findViewById(R.id.addressCardButtonEdit);
-            addresCardAddress = itemView.findViewById(R.id.addressCardAddress);
-            addressCardDeleteButton = itemView.findViewById(R.id.addressCardDeleteAddress);
+            addressCardName = itemView.findViewById(R.id.adressCardName);
+            addressCardButtonEdit = itemView.findViewById(R.id.adressCardButtonEdit);
+            addresCardZipCode = itemView.findViewById(R.id.adressCardZipCode);
+            addressCardDeleteButton = itemView.findViewById(R.id.adressCardDeleteAdress);
         }
     }
 }

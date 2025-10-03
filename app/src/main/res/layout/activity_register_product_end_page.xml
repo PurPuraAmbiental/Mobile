@@ -45,7 +45,7 @@
         android:id="@+id/registerProductEnd"
         android:layout_width="320sp"
         android:layout_height="50sp"
-        android:backgroundTint="#774FA4"
+        android:backgroundTint="@color/roxo_padrao"
         android:text="Voltar para Meus Produtos"
         app:cornerRadius="15sp"
         app:layout_constraintEnd_toEndOf="parent"

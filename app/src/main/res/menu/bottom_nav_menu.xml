@@ -12,7 +12,7 @@
         android:id="@+id/shoppingCartFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/shopping_cat_icon"
+        android:icon="@drawable/shopping_cart_icon"
         android:title="Carrinho" />
 
     <item
@@ -34,6 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/more_actions_icon"
-        android:title="Configurações" />
+        android:title="Mais" />
 
 </menu>

@@ -1,20 +1,12 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.PurpuraApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="roxo_padrao">#754EA0</color>
+    <color name="roxo_claro">#987AB7</color>
+    <color name="magenta_claro">#E4CFFF</color>
+    <color name="cinza_claro">#EFEFEF</color>
+    <color name="cinza_padrao">#6E6E6E</color>
+    <color name="verde_padrao">#095D19</color>
 
-    <style name="semBarra" parent="Theme.AppCompat.DayNight.NoActionBar">
-
-    </style>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

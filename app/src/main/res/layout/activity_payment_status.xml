@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:theme="@style/semBarra"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7D3FD"
+    android:background="@color/magenta_claro"
+    android:theme="@style/semBarra"
     tools:context=".ui.screens.PaymentStatus">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70sp"
-        android:background="#754EA0"
+        android:background="@color/roxo_padrao"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +128,7 @@
                 android:id="@+id/paymentStatusContinueButton"
                 android:layout_width="280sp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#744D9F"
+                android:backgroundTint="@color/roxo_padrao"
                 android:text="Continuar"
                 app:cornerRadius="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
