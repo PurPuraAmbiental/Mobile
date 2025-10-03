@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +22,7 @@ import com.purpura.app.ui.screens.accountFeatures.MyOrders;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.remote.firebase.FirebaseMethods;
 import com.purpura.app.databinding.FragmentAccountBinding;
-import com.purpura.app.ui.screens.accountFeatures.EditAdresses;
+import com.purpura.app.ui.screens.accountFeatures.EditAddress;
 import com.purpura.app.ui.screens.accountFeatures.EditPixKeys;
 import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 import com.purpura.app.ui.screens.autentication.Login;
@@ -79,8 +78,8 @@ public class AccountFragment extends Fragment {
         editPixKeys.setOnClickListener(v -> methods.openScreenFragments(this, EditPixKeys.class));
         editPixKeysIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditPixKeys.class));
 
-        myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
-        myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAdresses.class));
+        myAddressesIcon.setOnClickListener(v -> methods.openScreenFragments(this, EditAddress.class));
+        myAddressesText.setOnClickListener(v -> methods.openScreenFragments(this, EditAddress.class));
 
         changePasswordIcon.setOnClickListener(v -> showPasswordReset());
         changePassword.setOnClickListener(v -> showPasswordReset());

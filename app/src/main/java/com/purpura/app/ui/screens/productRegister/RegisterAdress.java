@@ -15,9 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.Adress;
+import com.purpura.app.model.Address;
 import com.purpura.app.remote.service.MongoService;
-import com.purpura.app.ui.account.AccountFragment;
 
 public class RegisterAdress extends AppCompatActivity {
 
@@ -42,7 +41,7 @@ public class RegisterAdress extends AppCompatActivity {
         EditText zipCode = findViewById(R.id.registerAdressZipCode);
         EditText number = findViewById(R.id.registerAdressNumber);
         EditText complement = findViewById(R.id.registerAdressComplement);
-        Adress adress = new Adress(name.getText().toString(), zipCode.getText().toString(), complement.getText().toString(),Integer.parseInt(number.getText().toString()));
+        Address address = new Address(name.getText().toString(), zipCode.getText().toString(), complement.getText().toString(),Integer.parseInt(number.getText().toString()));
 
         backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProduct.class));
         continueButton.setOnClickListener(v -> {
@@ -54,7 +53,7 @@ public class RegisterAdress extends AppCompatActivity {
                         .addOnSuccessListener(document -> {
                             if (document.exists()) {
                                 String cnpj = document.getString("cnpj");
-                                mongoService.createAdress(cnpj, adress, this);
+                                mongoService.createAdress(cnpj, address, this);
                                 methods.openScreenActivity(this, RegisterPixKey.class);
                             }
                         });
