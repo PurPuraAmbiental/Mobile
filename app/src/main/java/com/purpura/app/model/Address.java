@@ -1,6 +1,6 @@
 package com.purpura.app.model;
 
-public class Adress {
+public class Address {
 
     private String nome;
     private String cep;
@@ -39,7 +39,7 @@ public class Adress {
         this.number = number;
     }
 
-    public Adress(String nome, String cep, String complement, int number) {
+    public Address(String nome, String cep, String complement, int number) {
         this.nome = nome;
         this.cep = cep;
         this.complement = complement;
