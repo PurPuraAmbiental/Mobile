@@ -42,7 +42,7 @@
             android:name=".ui.screens.accountFeatures.EditPixKeys"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.accountFeatures.EditAdresses"
+            android:name=".ui.screens.accountFeatures.EditAddress"
             android:exported="false" />
         <activity
             android:name=".ui.screens.ProductPage"

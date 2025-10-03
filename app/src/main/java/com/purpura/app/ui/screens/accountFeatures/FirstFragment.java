@@ -55,7 +55,7 @@ public class FirstFragment extends Fragment {
                         if (document.exists()) {
                             String cnpj = document.getString("cnpj");
                             System.out.println(cnpj);
-                            Call<List<Residue>> call = mongoService.getAllResiduos(cnpj);
+                            Call<List<Residue>> call = mongoService.getAllResidues(cnpj);
                             call.enqueue(new Callback<List<Residue>>() {
                                 @Override
                                 public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {

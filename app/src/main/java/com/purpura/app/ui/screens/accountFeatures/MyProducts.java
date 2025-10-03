@@ -56,7 +56,7 @@ public class MyProducts extends AppCompatActivity {
             methods.openScreenActivity(this, RegisterProduct.class);
         });
 
-        mongoService.getAllResiduos("17424290000101").enqueue(new Callback<List<Residue>>() {
+        mongoService.getAllResidues("17424290000101").enqueue(new Callback<List<Residue>>() {
             @Override
             public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {
                 if (response.isSuccessful()) {

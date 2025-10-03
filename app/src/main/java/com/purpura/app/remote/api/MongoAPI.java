@@ -1,6 +1,6 @@
 package com.purpura.app.remote.api;
 
-import com.purpura.app.model.Adress;
+import com.purpura.app.model.Address;
 import com.purpura.app.model.Company;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.model.Residue;
@@ -28,13 +28,13 @@ public interface MongoAPI {
     @GET("/empresa/{cnpj}/pix/{id}")
     Call<PixKey> getPixKeyById(@Path("cnpj") String cnpj, @Path("id") String id);
     @GET("/empresa/{cnpj}/endereco/{id}")
-    Call<Adress> getAdressById(@Path("cnpj") String cnpj, @Path("id") String id);
+    Call<Address> getAddressById(@Path("cnpj") String cnpj, @Path("id") String id);
     @GET("/empresa/{cnpj}/residuo/all")
-    Call<List<Residue>> getAllResiduos(@Path("cnpj") String cnpj);
+    Call<List<Residue>> getAllResidues(@Path("cnpj") String cnpj);
     @GET("/empresa/{cnpj}/pix/all")
     Call<List<PixKey>> getAllPixKeys(@Path("cnpj") String cnpj);
     @GET("/empresa/{cnpj}/endereco/all")
-    Call<List<Adress>> getAllEnderecos(@Path("cnpj") String cnpj);
+    Call<List<Address>> getAllAddress(@Path("cnpj") String cnpj);
     @GET("/empresa/search")
     Call<List<Company>> searchCompany(@Query("cnpj") String cnpj);
     @GET("/empresa/all")
@@ -48,7 +48,7 @@ public interface MongoAPI {
     @POST("/empresa/{cnpj}/pix")
     Call<PixKey> createPixKey(@Path("cnpj") String cnpj, @Body PixKey pixKey);
     @POST("/empresa/{cnpj}/endereco")
-    Call<Adress> createAdress(@Path("cnpj") String cnpj, @Body Adress adress);
+    Call<Address> createAddress(@Path("cnpj") String cnpj, @Body Address address);
 
     //PUT
     @PUT("/empresa/{cnpj}")
@@ -58,7 +58,7 @@ public interface MongoAPI {
     @PUT("/empresa/{cnpj}/pix/{id}")
     Call<PixKey> updatePixKey(@Path("cnpj") String cnpj, @Path("id") String id, @Body PixKey pixKey);
     @PUT("/empresa/{cnpj}/endereco/{id}")
-    Call<Adress> updateAdress(@Path("cnpj") String cnpj, @Path("id") String id, @Body Adress adress);
+    Call<Address> updateAddress(@Path("cnpj") String cnpj, @Path("id") String id, @Body Address address);
 
     //DELETE
     @DELETE("/empresa/{cnpj}")
@@ -68,6 +68,6 @@ public interface MongoAPI {
     @DELETE("/empresa/{cnpj}/pix/{id}")
     Call<PixKey> deletePixKey(@Path("cnpj") String cnpj, @Path("id") String id);
     @DELETE("/empresa/{cnpj}/endereco/{id}")
-    Call<Adress> deleteAdress(@Path("cnpj") String cnpj, @Path("id") String id);
+    Call<Address> deleteAddress(@Path("cnpj") String cnpj, @Path("id") String id);
 
 }

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.accountFeatures.EditAdresses">
+    tools:context=".ui.screens.accountFeatures.EditAddress">
 
     <ImageView
         android:id="@+id/editAdressesBackButton"
@@ -40,5 +40,6 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:listitem="@layout/adresses_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.Adress;
+import com.purpura.app.model.Address;
 import com.purpura.app.model.Company;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.model.Residue;
@@ -30,9 +30,8 @@ public class    MongoService {
     }
 
     // Create - GET
-    public Call<List<Adress>> getAllEnderecos(String cnpj){
-        mongoAPI.getAllEnderecos(cnpj);
-        Call<List<Adress>> call = mongoAPI.getAllEnderecos(cnpj);
+    public Call<List<Address>> getAllAddress(String cnpj){
+        Call<List<Address>> call = mongoAPI.getAllAddress(cnpj);
         return call;
     }
 
@@ -48,9 +47,9 @@ public class    MongoService {
         return call;
     }
 
-    public Call<List<Residue>> getAllResiduos(String cnpj){
-        mongoAPI.getAllResiduos(cnpj);
-        Call<List<Residue>> call = mongoAPI.getAllResiduos(cnpj);
+    public Call<List<Residue>> getAllResidues(String cnpj){
+        mongoAPI.getAllResidues(cnpj);
+        Call<List<Residue>> call = mongoAPI.getAllResidues(cnpj);
         return call;
     }
 
@@ -71,9 +70,9 @@ public class    MongoService {
         Call<PixKey> call = mongoAPI.getPixKeyById(cnpj, id);
         return call;
     }
-    public Call<Adress> getAdressById(String cnpj, String id){
-        mongoAPI.getAdressById(cnpj, id);
-        Call<Adress> call = mongoAPI.getAdressById(cnpj, id);
+    public Call<Address> getAdressById(String cnpj, String id){
+        mongoAPI.getAddressById(cnpj, id);
+        Call<Address> call = mongoAPI.getAddressById(cnpj, id);
         return call;
     }
 
@@ -99,20 +98,20 @@ public class    MongoService {
     }
 
     //Create - POST
-    public void createAdress(String cnpj,Adress adress, Context context){
+    public void createAdress(String cnpj, Address address, Context context){
 
-        Call<Adress> call = mongoAPI.createAdress(cnpj, adress);
+        Call<Address> call = mongoAPI.createAddress(cnpj, address);
 
-        call.enqueue(new Callback<Adress>() {
+        call.enqueue(new Callback<Address>() {
             @Override
-            public void onResponse(Call<Adress> call, Response<Adress> response) {
+            public void onResponse(Call<Address> call, Response<Address> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context,"Endereço criado com sucesso", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Adress> call, Throwable t) {
+            public void onFailure(Call<Address> call, Throwable t) {
                 Toast.makeText(context, "Erro ao criar endereço", Toast.LENGTH_SHORT).show();
             }
         });
@@ -199,19 +198,19 @@ public class    MongoService {
     }
 
     // Update - PUT
-    public void updateAdress(String cnpj, String id, Adress adress, Context context) {
-        Call<Adress> call = mongoAPI.updateAdress(cnpj, id, adress);
+    public void updateAdress(String cnpj, String id, Address address, Context context) {
+        Call<Address> call = mongoAPI.updateAddress(cnpj, id, address);
 
-        call.enqueue(new Callback<Adress>() {
+        call.enqueue(new Callback<Address>() {
             @Override
-            public void onResponse(Call<Adress> call, Response<Adress> response) {
+            public void onResponse(Call<Address> call, Response<Address> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context, "Endereço atualizado com sucesso", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Adress> call, Throwable t) {
+            public void onFailure(Call<Address> call, Throwable t) {
                 Toast.makeText(context, "Erro ao atualizar endereço", Toast.LENGTH_SHORT).show();
             }
         });
@@ -252,18 +251,18 @@ public class    MongoService {
     }
 
     // Create - Delete
-    public void deleteAdress(String cnpj, String id, Context context){
-        Call<Adress> call = mongoAPI.deleteAdress(cnpj, id);
+    public void deleteAddress(String cnpj, String id, Context context){
+        Call<Address> call = mongoAPI.deleteAddress(cnpj, id);
 
-        call.enqueue(new Callback<Adress>() {
+        call.enqueue(new Callback<Address>() {
             @Override
-            public void onResponse(Call<Adress> call, Response<Adress> response) {
+            public void onResponse(Call<Address> call, Response<Address> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context,"Endereço deletado com sucesso", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(Call<Adress> call, Throwable t) {
+            public void onFailure(Call<Address> call, Throwable t) {
                 Toast.makeText(context, "Erro ao deletar endereço", Toast.LENGTH_SHORT).show();
             }
         });
