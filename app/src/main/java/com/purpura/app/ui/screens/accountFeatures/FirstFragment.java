@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.adapters.ResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.FragmentFirstBinding;
+import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;

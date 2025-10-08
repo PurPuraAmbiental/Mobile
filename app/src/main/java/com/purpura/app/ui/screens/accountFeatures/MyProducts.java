@@ -17,6 +17,7 @@ import com.purpura.app.R;
 import com.purpura.app.adapters.ResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.ActivityMyProductsBinding;
+import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.productRegister.RegisterProduct;
