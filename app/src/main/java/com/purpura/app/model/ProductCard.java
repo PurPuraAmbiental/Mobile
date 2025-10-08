@@ -17,6 +17,9 @@ public class ProductCard {
     public String getProductImage() {
         return productImage;
     }
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
 
     public ProductCard(String productName, String productValue, String productWeight, String productImage) {
         this.productName = productName;

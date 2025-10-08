@@ -9,6 +9,7 @@ import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Address;
 import com.purpura.app.model.Company;
 import com.purpura.app.model.PixKey;
+import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.api.MongoAPI;
 import com.purpura.app.remote.util.RetrofitService;
