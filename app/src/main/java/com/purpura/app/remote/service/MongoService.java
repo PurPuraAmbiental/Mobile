@@ -37,67 +37,43 @@ public class    MongoService {
     }
 
     public Call<List<Company>> getAllCompanies(){
-        mongoAPI.getAllCompanies();
         Call<List<Company>> call = mongoAPI.getAllCompanies();
         return call;
     }
 
     public Call<List<PixKey>> getAllPixKeys(String cnpj){
-        mongoAPI.getAllPixKeys(cnpj);
         Call<List<PixKey>> call = mongoAPI.getAllPixKeys(cnpj);
         return call;
     }
 
     public Call<List<Residue>> getAllResidues(String cnpj){
-        mongoAPI.getAllResidues(cnpj);
         Call<List<Residue>> call = mongoAPI.getAllResidues(cnpj);
         return call;
     }
 
     public Call<List<Company>> searchCompany(String cnpj){
-        mongoAPI.searchCompany(cnpj);
         Call<List<Company>> call = mongoAPI.searchCompany(cnpj);
         return call;
     }
 
     public Call<Residue> getResidueById(String cnpj, String id){
-        mongoAPI.getResidueById(cnpj, id);
         Call<Residue> call = mongoAPI.getResidueById(cnpj, id);
         return call;
     }
 
     public Call<PixKey> getPixKeyById(String cnpj, String id){
-        mongoAPI.getPixKeyById(cnpj, id);
         Call<PixKey> call = mongoAPI.getPixKeyById(cnpj, id);
         return call;
     }
     public Call<Address> getAdressById(String cnpj, String id){
-        mongoAPI.getAddressById(cnpj, id);
         Call<Address> call = mongoAPI.getAddressById(cnpj, id);
         return call;
     }
 
-    public Company getCompanyByCnpj(String cnpj, Context context){
-
+    public Call<Company> getComapnyByCnpj(String cnpj){
         Call<Company> call = mongoAPI.getCompanyByCNPJ(cnpj);
-        Company company = null;
-
-        call.enqueue(new Callback<Company>() {
-            public void onResponse(Call<Company> call, Response<Company> response) {
-                if(response.isSuccessful()){
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Company> call, Throwable t) {
-
-            }
-        });
-
-        return company;
+        return call;
     }
-
     //Create - POST
     public void createAdress(String cnpj, Address address, Context context){
 

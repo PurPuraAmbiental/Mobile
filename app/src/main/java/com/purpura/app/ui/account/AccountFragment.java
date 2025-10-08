@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.purpura.app.adapters.PixKeyAdapter;
+import com.purpura.app.model.Company;
+import com.purpura.app.model.PixKey;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.Dashboards;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,14 +31,20 @@ import com.purpura.app.ui.screens.accountFeatures.EditPixKeys;
 import com.purpura.app.ui.screens.accountFeatures.MyProducts;
 import com.purpura.app.ui.screens.autentication.Login;
 import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
+import com.purpura.app.ui.screens.errors.GenericError;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AccountFragment extends Fragment {
 
     FirebaseAuth objAutenticar = FirebaseAuth.getInstance();
-    MongoService service = new MongoService();
     Methods methods = new Methods();
     FirebaseMethods firebaseMethods = new FirebaseMethods();
-    Login login = new Login();
+    MongoService mongoService = new MongoService();
     private FragmentAccountBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,6 +58,9 @@ public class AccountFragment extends Fragment {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         // ----- Views ----- //
+        //Informações da empresa
+        ImageView companyImage = binding.accountProfileImage;
+        TextView companyName = binding.accountFragmentCompanyName;
         //Meus pedidos
         ImageView myOrdersIcon = binding.accountBagIcon;
         TextView myOrdersText = binding.accountBagText;
@@ -92,6 +105,33 @@ public class AccountFragment extends Fragment {
 
         myProductsIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
         myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
+
+        try {
+            FirebaseFirestore.getInstance()
+                    .collection("empresa")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(document -> {
+                        if (document.exists()) {
+                            String cnpj = document.getString("cnpj");
+                            Call<Company> call = mongoService.getComapnyByCnpj(cnpj);
+                            call.enqueue(new Callback<Company>() {
+                                @Override
+                                public void onResponse(Call<Company> call, Response<Company> response) {
+                                    Company companyResponse = response.body();
+                                    companyName.setText(companyResponse.getNome());
+                                }
+
+                                @Override
+                                public void onFailure(Call<Company> call, Throwable t) {
+                                    
+                                }
+                            });
+                        }
+                    });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         logOutIcon.setOnClickListener(v -> {
             methods.openConfirmationPopUp(this.getContext(),

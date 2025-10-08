@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
+import com.purpura.app.configuration.Cloudnary;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
@@ -39,6 +42,7 @@ public class Register extends AppCompatActivity {
     Methods methods = new Methods();
     MongoService mongoService = new MongoService();
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    Cloudnary cloudnary = new Cloudnary(this);
     GoogleSignInClient googleSignInClient;
 
     ActivityResultLauncher<Intent> googleLauncher = registerForActivityResult(
@@ -101,20 +105,19 @@ public class Register extends AppCompatActivity {
         EditText edtCNPJ = findViewById(R.id.registerCNPJ);
         EditText edtSenha = findViewById(R.id.registerPassword);
         Button btnCadastrar = findViewById(R.id.registerButton);
-        String img = findViewById(R.id.registerImage).toString();
+        ImageView img = findViewById(R.id.registerImage);
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
         TextView txtLogin = findViewById(R.id.registerLoginText);
 
-        // Cadastro manual
         btnCadastrar.setOnClickListener(v -> {
             String nome = edtNome.getText().toString().trim();
             String telefone = edtTelefone.getText().toString().trim();
             String email = edtEmail.getText().toString().trim();
             String cnpj = edtCNPJ.getText().toString().trim();
             String senha = edtSenha.getText().toString().trim();
-            String imagem = findViewById(R.id.registerImage).toString();
+            ImageView imagem = findViewById(R.id.registerImage);
 
-            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || telefone.isEmpty() || cnpj.isEmpty() || imagem.isEmpty()) {
+            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || telefone.isEmpty() || cnpj.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -134,15 +137,15 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        Company empresa = new Company(cnpj, email, imagem, nome, telefone);
+                        Company company = new Company(cnpj, email, null, nome, telefone);
 
                         FirebaseFirestore.getInstance()
                                 .collection("empresa")
                                 .document(user.getUid())
-                                .set(empresa)
+                                .set(company)
                                 .addOnSuccessListener(aVoid -> {
                                     try{
-                                        mongoService.createCompany(empresa, this);
+                                        mongoService.createCompany(company, this);
                                         Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
                                         methods.openScreenActivity(this, MainActivity.class);
                                     }catch (Exception e){

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 
@@ -75,7 +74,7 @@ public class ResiduesAdapter extends RecyclerView.Adapter<ResiduesAdapter.Residu
 
         public ResidueViewHolder(@NonNull View itemView) {
             super(itemView);
-            residueImage = itemView.findViewById(R.id.productCardProductImage);
+            residueImage = itemView.findViewById(R.id.myProductCardProductImage);
             residueName = itemView.findViewById(R.id.myProductsCardProductName);
             editResidueButton = itemView.findViewById(R.id.productCardEditResidueButton);
             deleteResidueButton = itemView.findViewById(R.id.productCardDeleteResidueButton);

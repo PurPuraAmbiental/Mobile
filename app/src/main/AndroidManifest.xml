@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
 
     <application
@@ -16,13 +17,13 @@
         android:theme="@style/Theme.PurpuraApp"
         tools:targetApi="31">
         <activity
+            android:name=".LogIn"
+            android:exported="false" />
+        <activity
             android:name=".ui.screens.Dashboards"
             android:exported="false" />
         <activity
             android:name=".ui.screens.errors.GenericError"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screens.IndividualChat"
             android:exported="false" />
         <activity
             android:name=".ui.screens.accountFeatures.MyProducts"
@@ -52,9 +53,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.screens.QrCodePayment"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screens.ChoosePaymentMethod"
             android:exported="false" />
         <activity
             android:name=".ui.screens.autentication.Login"
