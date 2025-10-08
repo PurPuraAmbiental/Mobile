@@ -185,7 +185,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/registerProductImage"
                 app:layout_constraintEnd_toEndOf="@+id/registerProductImage"
                 app:layout_constraintTop_toTopOf="@+id/registerProductImage"
-                app:srcCompat="@drawable/export_image_icon" />
+                app:srcCompat="@drawable/export_vector" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

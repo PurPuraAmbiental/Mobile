@@ -22,9 +22,6 @@
             android:name=".ui.screens.errors.GenericError"
             android:exported="false" />
         <activity
-            android:name=".ui.screens.IndividualChat"
-            android:exported="false" />
-        <activity
             android:name=".ui.screens.accountFeatures.MyProducts"
             android:exported="false"
             android:theme="@style/Theme.PurpuraApp" />
@@ -52,9 +49,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.screens.QrCodePayment"
-            android:exported="false" />
-        <activity
-            android:name=".ui.screens.ChoosePaymentMethod"
             android:exported="false" />
         <activity
             android:name=".ui.screens.autentication.Login"

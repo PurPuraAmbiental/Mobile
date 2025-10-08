@@ -74,7 +74,7 @@ public class ResiduesAdapter extends RecyclerView.Adapter<ResiduesAdapter.Residu
 
         public ResidueViewHolder(@NonNull View itemView) {
             super(itemView);
-            residueImage = itemView.findViewById(R.id.productCardProductImage);
+            residueImage = itemView.findViewById(R.id.myProductCardProductImage);
             residueName = itemView.findViewById(R.id.productCardProductName);
             editResidueButton = itemView.findViewById(R.id.productCardEditResidueButton);
             deleteResidueButton = itemView.findViewById(R.id.productCardDeleteResidueButton);
