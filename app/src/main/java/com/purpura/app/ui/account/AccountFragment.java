@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.adapters.PixKeyAdapter;
 import com.purpura.app.model.Company;
@@ -58,9 +60,11 @@ public class AccountFragment extends Fragment {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         // ----- Views ----- //
+        //Imagem da empresa
+        ShapeableImageView profileImage = binding.profilePhoto;
         //Informações da empresa
-        ImageView companyImage = binding.accountProfileImage;
-        TextView companyName = binding.accountFragmentCompanyName;
+        ImageView accountProfileImage = binding.accountProfileImage;
+        TextView accountProfileText = binding.accountFragmentCompanyName;
         //Meus pedidos
         ImageView myOrdersIcon = binding.accountBagIcon;
         TextView myOrdersText = binding.accountBagText;
@@ -119,7 +123,10 @@ public class AccountFragment extends Fragment {
                                 @Override
                                 public void onResponse(Call<Company> call, Response<Company> response) {
                                     Company companyResponse = response.body();
-                                    companyName.setText(companyResponse.getNome());
+                                    accountProfileText.setText(companyResponse.getNome());
+                                    Glide.with(AccountFragment.this)
+                                            .load(companyResponse.getUrlFoto())
+                                            .into(profileImage);
                                 }
 
                                 @Override
