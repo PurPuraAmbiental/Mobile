@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.purpura.app.adapters.ResiduesAdapter;
+import com.purpura.app.adapters.MyResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.FragmentFirstBinding;
-import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
@@ -62,7 +61,7 @@ public class FirstFragment extends Fragment {
                                 public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {
                                     if(response.isSuccessful()){
                                         List<Residue> residues = response.body();
-                                        myProductsRecyclerView.setAdapter(new ResiduesAdapter(residues));
+                                        myProductsRecyclerView.setAdapter(new MyResiduesAdapter(residues));
                                     }
                                 }
                                 @Override

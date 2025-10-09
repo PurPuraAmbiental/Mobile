@@ -18,13 +18,13 @@ import com.purpura.app.remote.service.MongoService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResiduesAdapter extends RecyclerView.Adapter<ResiduesAdapter.ResidueViewHolder> {
+public class MyResiduesAdapter extends RecyclerView.Adapter<MyResiduesAdapter.ResidueViewHolder> {
 
     private List<Residue> products;
     private final Methods methods = new Methods();
     private final MongoService mongoService = new MongoService();
 
-    public ResiduesAdapter(List<Residue> products) {
+    public MyResiduesAdapter(List<Residue> products) {
         this.products = products != null ? products : new ArrayList<>();
     }
 

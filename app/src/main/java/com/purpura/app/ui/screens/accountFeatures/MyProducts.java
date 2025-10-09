@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
-import com.purpura.app.adapters.ResiduesAdapter;
+import com.purpura.app.adapters.MyResiduesAdapter;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.databinding.ActivityMyProductsBinding;
-import com.purpura.app.model.ProductCard;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
+import com.purpura.app.ui.home.HomeFragment;
 import com.purpura.app.ui.screens.productRegister.RegisterProduct;
 
 import java.util.ArrayList;
@@ -58,22 +60,33 @@ public class MyProducts extends AppCompatActivity {
             methods.openScreenActivity(this, RegisterProduct.class);
         });
 
-        mongoService.getAllResidues("17424290000101").enqueue(new Callback<List<Residue>>() {
-            @Override
-            public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {
-                if (response.isSuccessful()) {
-                    List<Residue> residues = response.body();
-                }
-                else {
-                    Toast.makeText(MyProducts.this, "Erro ao buscar resíduos", Toast.LENGTH_SHORT).show();
-                }
-            }
+        try {
+            FirebaseFirestore.getInstance()
+                    .collection("empresa")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(document -> {
+                        if (document.exists()) {
+                            String cnpj = document.getString("cnpj");
+                            mongoService.getAllResidues(cnpj).enqueue(new Callback<List<Residue>>() {
+                                @Override
+                                public void onResponse(Call<List<Residue>> call, Response<List<Residue>> response) {
+                                    if (response.isSuccessful()) {
+                                        List<Residue> residues = response.body();
+                                    } else {
+                                        Toast.makeText(MyProducts.this, "Erro ao buscar resíduos", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<List<Residue>> call, Throwable t) {
 
-            @Override
-            public void onFailure(Call<List<Residue>> call, Throwable t) {
-
-            }
-        });
+                                }
+                            });
+                        }
+                    });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
@@ -84,7 +97,7 @@ public class MyProducts extends AppCompatActivity {
         int numeroDeColunas = 2;
         GridLayoutManager layoutManager = new GridLayoutManager(this, numeroDeColunas);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new ResiduesAdapter(new ArrayList<Residue>()));
+        recyclerView.setAdapter(new MyResiduesAdapter(new ArrayList<Residue>()));
     }
 
     @Override
