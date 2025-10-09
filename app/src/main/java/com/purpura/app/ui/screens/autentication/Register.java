@@ -1,15 +1,22 @@
 package com.purpura.app.ui.screens.autentication;
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +25,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,7 +39,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Cloudnary;
@@ -37,6 +47,9 @@ import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.MainActivity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Register extends AppCompatActivity {
 
     Methods methods = new Methods();
@@ -44,6 +57,13 @@ public class Register extends AppCompatActivity {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     Cloudnary cloudnary = new Cloudnary(this);
     GoogleSignInClient googleSignInClient;
+
+    private String cloud_name = "dughz83oa";
+    private String project = "Purpura";
+    private String uriImage;
+
+    private ActivityResultLauncher<String[]> requestPermission;
+    private ActivityResultLauncher<Intent> requestGallery;
 
     ActivityResultLauncher<Intent> googleLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -105,9 +125,13 @@ public class Register extends AppCompatActivity {
         EditText edtCNPJ = findViewById(R.id.registerCNPJ);
         EditText edtSenha = findViewById(R.id.registerPassword);
         Button btnCadastrar = findViewById(R.id.registerButton);
-        ImageView img = findViewById(R.id.registerImage);
+        ImageView image = findViewById(R.id.registerImage);
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
         TextView txtLogin = findViewById(R.id.registerLoginText);
+
+        setGallery(image);
+
+        image.setOnClickListener(this::openGallery);
 
         btnCadastrar.setOnClickListener(v -> {
             String nome = edtNome.getText().toString().trim();
@@ -115,14 +139,17 @@ public class Register extends AppCompatActivity {
             String email = edtEmail.getText().toString().trim();
             String cnpj = edtCNPJ.getText().toString().trim();
             String senha = edtSenha.getText().toString().trim();
-            ImageView imagem = findViewById(R.id.registerImage);
 
             if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || telefone.isEmpty() || cnpj.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Validações adicionais
+            if (uriImage == null || uriImage.isEmpty()) {
+                Toast.makeText(this, "Aguarde o upload da imagem antes de cadastrar!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (cnpj.length() != 14 || !cnpj.matches("\\d+")) {
                 Toast.makeText(this, "CNPJ inválido. Deve ter 14 dígitos.", Toast.LENGTH_SHORT).show();
                 return;
@@ -137,18 +164,20 @@ public class Register extends AppCompatActivity {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) {
 
-                        Company company = new Company(cnpj, email, null, nome, telefone);
+                        Company company = new Company(cnpj, email, uriImage, nome, telefone);
 
                         FirebaseFirestore.getInstance()
                                 .collection("empresa")
                                 .document(user.getUid())
                                 .set(company)
                                 .addOnSuccessListener(aVoid -> {
-                                    try{
-                                        mongoService.createCompany(company, this);
-                                        Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
-                                        methods.openScreenActivity(this, MainActivity.class);
-                                    }catch (Exception e){
+                                    try {
+                                        runOnUiThread(() -> {
+                                            mongoService.createCompany(company, this);
+                                            Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
+                                            methods.openScreenActivity(this, MainActivity.class);
+                                        });
+                                    } catch (Exception e) {
                                         e.printStackTrace();
                                     }
                                 })
@@ -213,4 +242,118 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(this, "Erro ao verificar cadastro", Toast.LENGTH_SHORT).show();
                 });
     }
+
+    //Cloudinary
+    private void initCloudnary() {
+        Map config = new HashMap();
+        config.put("cloud_name", cloud_name);
+        MediaManager.init(this, config);
+    }
+
+    private void setGallery(ImageView imageView) {
+        requestGallery = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult o) {
+                        if (o.getData() != null) {
+                            Uri imageUri = o.getData().getData();
+
+                            uploadImagem(imageUri, new ImageUploadCallback() {
+                                @Override
+                                public void onUploadSuccess(String imageUrl) {
+                                    uriImage = imageUrl;
+                                    Toast.makeText(Register.this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onUploadFailure(String error) {
+                                    Toast.makeText(Register.this, "Erro ao enviar imagem: " + error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
+                }
+        );
+    }
+
+    private void uploadImagem(Uri imageUri, ImageUploadCallback callback) {
+        MediaManager.get().upload(imageUri)
+                .option("folder", "Purpura")
+                .unsigned(project)
+                .callback(new UploadCallback() {
+                    @Override
+                    public void onStart(String requestId) {
+                        Log.d("UPLOAD", "Upload iniciado");
+                    }
+
+                    @Override
+                    public void onProgress(String requestId, long bytes, long totalBytes) {
+                        Log.d("UPLOAD", "Enviando imagem...");
+                    }
+
+                    @Override
+                    public void onSuccess(String requestId, Map resultData) {
+                        Log.d("UPLOAD", "Upload concluído com sucesso");
+                        String url = (String) resultData.get("secure_url");
+
+                        runOnUiThread(() -> {
+                            Glide.with(Register.this)
+                                    .load(url)
+                                    .into((ImageView) findViewById(R.id.registerImage));
+                        });
+
+                        callback.onUploadSuccess(url);
+                    }
+
+                    @Override
+                    public void onError(String requestId, ErrorInfo error) {
+                        callback.onUploadFailure(error.getDescription());
+                    }
+
+                    @Override
+                    public void onReschedule(String requestId, ErrorInfo error) {
+                        callback.onUploadFailure("Reagendado: " + error.getDescription());
+                    }
+                })
+                .dispatch(Register.this);
+    }
+
+    // Permissões
+    private void checkPermissions() {
+        requestPermission = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+            for (Map.Entry<String, Boolean> entry : result.entrySet()) {
+                String permission = entry.getKey();
+                Boolean isGranted = entry.getValue();
+                if (isGranted) {
+                    Log.d("Permissions", "Permission granted: " + permission);
+                } else {
+                    Log.d("Permissions", "Permission denied: " + permission);
+                }
+            }
+        });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requestPermission.launch(new String[]{
+                    Manifest.permission.READ_MEDIA_IMAGES,
+                    Manifest.permission.READ_MEDIA_VIDEO,
+                    Manifest.permission.CAMERA
+            });
+        } else {
+            requestPermission.launch(new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            });
+        }
+    }
+
+    public void openGallery(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        requestGallery.launch(intent);
+    }
+}
+interface ImageUploadCallback {
+    void onUploadSuccess(String imageUrl);
+    void onUploadFailure(String error);
 }
