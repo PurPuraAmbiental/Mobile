@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/semBarra"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.screens.productRegister.RegisterPixKey">
+
+    <ImageView
+        android:id="@+id/registerAdressBackButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/pix_key"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Chave Pix"
+        android:textColor="#095D19"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <EditText
+        android:id="@+id/registerPixKeyInput"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Chave Pix da Empresa"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPixKeyNameInput" />
+
+    <EditText
+        android:id="@+id/registerPixKeyNameInput"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Nome da Chave Pix"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/registerPixKeyAddPixKeyButton"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/roxo_padrao"
+        android:text="Cadastrar Chave Pix"
+        app:cornerRadius="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPixKeyInput" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="350sp"
+        android:layout_height="50sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerAdressBackButton"
+        app:srcCompat="@drawable/pix_flow_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

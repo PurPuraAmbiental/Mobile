@@ -6,14 +6,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.errors.InternetError">
+    tools:context=".ui.screens.errors.GenericError">
 
     <TextView
         android:id="@+id/InternetErrorText"
-        android:layout_width="314dp"
+        android:layout_width="420dp"
         android:layout_height="120dp"
         android:layout_marginTop="15dp"
-        android:text="Ops! Parece que você está sem internet. Verifique a sua conexão e tente novamente."
+        android:text="Ops! Algo deu errado por aqui. Nâo foi possível concluir essa ação, tente novamente."
         android:textAlignment="center"
         android:textColor="@color/roxo_padrao"
         android:textSize="26sp"
@@ -23,26 +23,25 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <Button
-        android:id="@+id/tryAgainButton"
-        android:layout_width="320dp"
+        android:id="@+id/tryAgainErrorButton"
+        android:layout_width="420sp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/roxo_padrao"
         android:text="Tentar novamente"
         app:cornerRadius="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InternetErrorText" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:src="@drawable/internet_error"
+        android:layout_width="336dp"
+        android:layout_height="243dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/generic_error"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

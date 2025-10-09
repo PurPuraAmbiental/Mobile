@@ -1,14 +1,11 @@
 package com.purpura.app.configuration;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +15,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
@@ -58,7 +53,7 @@ public class Methods {
 
     public void openConfirmationPopUp(Context context, Runnable confirmAction, Runnable cancelAction) {
         View popupView = LayoutInflater.from(context)
-                .inflate(R.layout.confirm_alterations, null);
+                .inflate(R.layout.confirm_alterations_card, null);
 
         AlertDialog dialog = new AlertDialog.Builder(context)
                 .setView(popupView)

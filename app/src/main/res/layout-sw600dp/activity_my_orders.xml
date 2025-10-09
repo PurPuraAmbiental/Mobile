@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/myOrdersBackButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/back_button"
@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:text="Meus Pedidos"
         android:textColor="@color/verde_padrao"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

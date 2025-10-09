@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/registerAdressBackButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/back_button"
@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="288dp"
-        android:layout_height="340dp"
+        android:layout_width="388dp"
+        android:layout_height="400dp"
         android:src="@drawable/investiment_final"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -35,7 +35,7 @@
         android:layout_marginTop="15dp"
         android:text="Pronto!"
         android:textColor="#095D19"
-        android:textSize="25sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +43,8 @@
 
     <Button
         android:id="@+id/registerProductEnd"
-        android:layout_width="320sp"
-        android:layout_height="50sp"
+        android:layout_width="450sp"
+        android:layout_height="60sp"
         android:backgroundTint="@color/roxo_padrao"
         android:text="Voltar para Meus Produtos"
         app:cornerRadius="15sp"
@@ -55,7 +55,7 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="250sp"
+        android:layout_width="350sp"
         android:layout_height="50sp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
