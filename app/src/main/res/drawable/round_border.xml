@@ -10,10 +10,8 @@
     <!-- Cantos arredondados -->
     <corners android:radius="15sp" />
 
-    <!-- Fundo transparente -->
     <solid android:color="@android:color/transparent" />
 
-    <!-- Espaço interno -->
     <padding
         android:left="8dp"
         android:top="8dp"
