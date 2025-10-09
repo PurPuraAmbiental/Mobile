@@ -10,6 +10,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,6 +81,9 @@ public class MyProducts extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        int numeroDeColunas = 2;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, numeroDeColunas);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new ResiduesAdapter(new ArrayList<Residue>()));
     }
 
