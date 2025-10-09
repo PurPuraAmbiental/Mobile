@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/round_border">
 
-
         <ImageView
             android:id="@+id/myProductCardProductImage"
             android:layout_width="110dp"

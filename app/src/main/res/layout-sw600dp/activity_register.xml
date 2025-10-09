@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.screens.autentication.Register">
+
+    <EditText
+        android:id="@+id/registerCNPJ"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="CNPJ"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerCompanyName" />
+
+    <EditText
+        android:id="@+id/registerCompanyName"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Nome da empresa"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
+
+    <EditText
+        android:id="@+id/registerPhone"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Telefone da empresa"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
+
+    <EditText
+        android:id="@+id/registerPassword"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerCNPJ" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="420sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
+        app:srcCompat="@drawable/oder_separation" />
+
+    <EditText
+        android:id="@+id/registerEmail"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Email da empresa"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/registerLoginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Já é membro? Entre com o login!"
+        android:textColor="#095B19"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginWithGoogle" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Cadastro"
+        android:textColor="@color/verde_padrao"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/roxo_padrao"
+        android:text="Cadastre-se"
+        app:cornerRadius="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerImage" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/loginWithGoogle"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="9dp"
+        android:text="Google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView34"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/registerImage"
+        app:layout_constraintEnd_toEndOf="@+id/registerImage"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="@+id/registerImage"
+        app:layout_constraintTop_toTopOf="@+id/registerImage"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@drawable/export_vector" />
+
+    <ImageView
+        android:id="@+id/registerImage"
+        android:layout_width="420sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword"
+        app:srcCompat="@drawable/round_border" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
