@@ -31,6 +31,12 @@ public class    MongoService {
     }
 
     // Create - GET
+
+    public Call<List<Residue>> getAllResiduosMain(String cnpj, int limit, int page) {
+        Call<List<Residue>> call = mongoAPI.getAllResiduosMain(cnpj, limit, page);
+        return call;
+    }
+
     public Call<List<Address>> getAllAddress(String cnpj){
         Call<List<Address>> call = mongoAPI.getAllAddress(cnpj);
         return call;

@@ -153,8 +153,7 @@ public class Login extends AppCompatActivity {
                     if (document.exists()) {
                         String cnpj = document.getString("cnpj");
                         String telefone = document.getString("telefone");
-
-                        if (cnpj == null || cnpj.isEmpty() || telefone == null || telefone.isEmpty()) {
+                        if (cnpj == null && telefone == null) {
                             Toast.makeText(this, "Complete seu cadastro", Toast.LENGTH_SHORT).show();
                             methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                             finish();
