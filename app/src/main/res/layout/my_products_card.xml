@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_border">
 
-
         <ImageView
             android:id="@+id/myProductCardProductImage"
             android:layout_width="110dp"

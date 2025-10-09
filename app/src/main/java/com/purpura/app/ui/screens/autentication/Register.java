@@ -41,7 +41,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
-import com.purpura.app.configuration.Cloudnary;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
@@ -55,7 +54,6 @@ public class Register extends AppCompatActivity {
     Methods methods = new Methods();
     MongoService mongoService = new MongoService();
     FirebaseAuth auth = FirebaseAuth.getInstance();
-    Cloudnary cloudnary = new Cloudnary(this);
     GoogleSignInClient googleSignInClient;
 
     private String cloud_name = "dughz83oa";
@@ -129,6 +127,8 @@ public class Register extends AppCompatActivity {
         SignInButton btnGoogle = findViewById(R.id.loginWithGoogle);
         TextView txtLogin = findViewById(R.id.registerLoginText);
 
+        initCloudnary();
+        checkPermissions();
         setGallery(image);
 
         image.setOnClickListener(this::openGallery);

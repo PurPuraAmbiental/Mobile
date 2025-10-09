@@ -6,40 +6,41 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screens.accountFeatures.EditAddress">
+    tools:context=".ui.screens.accountFeatures.EditPixKeys">
 
     <ImageView
-        android:id="@+id/editAdressesBackButton"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
+        android:id="@+id/editPixKeyBackButton"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
-        android:text="Meus Endereços"
-        android:textColor="#014D0F"
-        android:textSize="24sp"
+        android:text="Minhas chaves Pix"
+        android:textColor="#00490E"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAdressesBackButton" />
+        app:layout_constraintTop_toBottomOf="@+id/editPixKeyBackButton" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/editAdressesRecycleView"
-        android:layout_width="320dp"
-        android:layout_height="581dp"
+        android:id="@+id/editPixKeysRecycleView"
+        android:layout_width="420sp"
+        android:layout_height="670dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:listitem="@layout/adresses_card" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        tools:listitem="@layout/pix_key_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>
