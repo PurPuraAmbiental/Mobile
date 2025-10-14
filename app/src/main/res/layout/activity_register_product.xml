@@ -151,42 +151,46 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registerProductWeight" />
 
-            <EditText
-                android:id="@+id/registerProductImage"
-                android:layout_width="320sp"
-                android:layout_height="50sp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_border"
-                android:ems="10"
-                android:hint="Imagem"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerProductQuantity" />
-
             <Button
                 android:id="@+id/registerProductAddProductButton"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="300dp"
                 android:backgroundTint="#764EA2"
                 android:text="Adicionar Produto"
                 app:cornerRadius="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerProductImage" />
+                app:layout_constraintTop_toBottomOf="@+id/registerProductImage"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/registerProductExportImageIcon"
                 android:layout_width="35sp"
                 android:layout_height="35sp"
-                android:layout_marginEnd="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/registerProductImage"
-                app:layout_constraintEnd_toEndOf="@+id/registerProductImage"
-                app:layout_constraintTop_toTopOf="@+id/registerProductImage"
+                android:layout_marginStart="272dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/registerProductImageee"
+                app:layout_constraintEnd_toEndOf="@+id/registerProductImageee"
+                app:layout_constraintStart_toStartOf="@+id/registerProductImage"
+                app:layout_constraintTop_toBottomOf="@+id/registerProductQuantity"
+                app:layout_constraintVertical_bias="0.8"
                 app:srcCompat="@drawable/export_vector" />
+
+            <ImageView
+                android:id="@+id/registerProductImage"
+                android:layout_width="320sp"
+                android:layout_height="50sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerProductQuantity"
+                app:srcCompat="@drawable/round_border" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

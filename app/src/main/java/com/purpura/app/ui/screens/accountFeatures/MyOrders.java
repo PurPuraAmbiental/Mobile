@@ -1,6 +1,8 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import com.purpura.app.ui.screens.MyPurchasesFragment;
 import com.purpura.app.ui.screens.MySalesFragment;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class MyOrders extends AppCompatActivity {
 
@@ -30,8 +33,12 @@ public class MyOrders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_my_orders);
+
+        ImageView backButton = findViewById(R.id.myOrdersBackButton);
+        backButton.setOnClickListener(v -> finish());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -39,13 +46,11 @@ public class MyOrders extends AppCompatActivity {
             return insets;
         });
 
-        //Views
         TabLayout myOrdersTableLayout = findViewById(R.id.myOrdersTabLayout);
         ViewPager2 myOrdersViewPage = findViewById(R.id.myOrdersViewPage);
         adapter = new MyOrdersAdapter(this);
         myOrdersViewPage.setAdapter(adapter);
 
-        //Adapters
         MyOrdersAdapter myOrdersAdapter = new MyOrdersAdapter(this);
 
         new TabLayoutMediator(myOrdersTableLayout, myOrdersViewPage,

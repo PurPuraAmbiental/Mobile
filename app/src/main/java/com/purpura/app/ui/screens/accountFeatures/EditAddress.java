@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -20,6 +21,7 @@ import com.purpura.app.configuration.Methods;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
 import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class EditAddress extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_adresses);
 
@@ -45,7 +48,7 @@ public class EditAddress extends AppCompatActivity {
         });
 
         ImageView backButton = findViewById(R.id.editAdressesBackButton);
-        backButton.setOnClickListener(v -> methods.openScreenActivity(EditAddress.this, AccountFragment.class));
+        backButton.setOnClickListener(v -> finish());
 
         RecyclerView recyclerView = findViewById(R.id.editAdressesRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
