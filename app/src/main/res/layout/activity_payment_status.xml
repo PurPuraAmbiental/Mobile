@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/magenta_claro"
-    android:theme="@style/semBarra"
+    android:theme="@style/Theme.PurpuraApp"
     tools:context=".ui.screens.PaymentStatus">
 
     <androidx.appcompat.widget.Toolbar

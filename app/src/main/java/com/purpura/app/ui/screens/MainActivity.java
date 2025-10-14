@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.homeFragment, R.id.shoppingCartFragment, R.id.chatListFragment, R.id.notificationsFragment, R.id.accountFragment)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         EdgeToEdge.enable(this);
 
