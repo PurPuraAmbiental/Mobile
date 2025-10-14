@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.adapters.PixKeyAdapter;
@@ -126,6 +127,7 @@ public class AccountFragment extends Fragment {
                                     accountProfileText.setText(companyResponse.getNome());
                                     Glide.with(AccountFragment.this)
                                             .load(companyResponse.getUrlFoto())
+                                            .transform(new CircleCrop())
                                             .into(profileImage);
                                 }
 
