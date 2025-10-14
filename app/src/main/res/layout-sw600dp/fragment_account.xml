@@ -21,16 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="205sp"
-                android:layout_height="40sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/toolbar3"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/white_name" />
-
 
             <ImageView
                 android:id="@+id/accountFragmentDashboardIcon"
@@ -50,12 +40,10 @@
                 android:background="@color/roxo_padrao"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/backgroundAccount"
@@ -208,9 +196,9 @@
                 android:id="@+id/accountPasswordText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:text="Alterar senha"
                 android:textSize="24sp"
-                android:layout_marginTop="26dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.064"
                 app:layout_constraintStart_toEndOf="@+id/accountPasswordIcon"
@@ -231,9 +219,9 @@
                 android:id="@+id/accountProfileText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="30dp"
                 android:text="Editar perfil"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.065"
                 app:layout_constraintStart_toEndOf="@+id/accountProfileImage"
@@ -296,10 +284,18 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundAccount"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.553"
-                app:layout_constraintStart_toStartOf="@+id/backgroundAccount"
-                app:layout_constraintTop_toBottomOf="@+id/profilePhoto"
-                app:layout_constraintVertical_bias="0.567" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profilePhoto" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="205sp"
+                android:layout_height="40sp"
+                android:src="@drawable/white_name"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+                app:layout_constraintStart_toStartOf="@+id/toolbar3"
+                app:layout_constraintTop_toTopOf="@+id/toolbar3" />
 
             <!-- continue com os próximos itens -->
 
