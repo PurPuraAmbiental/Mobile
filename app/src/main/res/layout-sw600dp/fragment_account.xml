@@ -279,7 +279,7 @@
                 android:id="@+id/accountFragmentCompanyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Empresa"
+                android:text="Carregando..."
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/backgroundAccount"

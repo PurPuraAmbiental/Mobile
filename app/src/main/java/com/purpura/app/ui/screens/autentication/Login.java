@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens.autentication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -30,12 +31,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.screens.MainActivity;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
+import com.purpura.app.ui.screens.productRegister.RegisterAdress;
 
 public class Login extends AppCompatActivity {
 
     Methods methods = new Methods();
     FirebaseAuth objAutenticar = FirebaseAuth.getInstance();
     GoogleSignInClient googleSignInClient;
+
+    Activity activity = this;
 
     ActivityResultLauncher<Intent> telaGoogle = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -48,6 +54,7 @@ public class Login extends AppCompatActivity {
 
                         if (signInAccount == null || signInAccount.getEmail() == null) {
                             Toast.makeText(this, "Erro ao obter conta do Google.", Toast.LENGTH_LONG).show();
+
                             return;
                         }
 
@@ -66,7 +73,7 @@ public class Login extends AppCompatActivity {
                                                     if (loginTask.isSuccessful()) {
                                                         FirebaseUser user = objAutenticar.getCurrentUser();
                                                         if (user != null) {
-                                                            verificarCNPJTelefone(user.getUid(), existe);
+                                                            verificarCNPJTelefone(user.getUid(), existe, activity);
                                                         }
                                                     } else {
                                                         Toast.makeText(this, "Erro ao logar com Google.", Toast.LENGTH_LONG).show();
@@ -86,6 +93,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in);
 
@@ -118,9 +126,10 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = objAutenticar.getCurrentUser();
                             if (user != null) {
-                                verificarCNPJTelefone(user.getUid(), true);
+                                verificarCNPJTelefone(user.getUid(), true, activity);
                             }
                         } else {
+                            methods.openScreenActivity(activity, GenericError.class);
                             Toast.makeText(getApplicationContext(), "Erro ao Logar", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -140,11 +149,11 @@ public class Login extends AppCompatActivity {
 
         FirebaseUser usuario = objAutenticar.getCurrentUser();
         if (usuario != null) {
-            verificarCNPJTelefone(usuario.getUid(), true);
+            verificarCNPJTelefone(usuario.getUid(), true, activity);
         }
     }
 
-    private void verificarCNPJTelefone(String uid, boolean jaLogado) {
+    private void verificarCNPJTelefone(String uid, boolean alreadySigUp, Activity activity) {
         FirebaseFirestore.getInstance()
                 .collection("empresa")
                 .document(uid)
@@ -158,7 +167,7 @@ public class Login extends AppCompatActivity {
                             methods.openScreenActivity(this, AddicionalInformacionsRegisterGoogle.class);
                             finish();
                         } else {
-                            if (jaLogado) {
+                            if (alreadySigUp) {
                                 Toast.makeText(this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
                             }
                             methods.openScreenActivity(this, MainActivity.class);
@@ -171,6 +180,7 @@ public class Login extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(e -> {
+                    methods.openScreenActivity(activity, GenericError.class);
                     Toast.makeText(this, "Erro ao verificar cadastro", Toast.LENGTH_SHORT).show();
                 });
     }

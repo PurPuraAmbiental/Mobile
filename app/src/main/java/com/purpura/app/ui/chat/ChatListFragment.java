@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,6 +18,8 @@ import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
+import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
+import com.purpura.app.ui.screens.errors.GenericError;
 
 public class ChatListFragment extends Fragment {
 
@@ -80,7 +83,7 @@ public class ChatListFragment extends Fragment {
 
                             chatListWebView.loadUrl(url);
                         }
-                    });
+                    }).addOnFailureListener(v -> methods.openScreenFragments(ChatListFragment.this, GenericError.class));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

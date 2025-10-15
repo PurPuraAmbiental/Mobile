@@ -1,7 +1,9 @@
 package com.purpura.app.ui.screens.productRegister;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.accountFeatures.MyProducts;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class RegisterProductEndPage extends AppCompatActivity {
 
@@ -29,6 +33,7 @@ public class RegisterProductEndPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_product_end_page);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -38,6 +43,9 @@ public class RegisterProductEndPage extends AppCompatActivity {
         });
 
         Button continueButton = findViewById(R.id.registerProductEnd);
+        ImageView backButton = findViewById(R.id.registerAdressBackButton);
+
+        backButton.setOnClickListener(v -> finish());
 
         continueButton.setOnClickListener(v -> {
             try{
@@ -51,7 +59,9 @@ public class RegisterProductEndPage extends AppCompatActivity {
                                 mongoService.createPixKey(cnpj, pixKey, this);
                                 methods.openScreenActivity(this, RegisterProductEndPage.class);
                             }
-                        });
+                        }).addOnFailureListener(view ->
+                                methods.openScreenActivity(this, GenericError.class)
+                        );
 
             }catch (Exception e){
                 e.printStackTrace();

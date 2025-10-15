@@ -1,9 +1,12 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.navigation.NavController;
@@ -23,6 +26,8 @@ import com.purpura.app.databinding.ActivityMyProductsBinding;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.home.HomeFragment;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 import com.purpura.app.ui.screens.productRegister.RegisterProduct;
 
 import java.util.ArrayList;
@@ -48,10 +53,12 @@ public class MyProducts extends AppCompatActivity {
         binding = ActivityMyProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ImageView backButton = findViewById(R.id.myProductsBackButton);
+        backButton.setOnClickListener(v -> finish());
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_my_prroducts);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
-        // Inicializa RecyclerView antes de usar
         recyclerView = findViewById(R.id.myProductsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -74,20 +81,20 @@ public class MyProducts extends AppCompatActivity {
                                         List<Residue> residues = response.body();
                                     } else {
                                         Toast.makeText(MyProducts.this, "Erro ao buscar resíduos", Toast.LENGTH_SHORT).show();
+                                        methods.openScreenActivity(MyProducts.this, GenericError.class);
                                     }
                                 }
                                 @Override
                                 public void onFailure(Call<List<Residue>> call, Throwable t) {
-
+                                    methods.openScreenActivity(MyProducts.this, GenericError.class);
                                 }
                             });
                         }
                     });
         } catch (Exception e) {
+            methods.openScreenActivity(MyProducts.this, GenericError.class);
             throw new RuntimeException(e);
         }
-
-
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.purpura.app.ui.account;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,8 +54,6 @@ public class AccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        AccountViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(AccountViewModel.class);
 
         binding = FragmentAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -111,6 +111,8 @@ public class AccountFragment extends Fragment {
         myProductsIcon.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
         myProductsText.setOnClickListener(v -> methods.openScreenFragments(this, MyProducts.class));
 
+        Activity activity = this.getActivity();
+
         try {
             FirebaseFirestore.getInstance()
                     .collection("empresa")
@@ -133,12 +135,13 @@ public class AccountFragment extends Fragment {
 
                                 @Override
                                 public void onFailure(Call<Company> call, Throwable t) {
-                                    
+                                    methods.openScreenFragments(AccountFragment.this, GenericError.class);
                                 }
                             });
                         }
                     });
         } catch (Exception e) {
+            methods.openScreenFragments(AccountFragment.this, GenericError.class);
             throw new RuntimeException(e);
         }
 

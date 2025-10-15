@@ -1,5 +1,6 @@
 package com.purpura.app.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.adapters.HomeAdapter;
+import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Residue;
 import com.purpura.app.remote.service.MongoService;
+import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +38,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
+
+    Methods methods = new Methods();
     private final MongoService mongoService = new MongoService();
     private Call<List<Residue>> residuosCall;
 
@@ -59,10 +66,10 @@ public class HomeFragment extends Fragment {
         adapter = new HomeAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        carregarResiduos();
+        carregarResiduos(this);
     }
 
-    private void carregarResiduos() {
+    private void carregarResiduos(Fragment fragment) {
         try {
             if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                 if (isAdded()) Toast.makeText(requireContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();
@@ -90,21 +97,20 @@ public class HomeFragment extends Fragment {
                                     if (response.isSuccessful() && response.body() != null) {
                                         adapter.updateList(response.body());
                                     } else {
-                                        Toast.makeText(requireContext(), "Erro ao buscar resíduos", Toast.LENGTH_SHORT).show();
+                                        methods.openScreenFragments(fragment, GenericError.class);
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(Call<List<Residue>> call, Throwable t) {
-                                    if (!isAdded()) return;
-                                    if (!call.isCanceled()) {
-                                        Toast.makeText(requireContext(), "Falha de rede", Toast.LENGTH_SHORT).show();
-                                    }
+                                    methods.openScreenFragments(HomeFragment.this, GenericError.class);
                                 }
                             });
                         }
                     });
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+            methods.openScreenFragments(HomeFragment.this, GenericError.class);
+        }
     }
 
     @Override

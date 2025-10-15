@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens.autentication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -20,6 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.screens.MainActivity;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class RegisterOrLogin extends AppCompatActivity {
 
@@ -28,6 +31,7 @@ public class RegisterOrLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FirebaseApp.initializeApp(this);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_or_login);
@@ -54,7 +58,6 @@ public class RegisterOrLogin extends AppCompatActivity {
                 methods.openScreenActivity(this, Register.class)
         );
 
-        // Verifica usuário logado
         FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
         if (usuario != null) {
             validarCadastro(usuario.getUid());
@@ -87,7 +90,7 @@ public class RegisterOrLogin extends AppCompatActivity {
                     }
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("FirestoreDebug", "Erro ao buscar dados da empresa", e);
+                    methods.openScreenActivity(RegisterOrLogin.this, GenericError.class);
                     Toast.makeText(this, "Erro ao verificar cadastro", Toast.LENGTH_SHORT).show();
                 });
     }
