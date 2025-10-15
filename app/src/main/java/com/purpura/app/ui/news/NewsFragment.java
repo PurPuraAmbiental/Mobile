@@ -13,7 +13,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +40,7 @@ public class NewsFragment extends Fragment {
     private NewsAdapter adapter;
 
     Methods methods = new Methods();
-    private PostgresService postgresService = new PostgresService();
+    private final PostgresService postgresService = new PostgresService();
     private Call<List<News>> newsCall;
 
     @Nullable
@@ -57,31 +56,53 @@ public class NewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.newsFragmentReciclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         adapter = new NewsAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        loadNews(this);
+        loadResidues(this);
     }
 
-    private void loadNews(Fragment fragment) {
+    private void loadResidues(Fragment fragment) {
         try {
-            postgresService.getAllNotifications().enqueue(new Callback<List<News>>() {
-                @Override
-                public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-                    if (!isAdded()) return;
-                    if (response.isSuccessful() && response.body() != null) {
-                        adapter.updateList(response.body());
-                    } else {
-                        methods.openScreenFragments(fragment, GenericError.class);
-                    }
-                }
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                if (isAdded()) Toast.makeText(requireContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            FirebaseFirestore.getInstance()
+                    .collection("empresa")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(document -> {
+                        if (!isAdded()) return;
+                        if (document.exists()) {
+                            String cnpj = document.getString("cnpj");
+                            if (cnpj == null || cnpj.isEmpty()) {
+                                Toast.makeText(requireContext(), "CNPJ não encontrado", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            int limit = 50;
+                            int page = 1;
+                            newsCall = postgresService.getAllNotifications();
+                            newsCall.enqueue(new Callback<List<News>>() {
+                                @Override
+                                public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+                                    if (!isAdded()) return;
+                                    if (response.isSuccessful() && response.body() != null) {
+                                        adapter.updateList(response.body());
+                                    } else {
+                                        methods.openScreenFragments(fragment, GenericError.class);
+                                    }
+                                }
 
-                @Override
-                public void onFailure(Call<List<News>> call, Throwable t) {
-                    methods.openScreenFragments(fragment, GenericError.class);
-                }
-            });
+                                @Override
+                                public void onFailure(Call<List<News>> call, Throwable t) {
+                                    methods.openScreenFragments(NewsFragment.this, GenericError.class);
+                                }
+
+                            });
+                        }
+                    });
         } catch (Exception ignored) {
             methods.openScreenFragments(NewsFragment.this, GenericError.class);
         }

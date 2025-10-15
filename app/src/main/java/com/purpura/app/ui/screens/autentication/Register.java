@@ -238,7 +238,6 @@ public class Register extends AppCompatActivity {
 
                             @Override
                             public void onUploadFailure(String error) {
-                                methods.openScreenActivity(Register.this, GenericError.class);
                             }
                         });
                     }
@@ -252,7 +251,6 @@ public class Register extends AppCompatActivity {
                         if (isGranted) {
                             Log.d("Permissions", "Permission granted: " + permission);
                         } else {
-                            methods.openScreenActivity(Register.this, GenericError.class);
                         }
                     }
                 });
