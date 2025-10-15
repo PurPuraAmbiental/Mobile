@@ -48,6 +48,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.residueName.setText(residue.getNome());
         holder.residueWeight.setText(String.valueOf(residue.getPeso()));
         holder.residuePrice.setText(String.valueOf(residue.getPreco()));
+        holder.residueUnitType.setText(residue.getTipoUnidade());
 
     }
 
@@ -67,6 +68,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         TextView residueName;
         TextView residueWeight;
         TextView residuePrice;
+        TextView residueUnitType;
 
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +76,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             residueName = itemView.findViewById(R.id.productCardProductName);
             residueWeight = itemView.findViewById(R.id.productCardProductWeight);
             residuePrice = itemView.findViewById(R.id.productCardProductValue);
+            residueUnitType = itemView.findViewById(R.id.productCardProductUnitType);
         }
     }
 }
