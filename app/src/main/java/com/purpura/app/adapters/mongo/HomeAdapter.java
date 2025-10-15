@@ -1,4 +1,4 @@
-package com.purpura.app.adapters;
+package com.purpura.app.adapters.mongo;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,32 +12,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.Residue;
+import com.purpura.app.model.mongo.Residue;
 import com.purpura.app.remote.service.MongoService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyResiduesAdapter extends RecyclerView.Adapter<MyResiduesAdapter.ResidueViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
     private List<Residue> products;
     private final Methods methods = new Methods();
     private final MongoService mongoService = new MongoService();
 
-    public MyResiduesAdapter(List<Residue> products) {
+    public HomeAdapter(List<Residue> products) {
         this.products = products != null ? products : new ArrayList<>();
     }
 
+
     @NonNull
     @Override
-    public ResidueViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_products_card, parent, false);
-        return new ResidueViewHolder(view);
+                .inflate(R.layout.product_card, parent, false);
+        return new HomeViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResidueViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
         Residue residue = products.get(position);
 
         Glide.with(holder.residueImage.getContext())
@@ -45,14 +46,10 @@ public class MyResiduesAdapter extends RecyclerView.Adapter<MyResiduesAdapter.Re
                 .into(holder.residueImage);
 
         holder.residueName.setText(residue.getNome());
+        holder.residueWeight.setText(String.valueOf(residue.getPeso()));
+        holder.residuePrice.setText(String.valueOf(residue.getPreco()));
+        holder.residueUnitType.setText(residue.getTipoUnidade());
 
-        holder.editResidueButton.setOnClickListener(v -> {
-
-        });
-
-        holder.deleteResidueButton.setOnClickListener(v -> {
-
-        });
     }
 
     @Override
@@ -65,19 +62,21 @@ public class MyResiduesAdapter extends RecyclerView.Adapter<MyResiduesAdapter.Re
         notifyDataSetChanged();
     }
 
-    public static class ResidueViewHolder extends RecyclerView.ViewHolder {
+    public static class HomeViewHolder extends RecyclerView.ViewHolder {
 
         ImageView residueImage;
         TextView residueName;
-        ImageView editResidueButton;
-        ImageView deleteResidueButton;
+        TextView residueWeight;
+        TextView residuePrice;
+        TextView residueUnitType;
 
-        public ResidueViewHolder(@NonNull View itemView) {
+        public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
-            residueImage = itemView.findViewById(R.id.myProductCardProductImage);
-            residueName = itemView.findViewById(R.id.myProductsCardProductName);
-            editResidueButton = itemView.findViewById(R.id.productCardEditResidueButton);
-            deleteResidueButton = itemView.findViewById(R.id.productCardDeleteResidueButton);
+            residueImage = itemView.findViewById(R.id.productCardProductImage);
+            residueName = itemView.findViewById(R.id.productCardProductName);
+            residueWeight = itemView.findViewById(R.id.productCardProductWeight);
+            residuePrice = itemView.findViewById(R.id.productCardProductValue);
+            residueUnitType = itemView.findViewById(R.id.productCardProductUnitType);
         }
     }
 }
