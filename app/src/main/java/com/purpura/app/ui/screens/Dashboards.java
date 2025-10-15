@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.ui.account.AccountFragment;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class Dashboards extends AppCompatActivity {
 
@@ -39,6 +41,6 @@ public class Dashboards extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.dashboardsBackButton);
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, AccountFragment.class));
+        backButton.setOnClickListener(v -> finish());
     }
 }

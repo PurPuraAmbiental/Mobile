@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class QrCodePayment extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class QrCodePayment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_qr_code_payment);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -36,7 +39,7 @@ public class QrCodePayment extends AppCompatActivity {
 
         //----- SetOnClickListener -----//
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, MainActivity.class));
+        backButton.setOnClickListener(v -> finish());
 
         continueButton.setOnClickListener(v -> methods.openScreenActivity(this, PaymentStatus.class));
 

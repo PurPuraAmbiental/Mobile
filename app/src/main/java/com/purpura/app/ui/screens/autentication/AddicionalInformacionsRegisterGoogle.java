@@ -1,5 +1,7 @@
 package com.purpura.app.ui.screens.autentication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -22,15 +24,19 @@ import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Company;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.screens.MainActivity;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
 
     Methods methods = new Methods();
     MongoService mongoService = new MongoService();
+    Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_addicional_informacions_register_google);
 
@@ -95,12 +101,11 @@ public class AddicionalInformacionsRegisterGoogle extends AppCompatActivity {
                 .set(empresa)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Cadastro finalizado!", Toast.LENGTH_SHORT).show();
-                    Log.d("FirestoreDebug", "Sucesso ao salvar no Firestore para UID: " + user.getUid());
                     methods.openScreenActivity(this, MainActivity.class);
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("FirestoreDebug", "Erro ao salvar: ", e);
+                    methods.openScreenActivity(activity, GenericError.class);
                     Toast.makeText(this,
                             "Erro ao salvar: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();

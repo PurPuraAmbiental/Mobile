@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens.productRegister;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import com.purpura.app.R;
 import com.purpura.app.model.PixKey;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class RegisterPixKey extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class RegisterPixKey extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register_pix_key);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -44,7 +47,7 @@ public class RegisterPixKey extends AppCompatActivity {
         PixKey pixKey = new PixKey(pixKeyNameInput.getText().toString(), pixKeyInput.getText().toString());
 
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterAdress.class));
+        backButton.setOnClickListener(v -> finish());
         continueButton.setOnClickListener(v -> {
             bundle.putString("pixKeyName", pixKeyNameInput.getText().toString());
             bundle.putString("pixKey", pixKeyInput.getText().toString());

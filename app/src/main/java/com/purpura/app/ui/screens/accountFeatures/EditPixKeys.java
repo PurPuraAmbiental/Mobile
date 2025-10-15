@@ -1,5 +1,6 @@
 package com.purpura.app.ui.screens.accountFeatures;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -20,6 +21,7 @@ import com.purpura.app.model.PixKey;
 import com.purpura.app.remote.service.MongoService;
 import com.purpura.app.ui.account.AccountFragment;
 import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class EditPixKeys extends AppCompatActivity {
         });
 
         ImageView backButton = findViewById(R.id.editPixKeyBackButton);
-        backButton.setOnClickListener(v -> methods.openScreenActivity(EditPixKeys.this, AccountFragment.class));
+        backButton.setOnClickListener(v -> finish());
 
         RecyclerView recyclerView = findViewById(R.id.editPixKeysRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

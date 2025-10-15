@@ -1,5 +1,7 @@
 package com.purpura.app.ui.screens.productRegister;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +19,8 @@ import com.purpura.app.R;
 import com.purpura.app.configuration.Methods;
 import com.purpura.app.model.Address;
 import com.purpura.app.remote.service.MongoService;
+import com.purpura.app.ui.screens.errors.GenericError;
+import com.purpura.app.ui.screens.errors.InternetError;
 
 public class RegisterAdress extends AppCompatActivity {
 
@@ -36,14 +40,13 @@ public class RegisterAdress extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.registerAdressBackButton);
         Button continueButton = findViewById(R.id.registerAdressValidateZipCode);
-
         EditText name = findViewById(R.id.registerAdressName);
         EditText zipCode = findViewById(R.id.registerAdressZipCode);
         EditText number = findViewById(R.id.registerAdressNumber);
         EditText complement = findViewById(R.id.registerAdressComplement);
         Address address = new Address(name.getText().toString(), zipCode.getText().toString(), complement.getText().toString(),Integer.parseInt(number.getText().toString()));
 
-        backButton.setOnClickListener(v -> methods.openScreenActivity(this, RegisterProduct.class));
+        backButton.setOnClickListener(v -> finish());
         continueButton.setOnClickListener(v -> {
             try{
                 FirebaseFirestore.getInstance()
@@ -56,7 +59,9 @@ public class RegisterAdress extends AppCompatActivity {
                                 mongoService.createAdress(cnpj, address, this);
                                 methods.openScreenActivity(this, RegisterPixKey.class);
                             }
-                        });
+                        }).addOnFailureListener(view ->
+                                methods.openScreenActivity(RegisterAdress.this, GenericError.class)
+                        );
 
             }catch (Exception e){
                 e.printStackTrace();
