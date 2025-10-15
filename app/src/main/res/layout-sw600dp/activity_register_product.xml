@@ -4,7 +4,7 @@
     android:id="@+id/registerProductLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/semBarra"
+    android:theme="@style/Theme.PurpuraApp"
     tools:context=".ui.screens.productRegister.RegisterProduct">
 
     <ScrollView

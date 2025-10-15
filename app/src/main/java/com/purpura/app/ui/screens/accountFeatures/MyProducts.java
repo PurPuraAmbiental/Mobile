@@ -58,7 +58,6 @@ public class MyProducts extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_my_prroducts);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         recyclerView = findViewById(R.id.myProductsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

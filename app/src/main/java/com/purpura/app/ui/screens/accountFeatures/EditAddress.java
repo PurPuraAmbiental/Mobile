@@ -54,7 +54,7 @@ public class EditAddress extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        try {
+          try {
             FirebaseFirestore.getInstance()
                     .collection("empresa")
                     .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
