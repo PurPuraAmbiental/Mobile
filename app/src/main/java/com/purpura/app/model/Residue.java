@@ -4,11 +4,10 @@ public class Residue {
     private String id;
     private String nome;
     private String descricao;
-    private double preco;
     private double peso;
-    private String tipoUnidade;
+    private double preco;
     private int estoque;
-
+    private String tipoUnidade;
     private String urlFoto;
     private String idChavePix;
     private String idEndereco;
@@ -17,10 +16,10 @@ public class Residue {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.preco = preco;
         this.peso = peso;
-        this.tipoUnidade = tipoUnidade;
+        this.preco = preco;
         this.estoque = estoque;
+        this.tipoUnidade = tipoUnidade;
         this.urlFoto = urlFoto;
         this.idChavePix = idChavePix;
         this.idEndereco = idEndereco;

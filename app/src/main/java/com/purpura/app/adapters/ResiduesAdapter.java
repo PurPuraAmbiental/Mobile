@@ -18,27 +18,26 @@ import com.purpura.app.remote.service.MongoService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
+public class ResiduesAdapter extends RecyclerView.Adapter<ResiduesAdapter.ResidueViewHolder> {
 
     private List<Residue> products;
     private final Methods methods = new Methods();
     private final MongoService mongoService = new MongoService();
 
-    public HomeAdapter(List<Residue> products) {
+    public ResiduesAdapter(List<Residue> products) {
         this.products = products != null ? products : new ArrayList<>();
     }
 
-
     @NonNull
     @Override
-    public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ResidueViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_card, parent, false);
-        return new HomeViewHolder(view);
+                .inflate(R.layout.my_products_card, parent, false);
+        return new ResidueViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResidueViewHolder holder, int position) {
         Residue residue = products.get(position);
 
         Glide.with(holder.residueImage.getContext())
@@ -46,10 +45,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 .into(holder.residueImage);
 
         holder.residueName.setText(residue.getNome());
-        holder.residueWeight.setText(String.valueOf(residue.getPeso()));
-        holder.residuePrice.setText(String.valueOf(residue.getPreco()));
-        holder.residueUnitType.setText(residue.getTipoUnidade());
 
+        holder.editResidueButton.setOnClickListener(v -> {
+
+        });
+
+        holder.deleteResidueButton.setOnClickListener(v -> {
+
+        });
     }
 
     @Override
@@ -62,21 +65,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         notifyDataSetChanged();
     }
 
-    public static class HomeViewHolder extends RecyclerView.ViewHolder {
+    public static class ResidueViewHolder extends RecyclerView.ViewHolder {
 
         ImageView residueImage;
         TextView residueName;
-        TextView residueWeight;
-        TextView residuePrice;
-        TextView residueUnitType;
+        ImageView editResidueButton;
+        ImageView deleteResidueButton;
 
-        public HomeViewHolder(@NonNull View itemView) {
+        public ResidueViewHolder(@NonNull View itemView) {
             super(itemView);
             residueImage = itemView.findViewById(R.id.productCardProductImage);
             residueName = itemView.findViewById(R.id.productCardProductName);
-            residueWeight = itemView.findViewById(R.id.productCardProductWeight);
-            residuePrice = itemView.findViewById(R.id.productCardProductValue);
-            residueUnitType = itemView.findViewById(R.id.productCardProductUnitType);
+            editResidueButton = itemView.findViewById(R.id.productCardEditResidueButton);
+            deleteResidueButton = itemView.findViewById(R.id.productCardDeleteResidueButton);
         }
     }
 }

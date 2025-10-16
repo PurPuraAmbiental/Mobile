@@ -1,6 +1,5 @@
 package com.purpura.app.ui.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.purpura.app.R;
-import com.purpura.app.adapters.HomeAdapter;
+import com.purpura.app.adapters.mongo.HomeAdapter;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.Residue;
+import com.purpura.app.model.mongo.Residue;
 import com.purpura.app.remote.service.MongoService;
-import com.purpura.app.ui.screens.autentication.RegisterOrLogin;
 import com.purpura.app.ui.screens.errors.GenericError;
-import com.purpura.app.ui.screens.errors.InternetError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,10 +63,10 @@ public class HomeFragment extends Fragment {
         adapter = new HomeAdapter(new ArrayList<>());
         recyclerView.setAdapter(adapter);
 
-        carregarResiduos(this);
+        loadResidues(this);
     }
 
-    private void carregarResiduos(Fragment fragment) {
+    private void loadResidues(Fragment fragment) {
         try {
             if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                 if (isAdded()) Toast.makeText(requireContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();

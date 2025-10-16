@@ -6,11 +6,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.purpura.app.configuration.Methods;
-import com.purpura.app.model.Address;
-import com.purpura.app.model.Company;
-import com.purpura.app.model.PixKey;
-import com.purpura.app.model.ProductCard;
-import com.purpura.app.model.Residue;
+import com.purpura.app.model.mongo.Address;
+import com.purpura.app.model.mongo.Company;
+import com.purpura.app.model.mongo.PixKey;
+import com.purpura.app.model.mongo.Residue;
 import com.purpura.app.remote.api.MongoAPI;
 import com.purpura.app.remote.util.RetrofitService;
 import com.purpura.app.ui.screens.MainActivity;
@@ -21,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class    MongoService {
+public class MongoService {
 
     private MongoAPI mongoAPI;
     private Methods methods;
@@ -30,7 +29,7 @@ public class    MongoService {
         mongoAPI = new RetrofitService<>(MongoAPI.class).getService();
     }
 
-    // Create - GET
+    //GET
 
     public Call<List<Residue>> getAllResiduosMain(String cnpj, int limit, int page) {
         Call<List<Residue>> call = mongoAPI.getAllResiduosMain(cnpj, limit, page);
