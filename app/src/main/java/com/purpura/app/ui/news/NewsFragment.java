@@ -65,44 +65,23 @@ public class NewsFragment extends Fragment {
 
     private void loadResidues(Fragment fragment) {
         try {
-            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-                if (isAdded()) Toast.makeText(requireContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            FirebaseFirestore.getInstance()
-                    .collection("empresa")
-                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .get()
-                    .addOnSuccessListener(document -> {
-                        if (!isAdded()) return;
-                        if (document.exists()) {
-                            String cnpj = document.getString("cnpj");
-                            if (cnpj == null || cnpj.isEmpty()) {
-                                Toast.makeText(requireContext(), "CNPJ não encontrado", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                            int limit = 50;
-                            int page = 1;
-                            newsCall = postgresService.getAllNotifications();
-                            newsCall.enqueue(new Callback<List<News>>() {
-                                @Override
-                                public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-                                    if (!isAdded()) return;
-                                    if (response.isSuccessful() && response.body() != null) {
-                                        adapter.updateList(response.body());
-                                    } else {
-                                        methods.openScreenFragments(fragment, GenericError.class);
-                                    }
-                                }
+            postgresService.getAllNotifications().enqueue(new Callback<List<News>>() {
+                @Override
+                public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+                    if (!isAdded()) return;
+                    if (response.isSuccessful() && response.body() != null) {
+                        adapter.updateList(response.body());
+                    } else {
+                        methods.openScreenFragments(fragment, GenericError.class);
+                    }
+                }
 
-                                @Override
-                                public void onFailure(Call<List<News>> call, Throwable t) {
-                                    methods.openScreenFragments(NewsFragment.this, GenericError.class);
-                                }
+                @Override
+                public void onFailure(Call<List<News>> call, Throwable t) {
+                    methods.openScreenFragments(NewsFragment.this, GenericError.class);
+                }
 
-                            });
-                        }
-                    });
+            });
         } catch (Exception ignored) {
             methods.openScreenFragments(NewsFragment.this, GenericError.class);
         }
